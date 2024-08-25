@@ -1,0 +1,24 @@
+# This example uses YAML anchors which allows reuse of multiple keys 
+# without having to repeat yourself.
+# Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
+# for a more complex example.
+# Note: Be sure to not include a - before subsequent key types under key_groups
+# (i.e. age in the below example should not have a - in front). This will
+# otherwise cause sops to require multiple keys (shamir secret sharing)
+# to decrypt a secret, which breaks normal sops-nix usage.
+keys:
+  - &nick EEABC0768AB776CE
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *nick
+      # age:
+      # - *admin_bob
+  # creation rule below to support reading from stdin for encryption
+  # so that I can pipe buffer contents to sops and automatically en/decrypt in nvim
+  # should become unnecesary once sops v3.9.0 is available in nixpkgs
+  - path_regex: /dev/stdin$
+    key_groups:
+    - pgp:
+      - *nick
