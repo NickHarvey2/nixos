@@ -115,7 +115,7 @@ in {
   home = {
     sessionVariables = {
       ENTR_INOTIFY_WORKAROUND = 1;
-      FLAKE_DIR = "/home/nick/nix";
+      FLAKE_DIR = "/home/nick/nixos";
       IDENTITIES_FILE = builtins.toFile "json" (builtins.toJSON identities);
     };
     file.pubSshKey = {
