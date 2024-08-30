@@ -22,6 +22,27 @@
     vu-hostname = "VUHL-J9VJKN3";
   in {
     nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          {
+            networking.hostName = "nixos";
+          }
+
+          ./configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = {inherit inputs;};
+              useUserPackages = true;
+              users.nick = import ./nick/home.nix;
+            };
+          }
+        ];
+      };
+
       "${vu-hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};

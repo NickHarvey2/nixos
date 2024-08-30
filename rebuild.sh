@@ -1,10 +1,10 @@
 #!/usr/bin/env nix-shell
 #!nix-shell -i bash -p gum git
 
-set -euo pipefail
+set -eo pipefail
 
 echo "Path to flake:"
-dir=`gum input --placeholder $FLAKE_DIR`
+dir=`gum input --placeholder ${FLAKE_DIR:-''}`
 if [ "$dir" = "" ]; then
     dir=$FLAKE_DIR
 fi
@@ -12,7 +12,7 @@ fi
 echo "> $dir"
 
 echo "Hostname:"
-host=`gum input --placeholder $(hostname    )`
+host=`gum input --placeholder $(hostname)`
 if [ "$host" = "" ]; then
     host=$(hostname)
 fi
@@ -34,7 +34,7 @@ while : ; do
             "1. View diff between current and index (git diff) then return to this menu\n2. Stage all unstaged changes (git add .)\n3. Stash unstaged changes, then reapply them after rebuild (git stash --include-untracked --keep-index; git stash pop)\n4. Interactively select hunks to be staged (git add . --patch)\n5. Continue with dirty working directory (not recommended)\n6. Cancel" \
             | gum choose --header "What would you like to do?")
         echo "> $choice"
-        
+
         if [[ "$(echo $choice | cut -c1)" == '1' ]]; then
             git diff
         elif [[ "$(echo $choice | cut -c1)" == '2' ]]; then
@@ -64,9 +64,9 @@ while : ; do
     fi
 done
 
-gum confirm "Run command? nixos-rebuild switch --flake $dir#$host"
+gum confirm "Run command? nixos-rebuild switch --flake $dir#$host --impure"
 if [[ $? == 0 ]]; then
-    sudo nixos-rebuild switch --flake "$dir#$host"
+    sudo nixos-rebuild switch --flake "$dir#$host" --impure
     # if flake.lock was changed, stage those changes
     if [[ -n "$(git diff flake.lock --name-only)" ]]; then
         echo "Update have been made to flake.lock, staging"
@@ -75,7 +75,7 @@ if [[ $? == 0 ]]; then
     gum confirm "Commit changes?"
     if [[ $? == 0 ]]; then
         # if there are staged, uncommitted changes
-        if [[ -n $(git diff --staged --name-only) ]]; then
+        if [[ -n $(git diff --name-only --staged) ]]; then
             # commit them
             commitmsg=$(gum write --header="Commit message:")
             while [[ $commitmsg == '' ]]; do
