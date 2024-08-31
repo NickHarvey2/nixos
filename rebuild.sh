@@ -68,7 +68,7 @@ gum confirm "Run command? nixos-rebuild switch --flake $dir#$host --impure"
 if [[ $? == 0 ]]; then
     sudo nixos-rebuild switch --flake "$dir#$host" --impure
     # if flake.lock was changed, stage those changes
-    if [[ -n "$(git diff flake.lock --name-only)" ]]; then
+    if [[ -n "$(git diff --name-only flake.lock)" ]]; then
         echo "Update have been made to flake.lock, staging"
         git add flake.lock
     fi
