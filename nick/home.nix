@@ -140,6 +140,7 @@ in {
     gh = import ./gh.nix;
     gpg = import ./gpg.nix;
     git = import ./git.nix;
+    kitty.enable = true;
   };
 
   services = {
