@@ -1,0 +1,89 @@
+{
+  inputs,
+  pkgs,
+}: {
+  enable = true;
+  policies = {
+    BlockAboutConfig = false;
+    DefaultDownloadDriectory = "\${home}/Downloads";
+  };
+  profiles.nick = {
+    isDefault = true;
+    containers = {
+      "dangerous" = {
+        color = "red";
+        icon = "fruit";
+        id = 1;
+      };
+    };
+    containersForce = true;
+    settings = {
+      "distribution.searchplugins.defaultLocale" = "en-US";
+      "dom.security.https_only_mode" = true;
+      "signon.rememberSignones" = false;
+      "browser.tabs.loadBookmarksInTabs" = false;
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      "browser.tabs.drawInTitlebar" = false;
+      "browser.tabs.inTitlebar" = false;
+      "browser.aboutConfig.showWarning" = false;
+      "browser.ctrlTab.sortByRecentlyUsed" = true;
+      "browser.gesture.pinch.in" = "";
+      "browser.gesture.pinch.in.shift" = "";
+      "browser.gesture.pinch.out" = "";
+      "browser.gesture.pinch.out.shift" = "";
+      "browser.gesture.swipe.down" = "";
+      "browser.gesture.swipe.up" = "";
+      "browser.gesture.swipe.left" = "";
+      "browser.gesture.swipe.right" = "";
+      "browser.gesture.tap" = "";
+      "browser.gesture.twist.end" = "";
+      "browser.gesture.twist.left" = "";
+      "browser.gesture.twist.right" = "";
+      "services.sync.username" = "nmhdh8@gmail.com";
+
+    };
+    search = {
+      default = "Kagi";
+      force = true;
+      order = [
+        "Kagi"
+        "DuckDuckGo"
+        "Google"
+      ];
+      engines = {
+        "Nix Packages" = {
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@np"];
+        };
+      };
+    };
+    extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+      bitwarden
+      sidebery
+      vimium
+      private-relay
+      clearurls
+      multi-account-containers
+      kagi-search
+      # TODO figure out how to get allowUnfree working here to let me use fakespot
+      # fakespot-fake-reviews-amazon
+      tabliss
+    ];
+    userChrome = builtins.readFile ./userChrome.css;
+  };
+}

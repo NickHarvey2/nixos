@@ -1,0 +1,11 @@
+#sidebar-header {
+  visibility: collapse;
+}
+
+#TabsToolbar {
+  visibility: collapse;
+}
+
+#titlebar {
+  display: none;
+}

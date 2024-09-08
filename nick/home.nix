@@ -36,10 +36,13 @@ in {
   home.packages = with pkgs; [
     unzip
     zip
-    xclip
+    wl-clipboard
     zk
     git-crypt
     gocryptfs
+    termusic
+    cmus
+    cava
 
     # container tools
     podman-tui
@@ -118,6 +121,7 @@ in {
       ENTR_INOTIFY_WORKAROUND = 1;
       FLAKE_DIR = "/home/nick/nixos";
       IDENTITIES_FILE = builtins.toFile "json" (builtins.toJSON identities);
+      NNN_FIFO = "/tmp/nnn.fifo";
     };
     file.pubSshKey = {
       target = ".ssh/NickHarvey2-id_rsa.pub";
@@ -127,9 +131,44 @@ in {
       '';
     };
     file.commonConf = {
+      # By default this file is created with keyboxd set to be enabled
+      # So create an empty file to prevent this
       target = ".gnupg/common.conf";
       text = "";
     };
+    file.hyprland = {
+      target = ".config/hypr/hyprland.conf";
+      source = ./hyprland.conf;
+    };
+    file.hyprpaper = {
+      target = ".config/hypr/hyprpaper.conf";
+      source = ./hyprpaper.conf;
+    };
+    file.hyprlock = {
+      target = ".config/hypr/hyprlock.conf";
+      source = ./hyprlock.conf;
+    };
+    file.hypridle = {
+      target = ".config/hypr/hypridle.conf";
+      source = ./hypridle.conf;
+    };
+    file.rofi = {
+      target = ".config/rofi/config.rasi";
+      source = ./config.rasi;
+    };
+    file.mako = {
+      target = ".config/mako/config";
+      source = ./config.mako;
+    };
+    # Commented out until I actually create the files
+    # file.waybarConf = {
+    #   target = ".config/waybar/config.jsonc";
+    #   source = ./waybar.config.jsonc;
+    # };
+    # file.waybarStyle = {
+    #   target = ".config/waybar/style.css";
+    #   source = ./waybar.style.css;
+    # };
   };
 
   programs = {
@@ -140,7 +179,8 @@ in {
     gh = import ./gh.nix;
     gpg = import ./gpg.nix;
     git = import ./git.nix;
-    kitty.enable = true;
+    kitty = import ./kitty.nix {pkgs = pkgs;};
+    firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
   };
 
   services = {

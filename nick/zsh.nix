@@ -17,9 +17,11 @@
   shellAliases = {
     rebuild = "$FLAKE_DIR/rebuild.sh";
     pick-account = "$FLAKE_DIR/pick-account.sh";
-    cb = "xclip -selection clipboard";
-    echo-cb = "xclip -selection clipboard -o";
-    copylast = "fc -ln -1 | xclip -selection clipboard";
+    wifi = "$FLAKE_DIR/wifi.sh";
+    # TODO get the wl-clipboard version of the below working
+    # cb = "xclip -selection clipboard";
+    # echo-cb = "xclip -selection clipboard -o";
+    # copylast = "fc -ln -1 | cb";
     ls = "exa";
     ll = "exa -alh";
     tree = "exa --tree";

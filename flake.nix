@@ -10,6 +10,10 @@
       url = "github:robitx/gp.nvim?ref=v2.4.9";
       flake = false;
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

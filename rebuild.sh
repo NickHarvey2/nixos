@@ -64,6 +64,7 @@ while : ; do
     fi
 done
 
+# TODO remove impure once the hardware-configuration.nix is in the flake
 gum confirm "Run command? nixos-rebuild switch --flake $dir#$host --impure"
 if [[ $? == 0 ]]; then
     sudo nixos-rebuild switch --flake "$dir#$host" --impure

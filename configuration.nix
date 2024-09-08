@@ -5,14 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+  # TODO move this import up to the flake
+  # TODO move hardware-configuration.nix into flake and remove --impure from rebuild script
+  imports = [ /etc/nixos/hardware-configuration.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # TODO move this to hardware-configuration.nix once that is in the flake
   boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
 
   # networking.hostName = "nixos"; # Define your hostname.
@@ -84,7 +84,6 @@
   security.sudo.wheelNeedsPassword = true;
   programs = {
     zsh.enable = true;
-    firefox.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -92,7 +91,32 @@
     acpi
     libgcc
     gnumake
+    mako
+    xdg-desktop-portal-hyprland
+    waybar
+    rofi-wayland
+    libnotify
+    hyprpaper
+    hypridle
+    hyprlock
+    swaylock
+    networkmanagerapplet
+    nwg-look
+    udiskie
+    brightnessctl
+    vlc
+    nnn
   ];
+
+  fonts.packages = with pkgs; [
+    dejavu_fonts
+    (nerdfonts.override {fonts = [ "JetBrainsMono" ]; }) # The entire nerdfonts package is _very_ large, and failed to build, so just grab JetBrainsMono
+  ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
 
   services = {
     udev = {
@@ -106,6 +130,7 @@
       enable = true;
       extraArgs = ["--disable-polkit"]; # No point in polkit since I'm the only user of these systems
     };
+    udisks2.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -122,6 +147,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
+
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
