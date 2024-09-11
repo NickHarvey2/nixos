@@ -1,0 +1,6 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nmap K previousTab\nmap J nextTab",
+  "scrollStepSize": 120,
+  "searchUrl": "https://kagi.com/search?q=",
+  "settingsVersion": "2.1.2"
+}
