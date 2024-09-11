@@ -105,7 +105,6 @@
     udiskie
     brightnessctl
     vlc
-    nnn
   ];
 
   fonts.packages = with pkgs; [

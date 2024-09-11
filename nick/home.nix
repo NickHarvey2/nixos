@@ -43,6 +43,8 @@ in {
     termusic
     cmus
     cava
+    lsof
+    yazi
 
     # container tools
     podman-tui
