@@ -45,6 +45,7 @@ in {
     cava
     lsof
     yazi
+    btop
 
     # container tools
     podman-tui
