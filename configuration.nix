@@ -104,7 +104,7 @@
     nwg-look
     udiskie
     brightnessctl
-    vlc
+    mpv
   ];
 
   fonts.packages = with pkgs; [
