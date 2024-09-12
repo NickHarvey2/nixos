@@ -2,7 +2,7 @@
   enable = true;
   font = {
     package = pkgs.jetbrains-mono;
-    name = "JetBrainsMonoNL NF Regular";
+    name = "JetBrainsMono Nerd Font";
   };
   theme = "One Half Dark";
   extraConfig = ''

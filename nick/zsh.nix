@@ -18,10 +18,7 @@
     rebuild = "$FLAKE_DIR/rebuild.sh";
     pick-account = "$FLAKE_DIR/pick-account.sh";
     wifi = "$FLAKE_DIR/wifi.sh";
-    # TODO get the wl-clipboard version of the below working
-    # cb = "xclip -selection clipboard";
-    # echo-cb = "xclip -selection clipboard -o";
-    # copylast = "fc -ln -1 | cb";
+    copylast = "fc -ln -1 | wl-copy";
     ls = "exa";
     ll = "exa -alh";
     tree = "exa --tree";
@@ -32,6 +29,7 @@
     secret = "sops -d $FLAKE_DIR/secrets/secrets.yaml | yq -r ";
     rk = "rancher kubectl";
     scu = "sops -d $FLAKE_DIR/secrets/secrets.yaml > /dev/null"; # add an alias to decrypt sops file and redirect to /dev/null, forcing the smartcard to be unlocked
+    bws = "bw list items | jq -r '.[] | \"\(.name),\(.login.username),\(.login.password)\"' | fzf --with-nth=1..2 --delimiter=',' | cut -d',' -f3 | wl-copy";
   };
 
   oh-my-zsh = {

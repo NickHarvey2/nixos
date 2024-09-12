@@ -3283,7 +3283,7 @@
     "down": "Alt+J",
     "up_shift": "Alt+Shift+K",
     "down_shift": "Alt+Shift+J",
-    "activate": "Ctrl+Space",
+    "activate": "Alt+Space",
     "reset_selection": "Alt+R",
     "menu": "Alt+Q",
     "unload_tabs": "Alt+U",
