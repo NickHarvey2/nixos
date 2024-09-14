@@ -29,7 +29,7 @@
     secret = "sops -d $FLAKE_DIR/secrets/secrets.yaml | yq -r ";
     rk = "rancher kubectl";
     scu = "sops -d $FLAKE_DIR/secrets/secrets.yaml > /dev/null"; # add an alias to decrypt sops file and redirect to /dev/null, forcing the smartcard to be unlocked
-    bws = "bw list items | jq -r '.[] | \"\(.name),\(.login.username),\(.login.password)\"' | fzf --with-nth=1..2 --delimiter=',' | cut -d',' -f3 | wl-copy";
+    bws = "$FLAKE_DIR/bws.sh";
   };
 
   oh-my-zsh = {
