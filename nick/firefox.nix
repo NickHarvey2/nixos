@@ -5,7 +5,7 @@
   enable = true;
   policies = {
     BlockAboutConfig = false;
-    DefaultDownloadDriectory = "\${home}/Downloads";
+    DefaultDownloadDirectory = "\${home}/Downloads";
   };
   profiles.nick = {
     isDefault = true;
@@ -40,13 +40,14 @@
       "browser.gesture.twist.left" = "";
       "browser.gesture.twist.right" = "";
       "services.sync.username" = "nmhdh8@gmail.com";
-
+      "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+      "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
     };
     search = {
-      default = "Kagi";
+      default = "Kagi Search";
       force = true;
       order = [
-        "Kagi"
+        "Kagi Search"
         "DuckDuckGo"
         "Google"
       ];

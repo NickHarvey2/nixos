@@ -105,6 +105,8 @@
     udiskie
     brightnessctl
     mpv
+    pavucontrol
+    # bambu-studio
   ];
 
   fonts.packages = with pkgs; [

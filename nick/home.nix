@@ -41,7 +41,6 @@ in {
     git-crypt
     gocryptfs
     termusic
-    cmus
     cava
     lsof
     yazi
@@ -163,15 +162,14 @@ in {
       target = ".config/mako/config";
       source = ./config.mako;
     };
-    # Commented out until I actually create the files
-    # file.waybarConf = {
-    #   target = ".config/waybar/config.jsonc";
-    #   source = ./waybar.config.jsonc;
-    # };
-    # file.waybarStyle = {
-    #   target = ".config/waybar/style.css";
-    #   source = ./waybar.style.css;
-    # };
+    file.waybarConf = {
+      target = ".config/waybar/config.jsonc";
+      source = ./waybar.config.jsonc;
+    };
+    file.waybarStyle = {
+      target = ".config/waybar/style.css";
+      source = ./waybar.style.css;
+    };
   };
 
   programs = {

@@ -30,6 +30,7 @@
     rk = "rancher kubectl";
     scu = "sops -d $FLAKE_DIR/secrets/secrets.yaml > /dev/null"; # add an alias to decrypt sops file and redirect to /dev/null, forcing the smartcard to be unlocked
     bws = "$FLAKE_DIR/bws.sh";
+    vpn = "$FLAKE_DIR/vpn.sh";
   };
 
   oh-my-zsh = {

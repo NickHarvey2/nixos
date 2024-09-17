@@ -27,11 +27,11 @@ while : ; do
     unstaged_changes=$(git diff --name-only)
 
     if [[ -n "$untracked_files" ]] || [[ -n "$unstaged_changes" ]]; then
-        echo "The working directory is dirty."
+        echo "The working directory has unstaged changes."
         git status --short
         echo
         choice=$(printf \
-            "1. View diff between current and index (git diff) then return to this menu\n2. Stage all unstaged changes (git add .)\n3. Stash unstaged changes, then reapply them after rebuild (git stash --include-untracked --keep-index; git stash pop)\n4. Interactively select hunks to be staged (git add . --patch)\n5. Continue with dirty working directory (not recommended)\n6. Cancel" \
+            "1. View diff between current and index (git diff) then return to this menu\n2. Stage all unstaged changes (git add .)\n3. Stash unstaged changes, then reapply them after rebuild (git stash --include-untracked --keep-index; git stash pop)\n4. Interactively select hunks to be staged (git add . --patch)\n5. Continue with unstaged changes in working directory (not recommended)\n6. Cancel" \
             | gum choose --header "What would you like to do?")
         echo "> $choice"
 
@@ -59,7 +59,7 @@ while : ; do
             exit
         fi
     else
-        echo "The working directory is clean."
+        echo "The working directory has no unstaged changes."
         break
     fi
 done
