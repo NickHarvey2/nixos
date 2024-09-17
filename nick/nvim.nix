@@ -11,8 +11,6 @@
     # the plugin's `setup` function manually, along with
     # any additional necessary calls to neovim's lua API
 
-    goyo-vim
-
     # :Git <command>
     vim-fugitive
     vim-rhubarb
