@@ -1,4 +1,3 @@
-# TODO
 
 ## Figure out clipboard issues
 
