@@ -8,6 +8,9 @@
     function jwt() {
       echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
     }
+    function akamai() {
+      podman run -it -v $HOME/.edgerc:/root/.edgerc:ro akamai/shell:v2.26.0 akamai $@ | tail -n+12
+    }
     unalias gau
   '';
 
