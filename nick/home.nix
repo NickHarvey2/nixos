@@ -12,8 +12,8 @@
     };
     NickHarveyVu = {
       email = "Nick.Harvey@veteransunited.com";
-      identityFile = "~/.ssh/NickHarveyVu-id_ed25519";
-      signingkey = "~/.ssh/NickHarveyVu-id_ed25519";
+      identityFile = "~/.ssh/NickHarveyVu-id_rsa";
+      signingkey = "~/.ssh/NickHarveyVu-id_rsa";
       keyformat = "ssh";
     };
   };
