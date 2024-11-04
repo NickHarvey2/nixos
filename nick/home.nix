@@ -95,6 +95,7 @@ in {
     luajit
     luajitPackages.luarocks
     go
+    go-tools
     zig
     python3
     nodejs_20
