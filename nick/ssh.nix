@@ -29,5 +29,9 @@
       identityFile = identities.NickHarveyVu.identityFile;
       certificateFile = "~/.ssh/id_ed25519-cert_vu-platform.pub";
     };
+    "akamai" = {
+      match = "Host *.upload.akamai.com";
+      identityFile = identities.NickHarveyVu.identityFile;
+    };
   };
 }
