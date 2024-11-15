@@ -68,6 +68,7 @@ in {
     pinentry-tty
     yubikey-manager
     sops
+    sslscan
 
     # cli tools
     jq
