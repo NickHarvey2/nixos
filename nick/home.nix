@@ -12,8 +12,8 @@
     };
     NickHarveyVu = {
       email = "Nick.Harvey@veteransunited.com";
-      identityFile = "~/.ssh/NickHarveyVu-id_ed25519";
-      signingkey = "~/.ssh/NickHarveyVu-id_ed25519";
+      identityFile = "~/.ssh/NickHarveyVu-id_rsa";
+      signingkey = "~/.ssh/NickHarveyVu-id_rsa";
       keyformat = "ssh";
     };
   };
@@ -69,6 +69,7 @@ in {
     pinentry-tty
     yubikey-manager
     sops
+    sslscan
 
     # cli tools
     jq
@@ -96,6 +97,7 @@ in {
     luajit
     luajitPackages.luarocks
     go
+    go-tools
     zig
     python3
     nodejs_20

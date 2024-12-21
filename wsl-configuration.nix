@@ -39,7 +39,6 @@
       defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
     };
   };
-  systemd.enableUnifiedCgroupHierarchy = true;
 
   environment.systemPackages = with pkgs; [
     acpi
