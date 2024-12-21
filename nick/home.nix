@@ -45,6 +45,7 @@ in {
     lsof
     yazi
     btop
+    obsidian
 
     # container tools
     podman-tui
