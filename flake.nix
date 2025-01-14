@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     plugin-gp-nvim = {
-      url = "github:robitx/gp.nvim?ref=v2.4.9";
+      url = "github:robitx/gp.nvim?ref=v3.9.0";
       flake = false;
     };
     firefox-addons = {

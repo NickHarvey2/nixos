@@ -24,30 +24,30 @@ local function load_gp()
       require("gp").setup({
         openai_api_key = data[1],
         chat_dir = chat_dir,
-        chat_topic_gen_model = "gpt-4o-mini",
-        chat_shortcut_respond = nil,
-        chat_shortcut_delete = nil,
-        chat_shortcut_new = nil,
-        chat_conceal_model_params = false,
-        agents = {
-          {
-            name = "ChatGPT4o",
-            chat = true,
-            command = false,
-            model = { model = "gpt-4o", temperature = 1.1, top_p = 1 },
-            system_prompt = "You are a general AI assistant.\n\n"
-              .. "The user provided the additional info about how they would like you to respond:\n\n"
-              .. "- If you're unsure don't guess and say you don't know instead.\n"
-              .. "- Ask question if you need clarification to provide better answer.\n"
-              .. "- Think deeply and carefully from first principles step by step.\n"
-              .. "- Zoom out first to see the big picture and then zoom in to details.\n"
-              .. "- Use Socratic method to improve your thinking and coding skills.\n"
-              .. "- Don't elide any code from your output if the answer requires coding.\n"
-          }
-        }
+        -- chat_topic_gen_model = "gpt-4o-mini",
+        -- chat_shortcut_respond = nil,
+        -- chat_shortcut_delete = nil,
+        -- chat_shortcut_new = nil,
+        -- chat_conceal_model_params = false,
+        -- agents = {
+        --   {
+        --     name = "ChatGPT4o",
+        --     chat = true,
+        --     command = false,
+        --     model = { model = "gpt-4o", temperature = 1.1, top_p = 1 },
+        --     system_prompt = "You are a general AI assistant.\n\n"
+        --       .. "The user provided the additional info about how they would like you to respond:\n\n"
+        --       .. "- If you're unsure don't guess and say you don't know instead.\n"
+        --       .. "- Ask question if you need clarification to provide better answer.\n"
+        --       .. "- Think deeply and carefully from first principles step by step.\n"
+        --       .. "- Zoom out first to see the big picture and then zoom in to details.\n"
+        --       .. "- Use Socratic method to improve your thinking and coding skills.\n"
+        --       .. "- Don't elide any code from your output if the answer requires coding.\n"
+        --   }
+        -- }
       })
-      vim.keymap.set('n', '<C-g><C-g>', ':GpChatRespond<CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<C-g><C-n>', ':GpChatNew<CR>', { noremap = true, silent = true })
+      -- vim.keymap.set('n', '<C-g><C-g>', ':GpChatRespond<CR>', { noremap = true, silent = true })
+      -- vim.keymap.set('n', '<C-g><C-n>', ':GpChatNew<CR>', { noremap = true, silent = true })
       Spinner.stop(n, 'Loaded', vim.log.levels.INFO, {})
     end
   })
