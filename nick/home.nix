@@ -53,6 +53,7 @@ in {
     dive
 
     # networking tools
+    traceroute
     whois
     dig
     wget
@@ -109,6 +110,8 @@ in {
     lazygit
     sqlite
     powershell
+    opentofu
+    conftest
 
     # neovim stuff
     tree-sitter
@@ -119,6 +122,7 @@ in {
     lua-language-server
     omnisharp-roslyn
     vscode-langservers-extracted
+    terraform-ls
   ];
 
   home = {

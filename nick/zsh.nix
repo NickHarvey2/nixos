@@ -9,7 +9,7 @@
       echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
     }
     function akamai() {
-      podman run -it -v $HOME/.edgerc:/root/.edgerc:ro akamai/shell:v2.26.0 akamai $@ | tail -n+12
+      podman run -it -v $HOME/.edgerc:/root/.edgerc:ro -v .:/workdir:rw akamai/shell:v2.26.0 akamai $@ | tail -n+12
     }
     unalias gau
   '';
@@ -32,6 +32,7 @@
     bws = "$FLAKE_DIR/bws.sh";
     vpn = "$FLAKE_DIR/vpn.sh";
     sci = "step certificate inspect --format=json --insecure";
+    decolorize = "sed 's/\\x1B\\[[0-9;]*[A-Za-z]//g'";
   };
 
   oh-my-zsh = {
