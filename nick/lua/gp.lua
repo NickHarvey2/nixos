@@ -24,13 +24,6 @@ local function load_gp()
       require("gp").setup({
         openai_api_key = data[1],
         chat_dir = chat_dir,
-        agents = {
-          name = "ChatGPTo1",
-          chat = true,
-          command = false,
-          model = { model = "o1-preview" },
-          system_prompt = require("gp.defaults").chat_system_prompt,
-        },
       })
       vim.keymap.set('n', '<C-g><C-g>', ':GpChatRespond<CR>', { noremap = true, silent = true })
       vim.keymap.set('n', '<C-g><C-n>', ':GpChatNew<CR>', { noremap = true, silent = true })

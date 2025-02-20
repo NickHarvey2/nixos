@@ -46,7 +46,7 @@ in {
     yazi
     btop
     obsidian
-    mermaid-ascii
+    inputs.mermaid-ascii.packages."x86_64-linux".default
 
     # container tools
     podman-tui
