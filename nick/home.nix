@@ -46,6 +46,7 @@ in {
     yazi
     btop
     obsidian
+    mermaid-ascii
 
     # container tools
     podman-tui
