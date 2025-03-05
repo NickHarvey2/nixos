@@ -101,6 +101,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
     vim.opt_local.breakat = ' '
+    vim.g.table_mode_syntax = 0
   end,
 })
 vim.api.nvim_set_hl(0, 'SpellBad', {bg='#550000', underline=true})
