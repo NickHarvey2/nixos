@@ -20,7 +20,7 @@
     settings = {
       "distribution.searchplugins.defaultLocale" = "en-US";
       "dom.security.https_only_mode" = true;
-      "signon.rememberSignones" = false;
+      "signon.rememberSignons" = false;
       "browser.tabs.loadBookmarksInTabs" = false;
       "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       "browser.tabs.drawInTitlebar" = false;
