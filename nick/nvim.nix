@@ -184,6 +184,12 @@
       type = "lua";
       config = builtins.readFile ./lua/gp.lua;
     }
+
+    {
+      plugin = neotree-mdheaders;
+      type = "lua";
+      config = "require('example').setup({})";
+    }
   ];
   extraLuaConfig = builtins.readFile ./lua/init.lua;
 }

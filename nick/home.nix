@@ -28,6 +28,13 @@ in {
             name = "gp";
             src = inputs.plugin-gp-nvim;
           };
+        } //
+        {
+          neotree-mdheaders = prev.vimUtils.buildVimPlugin {
+            name = "neotree-mdheaders";
+            src = inputs.plugin-neotree-mdheaders;
+            # doCheck = false; # the example source doesn't properly handle calls to setup that pass no opts (which is how nix tests loading the module), so we need to tell nix not to test loading the module, otherwise the NPE in lua will cause the nix build to fail
+          };
         };
     })
   ];

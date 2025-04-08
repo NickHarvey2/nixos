@@ -33,6 +33,7 @@
     vpn = "$FLAKE_DIR/vpn.sh";
     sci = "step certificate inspect --format=json --insecure";
     decolorize = "sed 's/\\x1B\\[[0-9;]*[A-Za-z]//g'";
+    pick-sha = "git log --oneline | gum choose | cut -f1 -d' '";
   };
 
   oh-my-zsh = {

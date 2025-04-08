@@ -8,6 +8,27 @@ require('neo-tree').setup({
   },
   source_selector = {
     winbar = true,
+    sources = {
+      {
+        source = "filesystem", -- string
+        display_name = " 󰉓  " -- string | nil
+      },
+      {
+        source = "buffers", -- string
+        display_name = " 󰈚  " -- string | nil
+      },
+      {
+        source = "git_status", -- string
+        display_name = " 󰊢  " -- string | nil
+      },
+      {
+        source = "example", -- string
+        display_name = " # " -- string | nil
+      },
+    },
+    tabs_layout = "start",
+    content_layout = "start",
+    separator = { left = "▏", right= "▕" },
   },
   close_if_last_window = false,
   enable_git_status = true,
@@ -30,6 +51,13 @@ require('neo-tree').setup({
       use_git_status_colors = true,
       highlight = 'NeoTreeFileName',
     },
+  },
+  sources = {
+    "filesystem",
+    "buffers",
+    "git_status",
+    "document_symbols",
+    "example"
   },
   filesystem = {
     follow_current_file = {

@@ -299,6 +299,22 @@
         "type": "github"
       }
     },
+    "plugin-neotree-mdheaders": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1693168881,
+        "narHash": "sha256-irEyKqNyRWsW5mfhgoHsQ/tVq+MvMr6pdI3iUWJ5lko=",
+        "owner": "NickHarvey2",
+        "repo": "neo-tree-mdheaders",
+        "rev": "5688826af142c3782a4d415f96773df9eb24672d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NickHarvey2",
+        "repo": "neo-tree-mdheaders",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
@@ -306,7 +322,8 @@
         "mermaid-ascii": "mermaid-ascii",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
-        "plugin-gp-nvim": "plugin-gp-nvim"
+        "plugin-gp-nvim": "plugin-gp-nvim",
+        "plugin-neotree-mdheaders": "plugin-neotree-mdheaders"
       }
     },
     "systems": {
