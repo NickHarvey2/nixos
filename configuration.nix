@@ -111,7 +111,7 @@
 
   fonts.packages = with pkgs; [
     dejavu_fonts
-    (nerdfonts.override {fonts = [ "JetBrainsMono" ]; }) # The entire nerdfonts package is _very_ large, and failed to build, so just grab JetBrainsMono
+    nerd-fonts.jetbrains-mono
   ];
 
   xdg.portal = {
