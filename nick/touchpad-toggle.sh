@@ -6,11 +6,13 @@ export STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
 
 enable_touchpad() {
     printf "enabled" > "$STATUS_FILE"
+    notify-send -u normal -t 500 "Touchpad enabled"
     hyprctl keyword 'device[dll0945:00-06cb:cde6-touchpad]:enabled' 'true'
 }
 
 disable_touchpad() {
     printf "disabled" > "$STATUS_FILE"
+    notify-send -u normal -t 500 "Touchpad disabled"
     hyprctl keyword 'device[dll0945:00-06cb:cde6-touchpad]:enabled' 'false'
 }
 

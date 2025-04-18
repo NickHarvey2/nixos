@@ -185,6 +185,11 @@ in {
       target = ".config/waybar/style.css";
       source = ./waybar.style.css;
     };
+    file.toggleTouchpad = {
+      target = "touchpad-toggle.sh";
+      source = ./touchpad-toggle.sh;
+      executable = true;
+    };
   };
 
   programs = {
