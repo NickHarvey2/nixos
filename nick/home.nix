@@ -54,6 +54,9 @@ in {
     btop
     obsidian
     inputs.mermaid-ascii.packages."x86_64-linux".default
+    codex
+    croc
+    asciinema
 
     # container tools
     podman-tui

@@ -1,7 +1,8 @@
 {
   "keyMappings": "# Insert your preferred key mappings here.\nmap K previousTab\nmap J nextTab",
   "scrollStepSize": 120,
-  "searchUrl": "https://kagi.com/search?q=",
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\nk: https://kagi.com/search?q=%s",
+  "grabBackFocus": true,
   "settingsVersion": "2.1.2",
   "exclusionRules": []
 }

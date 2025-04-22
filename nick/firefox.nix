@@ -44,12 +44,12 @@
       "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
     };
     search = {
-      default = "Kagi Search";
+      default = "kagi";
       force = true;
       order = [
-        "Kagi Search"
-        "DuckDuckGo"
-        "Google"
+        "kagi"
+        "ddg"
+        "google"
       ];
       engines = {
         "Nix Packages" = {
@@ -73,7 +73,7 @@
         };
       };
     };
-    extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+    extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
       bitwarden
       sidebery
       vimium
