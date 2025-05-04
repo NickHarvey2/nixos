@@ -8,35 +8,36 @@
     sensible
     {
       plugin = catppuccin;
-      # TODO update this to only use one of the catppuccin status modules settings, both are here now as a temp patch so I don't need to worry about it again in the short term
       extraConfig = ''
         set -g @catppuccin_flavour 'frappe' # options: latte, frappe, macchiato, mocha
 
-        set -g @catppuccin_status_modules_right "session user host battery date_time"
-        set -g @catppuccin_status_modules "session user host battery date_time"
-        set -g @catppuccin_window_status_enable "no"
-        set -g @catppuccin_window_status_icon_enable "no"
-        set -g @catppuccin_window_left_separator ""
-        set -g @catppuccin_window_right_separator " "
-        set -g @catppuccin_window_number_position "right"
-        set -g @catppuccin_window_middle_separator ""
-        set -g @catppuccin_window_default_fill "none"
-        set -g @catppuccin_window_current_fill "all"
-        set -g @catppuccin_window_default_text "#W"
-        set -g @catppuccin_window_current_text "#W"
+        set -g @catppuccin_window_status_style "rounded"
 
-        set -g @catppuccin_status_default "on"
-        set -g @catppuccin_status_left_separator " "
-        set -g @catppuccin_status_right_separator ""
-        set -g @catppuccin_status_fill "all"
+        set -g @catppuccin_window_number_position "right"
         set -g @catppuccin_status_connect_separator "no"
 
-        set -g @catppuccin_date_time_text "%Y-%m-%d %H:%M"
+        set -g @catppuccin_window_current_text_color "#{@thm_surface_1}"
+        set -g @catppuccin_window_current_number_color "#{@thm_teal}"
+        set -g @catppuccin_window_text_color "#{@thm_surface_0}"
+        set -g @catppuccin_window_number_color "#{@thm_surface_2}"
+        set -g @catppuccin_window_text "#W"
+        set -g @catppuccin_window_current_text "#W"
+
+        # there is a bug in v2.1.3 that causes window separators' colors to be inverted when the status line background is set to none (transparent)
+        # https://github.com/catppuccin/tmux/issues/403
+        # commenting this out until that is resolved
+        # set -g @catppuccin_status_background "none"
+        set -g @catppuccin_status_connect_separator "no"
+        set -g @catppuccin_status_middle_separator ""
+        set -g @catppuccin_status_right_separator " "
       '';
     }
-    battery
   ];
   extraConfig = ''
+    set -g status-right-length 100
+    set -g status-right "#{E:@catppuccin_status_session}#{E:@catppuccin_status_user}#{E:@catppuccin_status_host}#{E:@catppuccin_status_date_time}"
+    set -g status-left " "
+
     setw -g mode-keys vi
     unbind-key -T copy-mode-vi v                             # Unbind v for block toggling
     bind-key -T copy-mode-vi 'v' send -X begin-selection     # Begin selection in copy mode.
@@ -72,5 +73,6 @@
     bind Space last-window
     bind | split-window -h
     bind - split-window -v
+    bind \\ set-option status
   '';
 }
