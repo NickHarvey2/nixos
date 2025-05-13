@@ -57,6 +57,8 @@ in {
     codex
     croc
     asciinema
+    catdocx
+    catdoc
 
     # container tools
     podman-tui
