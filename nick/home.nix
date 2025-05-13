@@ -87,6 +87,7 @@ in {
 
     # cli tools
     jq
+    fx
     yq
     fd
     fzf
