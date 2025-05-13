@@ -70,9 +70,9 @@
     bind j select-pane -D
     bind h select-pane -L
     bind l select-pane -R
-    bind Space last-window
+    bind Tab last-window
     bind | split-window -h
     bind - split-window -v
-    bind \\ set-option status
+    bind Space set-option status
   '';
 }
