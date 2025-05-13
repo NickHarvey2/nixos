@@ -86,6 +86,15 @@
     zsh.enable = true;
   };
 
+  virtualisation = {
+    containers.enable = true; # Enable common container config files in /etc/containers
+    podman = {
+      enable = true;
+      dockerCompat = true; # Create a `docker` alias for podman, to use it as a drop-in replacement
+      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     usbutils
     acpi
