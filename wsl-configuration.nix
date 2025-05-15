@@ -64,6 +64,19 @@
     };
   };
 
+  systemd.user.services.symlink-wayland-socket = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "default.target" ];
+    description = "Symlink Wayland Socket";
+    serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ''
+          /usr/bin/ln -s /mnt/wslg/runtime-dir/wayland-0      $XDG_RUNTIME_DIR
+        '';
+    };
+  };
+
   environment = {
     etc."krb5.conf".text = builtins.readFile ./krb5.conf;
     variables = {
