@@ -46,6 +46,7 @@
     gnumake
     krb5
     usbutils
+    kmod
   ];
 
   services = {

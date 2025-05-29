@@ -116,6 +116,7 @@
     mpv
     pavucontrol
     # bambu-studio
+    kmod
   ];
 
   fonts.packages = with pkgs; [
