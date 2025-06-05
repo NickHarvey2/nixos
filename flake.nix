@@ -18,10 +18,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mermaid-ascii = {
-      url = "github:AlexanderGrooff/mermaid-ascii?ref=0.6.0";
-      flake = true;
-    };
   };
 
   outputs = {

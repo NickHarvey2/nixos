@@ -53,8 +53,6 @@ in {
     yazi
     btop
     obsidian
-    inputs.mermaid-ascii.packages."x86_64-linux".default
-    codex
     croc
     asciinema
     catdocx
@@ -126,6 +124,7 @@ in {
     powershell
     opentofu
     conftest
+    codex
 
     # neovim stuff
     tree-sitter
