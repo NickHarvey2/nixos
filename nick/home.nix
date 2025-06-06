@@ -57,6 +57,8 @@ in {
     asciinema
     catdocx
     catdoc
+    nixos-generators
+    d2
 
     # container tools
     podman-tui
