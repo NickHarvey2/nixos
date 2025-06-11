@@ -147,7 +147,9 @@
       # theme inspired by the atom
       plugin = onedark-nvim;
       type = "lua";
-      config = ''
+      config =
+      # lua
+      ''
         require("onedark").setup({
           transparent = true
         })
@@ -172,7 +174,9 @@
     {
       plugin = zk-nvim;
       type = "lua";
-      config = ''
+      config =
+      # lua
+      ''
         require("zk").setup({
           picker = "telescope"
         })

@@ -8,7 +8,9 @@
     sensible
     {
       plugin = catppuccin;
-      extraConfig = ''
+      extraConfig =
+      # tmux
+      ''
         set -g @catppuccin_flavour 'frappe' # options: latte, frappe, macchiato, mocha
 
         set -g @catppuccin_window_status_style "rounded"
@@ -33,7 +35,9 @@
       '';
     }
   ];
-  extraConfig = ''
+  extraConfig =
+  # tmux
+  ''
     set -g status-right-length 100
     set -g status-right "#{E:@catppuccin_status_session}#{E:@catppuccin_status_user}#{E:@catppuccin_status_host}#{E:@catppuccin_status_date_time}"
     set -g status-left " "
