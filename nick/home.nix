@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: let
   identities = {
@@ -129,6 +130,7 @@ in {
     opentofu
     conftest
     codex
+    claude-code
 
     # neovim stuff
     tree-sitter
@@ -198,6 +200,17 @@ in {
       target = "touchpad-toggle.sh";
       source = ./touchpad-toggle.sh;
       executable = true;
+    };
+    activation = {
+      setupClaudeMcp = lib.hm.dag.entryAfter ["writeBoundary"]
+      # sh
+      ''
+        # remove all currently configured MCP servers from Claude Code
+        MCP_SERVERS=($(${pkgs.claude-code}/bin/claude mcp list | cut -d: -f1))
+        for MCP_SERVER in "''${MCP_SERVERS[@]}"; do
+          run ${pkgs.claude-code}/bin/claude mcp remove -s user $MCP_SERVER
+        done
+      '';
     };
   };
 
