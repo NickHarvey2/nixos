@@ -33,7 +33,7 @@ local function load_gp()
 end
 
 vim.defer_fn(function ()
-  if vim.fn.system("ls -d " .. chat_dir):gsub("%s+", "") == chat_dir then
+  if vim.fn.system("ls -d " .. chat_dir:gsub(" ", "\\ ")):gsub("^%s+", ""):gsub("%s+$", "") == chat_dir then
     load_gp()
   end
 end, 0)

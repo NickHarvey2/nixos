@@ -108,6 +108,8 @@ in {
 
     # runtimes/compilers + dev tools
     libgcc
+    gcc
+    pkg-config
     dotnet-sdk_8
     luajit
     luajitPackages.luarocks
