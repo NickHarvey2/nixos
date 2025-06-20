@@ -18,6 +18,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    codex-rs = {
+      url = "github:openai/codex?dir=codex-rs";
+      flake = false;
+    };
   };
 
   outputs = {

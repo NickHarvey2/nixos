@@ -1,5 +1,23 @@
 {
   "nodes": {
+    "codex-rs": {
+      "flake": false,
+      "locked": {
+        "dir": "codex-rs",
+        "lastModified": 1749259930,
+        "narHash": "sha256-bMI1BS+NzPD64napBa/+Oq8yxqUmU5jSD6KHUGUSZD8=",
+        "owner": "openai",
+        "repo": "codex",
+        "rev": "b73426c1c40187ca13c74c03912a681072c2884f",
+        "type": "github"
+      },
+      "original": {
+        "dir": "codex-rs",
+        "owner": "openai",
+        "repo": "codex",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -145,6 +163,7 @@
     },
     "root": {
       "inputs": {
+        "codex-rs": "codex-rs",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",

@@ -20,8 +20,8 @@
   };
 in {
   nixpkgs.overlays = [
-    # overlay to make otherwise unpackaged neovim plugins available on vimPlugins
     (final: prev: {
+      # overlay to make otherwise unpackaged neovim plugins available on vimPlugins
       vimPlugins =
         prev.vimPlugins
         // {
@@ -29,14 +29,33 @@ in {
             name = "gp";
             src = inputs.plugin-gp-nvim;
           };
-        } //
-        {
+        }
+        // {
           neotree-mdheaders = prev.vimUtils.buildVimPlugin {
             name = "neotree-mdheaders";
             src = inputs.plugin-neotree-mdheaders;
             doCheck = false; # the example source doesn't properly handle calls to setup that pass no opts (which is how nix tests loading the module), so we need to tell nix not to test loading the module, otherwise the NPE in lua will cause the nix build to fail
           };
         };
+      # overlay to install the rust version of codex
+      codex-rs = prev.rustPlatform.buildRustPackage {
+        pname = "codex-rs";
+        version = "0.1.0";
+        cargoLock.lockFile = inputs.codex-rs + "/codex-rs/Cargo.lock";
+        # doCheck = false;
+        src = inputs.codex-rs + "/codex-rs";
+        nativeBuildInputs = with pkgs; [
+          pkg-config
+        ];
+        buildInputs = with pkgs; [
+          openssl
+        ];
+        meta = with pkgs.lib; {
+          description = "OpenAI Codex command‑line interface rust implementation";
+          license = licenses.asl20;
+          homepage = "https://github.com/openai/codex";
+        };
+      };
     })
   ];
 
@@ -129,7 +148,7 @@ in {
     powershell
     opentofu
     conftest
-    codex
+    codex-rs
     claude-code
 
     # neovim stuff
@@ -149,7 +168,6 @@ in {
       ENTR_INOTIFY_WORKAROUND = 1;
       FLAKE_DIR = "/home/nick/nixos";
       IDENTITIES_FILE = builtins.toFile "json" (builtins.toJSON identities);
-      NNN_FIFO = "/tmp/nnn.fifo";
     };
     file.pubSshKey = {
       target = ".ssh/NickHarvey2-id_rsa.pub";
@@ -201,17 +219,13 @@ in {
       source = ./touchpad-toggle.sh;
       executable = true;
     };
-    activation = {
-      setupClaudeMcp = lib.hm.dag.entryAfter ["writeBoundary"]
-      # sh
-      ''
-        # remove all currently configured MCP servers from Claude Code
-        MCP_SERVERS=($(${pkgs.claude-code}/bin/claude mcp list | cut -d: -f1))
-        for MCP_SERVER in "''${MCP_SERVERS[@]}"; do
-          run ${pkgs.claude-code}/bin/claude mcp remove -s user $MCP_SERVER
-        done
-      '';
-    };
+    # activation = {
+    #   exampleActivation = lib.hm.dag.entryAfter ["writeBoundary"]
+    #   # sh
+    #   ''
+    #     # this is where the shell script goes for a home-manager activation script
+    #   '';
+    # };
   };
 
   programs = {
