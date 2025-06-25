@@ -42,7 +42,6 @@ in {
         pname = "codex-rs";
         version = "0.1.0";
         cargoLock.lockFile = inputs.codex-rs + "/codex-rs/Cargo.lock";
-        # doCheck = false;
         src = inputs.codex-rs + "/codex-rs";
         nativeBuildInputs = with pkgs; [
           pkg-config
@@ -150,6 +149,7 @@ in {
     conftest
     codex-rs
     claude-code
+    mongosh
 
     # neovim stuff
     tree-sitter
