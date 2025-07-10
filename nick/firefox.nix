@@ -81,8 +81,6 @@
       clearurls
       multi-account-containers
       kagi-search
-      # TODO figure out how to get allowUnfree working here to let me use fakespot
-      # fakespot-fake-reviews-amazon
       tabliss
     ];
     userChrome = builtins.readFile ./userChrome.css;
