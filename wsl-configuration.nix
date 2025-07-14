@@ -65,16 +65,30 @@
     };
   };
 
-  systemd.user.services.symlink-wayland-socket = {
-    enable = true;
-    after = ["network.target"];
-    wantedBy = ["default.target"];
-    description = "Symlink Wayland Socket";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = ''
-        /run/current-system/sw/bin/ln -s /mnt/wslg/runtime-dir/wayland-0 $XDG_RUNTIME_DIR
-      '';
+  systemd.user.services = {
+    start-vhci-hcd = {
+      enable = true;
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      description = "Start vhci-hcd";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ''
+          modprobe vhci-hcd
+        '';
+      };
+    };
+    symlink-wayland-socket = {
+      enable = true;
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      description = "Symlink Wayland Socket";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ''
+          /run/current-system/sw/bin/ln -s /mnt/wslg/runtime-dir/wayland-0 $XDG_RUNTIME_DIR
+        '';
+      };
     };
   };
 
