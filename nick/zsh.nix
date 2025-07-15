@@ -4,7 +4,7 @@
   # autosuggestions.enable = true;
   # zsh-autoenv.enable = true;
   syntaxHighlighting.enable = true;
-  initExtra = ''
+  initContent = ''
     function jwt() {
       echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
     }

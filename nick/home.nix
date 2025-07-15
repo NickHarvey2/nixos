@@ -114,7 +114,6 @@ in {
     bat
     ripgrep
     grafana-loki
-    sqlcmd
 
     # admin tools
     kubectl
