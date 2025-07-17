@@ -66,18 +66,6 @@
   };
 
   systemd.user.services = {
-    start-vhci-hcd = {
-      enable = true;
-      after = ["network.target"];
-      wantedBy = ["default.target"];
-      description = "Start vhci-hcd";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = ''
-          modprobe vhci-hcd
-        '';
-      };
-    };
     symlink-wayland-socket = {
       enable = true;
       after = ["network.target"];
