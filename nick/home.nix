@@ -78,6 +78,7 @@ in {
     catdoc
     nixos-generators
     d2
+    parallel
 
     # container tools
     podman-tui
