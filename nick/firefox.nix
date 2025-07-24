@@ -42,6 +42,8 @@
       "services.sync.username" = "nmhdh8@gmail.com";
       "browser.urlbar.suggest.quicksuggest.sponsored" = false;
       "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+      "privacy.resistFingerprinting" = true;
+      "privacy.resistFingerprinting.pbMode" = true;
     };
     search = {
       default = "kagi";
