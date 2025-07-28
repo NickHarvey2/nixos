@@ -151,6 +151,7 @@ in {
     codex-rs
     claude-code
     mongosh
+    diff-so-fancy
 
     # neovim stuff
     tree-sitter
