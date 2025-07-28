@@ -6,5 +6,10 @@
   ];
   extraConfig = {
     diff.sopsdiffer.textconv = "sops -d --config /dev/null";
+    push.autoSetupRemove = true;
+    pull.rebase = true;
+    diff.algorithm = "histogram";
+    branch.sort = "-committerdate";
+    tag.sort = "-version:refname";
   };
 }
