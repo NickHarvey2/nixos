@@ -79,6 +79,8 @@ in {
     nixos-generators
     d2
     parallel
+    xan
+    dust
 
     # container tools
     podman-tui
