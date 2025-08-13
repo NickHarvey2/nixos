@@ -27,6 +27,7 @@
     bwl = "bw lock";
     n = "nvim .";
     secret = "sops -d $FLAKE_DIR/secrets/secrets.yaml | yq -r ";
+    secrets = "yq -r 'keys[]' $FLAKE_DIR/secrets/secrets.yaml";
     rk = "rancher kubectl";
     scu = "sops -d $FLAKE_DIR/secrets/secrets.yaml > /dev/null"; # add an alias to decrypt sops file and redirect to /dev/null, forcing the smartcard to be unlocked
     bws = "$FLAKE_DIR/bws.sh";
