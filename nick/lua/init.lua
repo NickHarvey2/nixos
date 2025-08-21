@@ -147,3 +147,13 @@ vim.api.nvim_create_user_command('SetIndent', function(opts)
     vim.notify("Indent set to " .. opts.args .. " (ts=" .. opts.args .. ",sw=0,et)")
   end
 end, { desc = "", nargs = 1 })
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    -- Use a timer to ensure that the command waits for the buffer to be ready
+    vim.defer_fn(function()
+      -- Execute the 'normal' command which can simulate key presses
+      vim.api.nvim_command('normal! zR')
+    end, 0)
+  end
+})
