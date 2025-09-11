@@ -154,6 +154,8 @@ in {
     claude-code
     mongosh
     diff-so-fancy
+    rocmPackages.llvm.clang-tools
+    bear
 
     # neovim stuff
     tree-sitter

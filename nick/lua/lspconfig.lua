@@ -104,3 +104,10 @@ lsp.omnisharp.setup({
   cmd = { "OmniSharp" },
   root_dir = util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json")
 })
+
+lsp.clangd.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "clangd" },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+})
