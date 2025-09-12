@@ -64,4 +64,5 @@ vim.defer_fn(function()
   }
   vim.wo.foldmethod = 'expr'
   vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+  vim.api.nvim_create_autocmd({ "BufWinEnter" }, { pattern = { "*" }, command = "normal zR", }) -- unfold all on buffer open
 end, 0)
