@@ -32,14 +32,15 @@
     ...
   } @ inputs: let
     vu-hostname = "VUHL-J9VJKN3";
+    nixos1-hostname = "nixos";
   in {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      "${nixos1-hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
           {
-            networking.hostName = "nixos";
+            networking.hostName = nixos1-hostname;
           }
 
           ./configuration.nix
