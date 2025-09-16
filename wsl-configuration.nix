@@ -66,15 +66,31 @@
   };
 
   systemd.user.services = {
-    symlink-wayland-socket = {
+    # The following is no longer necessary, but leaving it here as an example of configuring a user service
+    # symlink-wayland-socket = {
+    #   enable = true;
+    #   after = ["network.target"];
+    #   wantedBy = ["default.target"];
+    #   description = "Symlink Wayland Socket";
+    #   serviceConfig = {
+    #     Type = "oneshot";
+    #     ExecStart = ''
+    #       /run/current-system/sw/bin/ln -s /mnt/wslg/runtime-dir/wayland-0 $XDG_RUNTIME_DIR
+    #     '';
+    #   };
+    # };
+  };
+
+  systemd.services = {
+    start-vhci-hcd = {
       enable = true;
       after = ["network.target"];
       wantedBy = ["default.target"];
-      description = "Symlink Wayland Socket";
+      description = "Start vhci-hcd";
       serviceConfig = {
         Type = "oneshot";
         ExecStart = ''
-          /run/current-system/sw/bin/ln -s /mnt/wslg/runtime-dir/wayland-0 $XDG_RUNTIME_DIR
+          /run/current-system/sw/bin/modprobe vhci-hcd
         '';
       };
     };
