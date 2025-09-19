@@ -5,10 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  # TODO move this import up to the flake
-  # TODO move hardware-configuration.nix into flake and remove --impure from rebuild script
-  imports = [ /etc/nixos/hardware-configuration.nix ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

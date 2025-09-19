@@ -64,10 +64,9 @@ while : ; do
     fi
 done
 
-# TODO remove impure once the hardware-configuration.nix is in the flake
-gum confirm "Run command? nixos-rebuild switch --flake $dir#$host --impure"
+gum confirm "Run command? nixos-rebuild switch --flake $dir#$host"
 if [[ $? == 0 ]]; then
-    sudo nixos-rebuild switch --flake "$dir#$host" --impure
+    sudo nixos-rebuild switch --flake "$dir#$host"
     # if flake.lock was changed, stage those changes
     if [[ -n "$(git diff --name-only flake.lock)" ]]; then
         echo "Update have been made to flake.lock, staging"
