@@ -33,6 +33,7 @@
   } @ inputs: let
     vu-hostname = "VUHL-J9VJKN3";
     nixos1-hostname = "nixos";
+    nixos2-hostname = "nixos2";
   in {
     nixosConfigurations = {
       "${nixos1-hostname}" = nixpkgs.lib.nixosSystem {
@@ -46,6 +47,29 @@
           ./configuration.nix
 
           ./${nixos1-hostname}-hardware-configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = {inherit inputs;};
+              useUserPackages = true;
+              users.nick = import ./nick/home.nix;
+            };
+          }
+        ];
+      };
+
+      "${nixos2-hostname}" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          {
+            networking.hostName = nixos2-hostname;
+          }
+
+          ./configuration.nix
+
+          ./${nixos2-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
           {
