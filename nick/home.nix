@@ -2,6 +2,9 @@
   inputs,
   pkgs,
   lib,
+  config,
+  nixos1-hostname,
+  nixos2-hostname,
   ...
 }: let
   identities = {
@@ -236,6 +239,10 @@ in {
     #     # this is where the shell script goes for a home-manager activation script
     #   '';
     # };
+
+    keyboard.options = lib.mkIf (config.networking.hostName == nixos1-hostname) [
+      "caps:swapescape"
+    ];
   };
 
   programs = {
