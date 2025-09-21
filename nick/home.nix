@@ -3,6 +3,7 @@
   pkgs,
   lib,
   config,
+  hostname,
   nixos1-hostname,
   nixos2-hostname,
   ...
@@ -62,114 +63,122 @@ in {
   ];
 
   nixpkgs.config.allowUnfree = true;
-  home.packages = with pkgs; [
-    unzip
-    zip
-    wl-clipboard
-    zk
-    git-crypt
-    gocryptfs
-    termusic
-    cava
-    lsof
-    yazi
-    btop
-    obsidian
-    croc
-    asciinema
-    catdocx
-    catdoc
-    nixos-generators
-    d2
-    parallel
-    xan
-    dust
+  home.packages = with pkgs; lib.mkMerge [
+    [
+      unzip
+      zip
+      wl-clipboard
+      zk
+      git-crypt
+      gocryptfs
+      termusic
+      cava
+      lsof
+      yazi
+      btop
+      obsidian
+      croc
+      asciinema
+      catdocx
+      catdoc
+      nixos-generators
+      d2
+      parallel
+      xan
+      dust
 
-    # container tools
-    podman-tui
-    podman-compose
-    dive
+      # container tools
+      podman-tui
+      podman-compose
+      dive
 
-    # networking tools
-    traceroute
-    whois
-    dig
-    wget
-    mapcidr
+      # networking tools
+      traceroute
+      whois
+      dig
+      wget
+      mapcidr
 
-    # security tools
-    syft
-    grype
-    step-cli
-    gau
-    bitwarden-cli
-    openssl
-    pass
-    pinentry-tty
-    yubikey-manager
-    sops
-    sslscan
+      # security tools
+      syft
+      grype
+      step-cli
+      gau
+      bitwarden-cli
+      openssl
+      pass
+      pinentry-tty
+      yubikey-manager
+      sops
+      sslscan
 
-    # cli tools
-    jq
-    fx
-    yq
-    fd
-    fzf
-    eza
-    bat
-    ripgrep
-    grafana-loki
+      # cli tools
+      jq
+      fx
+      yq
+      fd
+      fzf
+      eza
+      bat
+      ripgrep
+      grafana-loki
 
-    # admin tools
-    kubectl
-    vault
-    rancher
+      # admin tools
+      kubectl
+      vault
+      rancher
 
-    # tmux plugins
-    tmuxPlugins.sensible
-    tmuxPlugins.catppuccin
-    tmuxPlugins.battery
+      # tmux plugins
+      tmuxPlugins.sensible
+      tmuxPlugins.catppuccin
+      tmuxPlugins.battery
 
-    # runtimes/compilers + dev tools
-    libgcc
-    gcc
-    pkg-config
-    dotnet-sdk_8
-    luajit
-    luajitPackages.luarocks
-    go
-    go-tools
-    zig
-    python3
-    nodejs_20
-    just
-    sqlite
-    alejandra
-    gum
-    entr
-    lazygit
-    sqlite
-    powershell
-    opentofu
-    conftest
-    codex-rs
-    claude-code
-    mongosh
-    diff-so-fancy
-    rocmPackages.llvm.clang-tools
-    bear
+      # runtimes/compilers + dev tools
+      libgcc
+      gcc
+      pkg-config
+      dotnet-sdk_8
+      luajit
+      luajitPackages.luarocks
+      go
+      go-tools
+      zig
+      python3
+      nodejs_20
+      just
+      sqlite
+      alejandra
+      gum
+      entr
+      lazygit
+      sqlite
+      powershell
+      opentofu
+      conftest
+      codex-rs
+      claude-code
+      mongosh
+      diff-so-fancy
+      rocmPackages.llvm.clang-tools
+      bear
 
-    # neovim stuff
-    tree-sitter
+      # neovim stuff
+      tree-sitter
 
-    # language servers
-    nixd
-    gopls
-    lua-language-server
-    omnisharp-roslyn
-    vscode-langservers-extracted
-    terraform-ls
+      # language servers
+      nixd
+      gopls
+      lua-language-server
+      omnisharp-roslyn
+      vscode-langservers-extracted
+      terraform-ls
+    ]
+    # only install llama.cpp on nixos2
+    (
+      lib.mkIf (hostname == nixos2-hostname) [
+        llama-cpp
+      ]
+    )
   ];
 
   home = {
