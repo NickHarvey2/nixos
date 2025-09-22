@@ -6,6 +6,7 @@
   hostname,
   nixos1-hostname,
   nixos2-hostname,
+  vu-hostname,
   ...
 }: let
   identities = {

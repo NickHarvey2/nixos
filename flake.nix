@@ -51,7 +51,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos1-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname;};
+              extraSpecialArgs = {inherit inputs; hostname = nixos1-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; vu-hostname = vu-hostname;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -74,7 +74,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos2-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname;};
+              extraSpecialArgs = {inherit inputs; hostname = nixos2-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; vu-hostname = vu-hostname;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -116,7 +116,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = {inherit inputs; hostname = vu-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; vu-hostname = vu-hostname;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
