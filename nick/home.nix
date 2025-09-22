@@ -249,7 +249,8 @@ in {
     #   '';
     # };
 
-    keyboard.options = lib.mkIf (config.networking.hostName == nixos1-hostname) [
+    # only swap capslock and escape on nixos1
+    keyboard.options = lib.mkIf (hostname == nixos1-hostname) [
       "caps:swapescape"
     ];
   };
