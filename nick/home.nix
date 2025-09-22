@@ -174,10 +174,12 @@ in {
       vscode-langservers-extracted
       terraform-ls
     ]
-    # only install llama.cpp on nixos2
+    # only install these on nixos2
     (
       lib.mkIf (hostname == nixos2-hostname) [
         llama-cpp
+        openscad
+        openscad-lsp
       ]
     )
   ];
