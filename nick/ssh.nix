@@ -1,5 +1,6 @@
 {identities}: {
   enable = true;
+  enableDefaultConfig = false;
   matchBlocks = {
     "gitlab.redchimney.com" = {
       match = "User git Host gitlab.redchimney.com";

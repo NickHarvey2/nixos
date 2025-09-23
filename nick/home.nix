@@ -42,24 +42,6 @@ in {
             doCheck = false; # the example source doesn't properly handle calls to setup that pass no opts (which is how nix tests loading the module), so we need to tell nix not to test loading the module, otherwise the NPE in lua will cause the nix build to fail
           };
         };
-      # overlay to install the rust version of codex
-      codex-rs = prev.rustPlatform.buildRustPackage {
-        pname = "codex-rs";
-        version = "0.1.0";
-        cargoLock.lockFile = inputs.codex-rs + "/codex-rs/Cargo.lock";
-        src = inputs.codex-rs + "/codex-rs";
-        nativeBuildInputs = with pkgs; [
-          pkg-config
-        ];
-        buildInputs = with pkgs; [
-          openssl
-        ];
-        meta = with pkgs.lib; {
-          description = "OpenAI Codex command‑line interface rust implementation";
-          license = licenses.asl20;
-          homepage = "https://github.com/openai/codex";
-        };
-      };
     })
   ];
 
@@ -156,8 +138,6 @@ in {
       powershell
       opentofu
       conftest
-      codex-rs
-      claude-code
       mongosh
       diff-so-fancy
       rocmPackages.llvm.clang-tools

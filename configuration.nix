@@ -104,7 +104,7 @@
     mako
     xdg-desktop-portal-hyprland
     waybar
-    rofi-wayland
+    rofi
     libnotify
     hyprpaper
     hypridle
