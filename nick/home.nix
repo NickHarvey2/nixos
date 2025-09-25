@@ -219,6 +219,14 @@ in {
       target = ".config/waybar/style.css";
       source = ./waybar.style.css;
     };
+    file.btopConf = {
+      target = ".config/btop/btop.conf";
+      source = ./btop.conf;
+    };
+    file.btopTheme = {
+      target = ".config/btop/themes/catppuccin_frappe.theme";
+      source = ./btop_catppuccin_frappe.theme;
+    };
     file.toggleTouchpad = {
       target = "touchpad-toggle.sh";
       source = ./touchpad-toggle.sh;
