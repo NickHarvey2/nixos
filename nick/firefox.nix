@@ -10,11 +10,11 @@
   profiles.nick = {
     isDefault = true;
     containers = {
-      "dangerous" = {
-        color = "red";
-        icon = "fruit";
-        id = 1;
-      };
+      # "dangerous" = {
+      #   color = "red";
+      #   icon = "fruit";
+      #   id = 1;
+      # };
     };
     containersForce = true;
     settings = {
@@ -44,6 +44,7 @@
       "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
       "privacy.resistFingerprinting" = true;
       "privacy.resistFingerprinting.pbMode" = true;
+      "permissions.default.shortcuts" = 2;
     };
     search = {
       default = "kagi";
