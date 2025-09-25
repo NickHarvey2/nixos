@@ -183,10 +183,6 @@ in {
       target = ".gnupg/common.conf";
       text = "";
     };
-    file.codexConfig = {
-      target = ".codex/config.toml";
-      source = ./codex.toml;
-    };
     file.hyprland = {
       target = ".config/hypr/hyprland.conf";
       source = ./hyprland.conf;
