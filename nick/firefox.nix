@@ -55,7 +55,24 @@
         "google"
       ];
       engines = {
-        "Nix Packages" = {
+        kagi = {
+          name = "Kagi";
+          urls = [
+            {
+              template = "https://kagi.com/search";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "moz-extension://aeadf771-aa9a-42ff-8526-a3da8164e922/icons/icon_16px.png";
+          definedAliases = ["@k"];
+        };
+        Nix-packages = {
+          name = "Nix Packages";
           urls = [
             {
               template = "https://search.nixos.org/packages";
