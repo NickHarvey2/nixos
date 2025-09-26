@@ -69,6 +69,7 @@ in {
       parallel
       xan
       dust
+      fastfetch
 
       # container tools
       podman-tui
@@ -160,6 +161,7 @@ in {
         llama-cpp
         openscad
         openscad-lsp
+        bambu-studio
       ]
     )
   ];
