@@ -111,6 +111,7 @@ in {
       jq
       fx
       yq
+      tomlq
       fd
       fzf
       eza
