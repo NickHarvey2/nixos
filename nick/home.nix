@@ -185,20 +185,9 @@ in {
       target = ".gnupg/common.conf";
       text = "";
     };
-    # TODO use activation scipts to download wallpapers
-    file.hyprpaper_nixos1 = lib.mkIf (hostname == nixos1-hostname) {
+    file.hyprpaper = {
       target = ".config/hypr/hyprpaper.conf";
-      text = ''
-        preload = ~/mikael-gustafsson-amongtrees-2-8.jpg
-        wallpaper = , ~/mikael-gustafsson-amongtrees-2-8.jpg
-      '';
-    };
-    file.hyprpaper_nixos2 = lib.mkIf (hostname == nixos2-hostname) {
-      target = ".config/hypr/hyprpaper.conf";
-      text = ''
-        preload = ~/7i2t36f1a6rf1.jpeg
-        wallpaper = , ~/7i2t36f1a6rf1.jpeg
-      '';
+      source = ./hyprpaper.conf;
     };
     file.hyprlock = {
       target = ".config/hypr/hyprlock.conf";
