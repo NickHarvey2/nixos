@@ -68,6 +68,7 @@
               ];
             }
           ];
+          # TODO put this in LFS
           icon = "moz-extension://aeadf771-aa9a-42ff-8526-a3da8164e922/icons/icon_16px.png";
           definedAliases = ["@k"];
         };
