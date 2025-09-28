@@ -185,13 +185,20 @@ in {
       target = ".gnupg/common.conf";
       text = "";
     };
-    file.hyprland = {
-      target = ".config/hypr/hyprland.conf";
-      source = ./hyprland.conf;
-    };
-    file.hyprpaper = {
+    # TODO use activation scipts to download wallpapers
+    file.hyprpaper_nixos1 = lib.mkIf (hostname == nixos1-hostname) {
       target = ".config/hypr/hyprpaper.conf";
-      source = ./hyprpaper.conf;
+      text = ''
+        preload = ~/mikael-gustafsson-amongtrees-2-8.jpg
+        wallpaper = , ~/mikael-gustafsson-amongtrees-2-8.jpg
+      '';
+    };
+    file.hyprpaper_nixos2 = lib.mkIf (hostname == nixos2-hostname) {
+      target = ".config/hypr/hyprpaper.conf";
+      text = ''
+        preload = ~/7i2t36f1a6rf1.jpeg
+        wallpaper = , ~/7i2t36f1a6rf1.jpeg
+      '';
     };
     file.hyprlock = {
       target = ".config/hypr/hyprlock.conf";
@@ -237,11 +244,11 @@ in {
     #     # this is where the shell script goes for a home-manager activation script
     #   '';
     # };
+  };
 
-    # only swap capslock and escape on nixos1
-    keyboard.options = lib.mkIf (hostname == nixos1-hostname) [
-      "caps:swapescape"
-    ];
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = import ./hyprland.nix {lib = lib; hostname = hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname;};
   };
 
   programs = {
