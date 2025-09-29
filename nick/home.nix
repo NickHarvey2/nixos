@@ -42,6 +42,17 @@ in {
             doCheck = false; # the example source doesn't properly handle calls to setup that pass no opts (which is how nix tests loading the module), so we need to tell nix not to test loading the module, otherwise the NPE in lua will cause the nix build to fail
           };
         };
+      leadr = prev.rustPlatform.buildRustPackage {
+        pname = "leadr";
+        version = "2.6.0";
+        cargoLock.lockFile = inputs.leadr + "/Cargo.lock";
+        src = inputs.leadr;
+        meta = with pkgs.lib; {
+          description = "A customizable CLI command manager inspired by the leader key concept in (Neo)Vim";
+          license = licenses.mit;
+          homepage = "https://github.com/ll-nick/leadr";
+        };
+      };
     })
   ];
 
@@ -106,6 +117,7 @@ in {
       bat
       ripgrep
       grafana-loki
+      leadr
 
       # admin tools
       kubectl
@@ -220,6 +232,14 @@ in {
     file.btopTheme = {
       target = ".config/btop/themes/catppuccin_frappe.theme";
       source = ./btop_catppuccin_frappe.theme;
+    };
+    file.leadrConfig = {
+      target = ".config/leadr/config.toml";
+      source = ./leadr.config.toml;
+    };
+    file.leadrMappings = {
+      target = ".config/leadr/mappings.toml";
+      source = ./leadr.mappings.toml;
     };
     file.toggleTouchpad = {
       target = "touchpad-toggle.sh";

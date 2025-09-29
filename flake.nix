@@ -18,6 +18,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    leadr = {
+      url = "github:ll-nick/leadr?ref=v2.6.0";
+      flake = false;
+    };
   };
 
   outputs = {

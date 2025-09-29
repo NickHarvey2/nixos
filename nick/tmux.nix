@@ -77,6 +77,6 @@
     bind Tab last-window
     bind | split-window -h
     bind - split-window -v
-    bind Space set-option status
+    bind Space send-keys C-g
   '';
 }

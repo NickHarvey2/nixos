@@ -1,0 +1,63 @@
+[id]
+command = "date +%Y%m%d"
+description = "Insert current date in YYYYMMDD format"
+insert_type = "Insert"
+evaluate = true
+
+[sb]
+command = '#CURSOR `#COMMAND`'
+description = "Surround with backticks"
+insert_type = "Surround"
+
+[sq]
+command = '"#COMMAND"'
+description = "Surround with quotes"
+insert_type = "Surround"
+
+[ay]
+command = " | wl-copy"
+description = "Append copy to clipboard"
+insert_type = "Append"
+
+[yy]
+command = "fc -ln -1 | wl-copy"
+description = "Copy the last command to clipboard"
+execute = true
+
+[gc]
+command = 'git commit -m "#CURSOR"'
+description = "Start a Git commit"
+
+[gs]
+command = "git status"
+description = "Git status"
+execute = true
+
+[gd]
+command = "git diff"
+description = "Git diff"
+execute = true
+
+[gD]
+command = "git diff --staged"
+description = "Git diff staged"
+execute = true
+
+[gaa]
+command = "git add ."
+description = "Git add all"
+execute = true
+
+[gap]
+command = "git add . --patch"
+description = "Git add patch -- interactively stage chunks"
+
+[gg]
+command = "echo UPDATESTARTUPTTY | gpg-connect-agent"
+description = "kick gpg agent"
+execute = true
+
+[ps]
+command = "sudo "
+description = "Prepend sudo"
+insert_type = "Prepend"

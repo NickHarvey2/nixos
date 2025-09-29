@@ -58,6 +58,23 @@
         "type": "github"
       }
     },
+    "leadr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756329236,
+        "narHash": "sha256-qJCUySy43BSgl3sJpXZHauQeAYVGgKItmXh6TRVuCY4=",
+        "owner": "ll-nick",
+        "repo": "leadr",
+        "rev": "d7b9a9f0877e47d6912b98cdd158fe77553eef05",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ll-nick",
+        "ref": "v2.6.0",
+        "repo": "leadr",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -147,6 +164,7 @@
       "inputs": {
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
+        "leadr": "leadr",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "plugin-gp-nvim": "plugin-gp-nvim",
