@@ -57,6 +57,11 @@ execute = true
 command = "git push #CURSOR"
 description = "Start a git push"
 
+[gl]
+command = "git pull"
+description = "Git pull"
+execute = true
+
 [gg]
 command = "echo UPDATESTARTUPTTY | gpg-connect-agent"
 description = "kick gpg agent"
