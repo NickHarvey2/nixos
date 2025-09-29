@@ -51,6 +51,11 @@ execute = true
 [gap]
 command = "git add . --patch"
 description = "Git add patch -- interactively stage chunks"
+execute = true
+
+[gp]
+command = "git push #CURSOR"
+description "Start a git push"
 
 [gg]
 command = "echo UPDATESTARTUPTTY | gpg-connect-agent"
