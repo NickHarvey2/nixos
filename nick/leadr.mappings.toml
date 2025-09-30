@@ -5,7 +5,7 @@ insert_type = "Insert"
 evaluate = true
 
 [sb]
-command = '#CURSOR `#COMMAND`'
+command = '#CURSOR`#COMMAND`'
 description = "Surround with backticks"
 insert_type = "Surround"
 
@@ -14,14 +14,70 @@ command = '"#COMMAND"'
 description = "Surround with quotes"
 insert_type = "Surround"
 
+[sl]
+command = "IFS=$'\\n' read -rd '' -A #CURSOR <<< $(#COMMAND)"
+description = "read in command as a newline delimited list"
+insert_type = "Surround"
+
 [ay]
 command = " | wl-copy"
 description = "Append copy to clipboard"
 insert_type = "Append"
 
 [yy]
+command = "wl-copy '#COMMAND'"
+description = "Copy the current command to clipboard"
+insert_type = "Surround"
+execute = true
+
+[y1y]
 command = "fc -ln -1 | wl-copy"
-description = "Copy the last command to clipboard"
+description = "Copy the previous command to clipboard"
+execute = true
+
+[y2y]
+command = "fc -ln -2 | wl-copy"
+description = "Copy the previous two commands to clipboard"
+execute = true
+
+[y3y]
+command = "fc -ln -3 | wl-copy"
+description = "Copy the previous three commands to clipboard"
+execute = true
+
+[y4y]
+command = "fc -ln -4 | wl-copy"
+description = "Copy the previous four commands to clipboard"
+execute = true
+
+[y5y]
+command = "fc -ln -5 | wl-copy"
+description = "Copy the previous five commands to clipboard"
+execute = true
+
+[y6y]
+command = "fc -ln -6 | wl-copy"
+description = "Copy the previous six commands to clipboard"
+execute = true
+
+[y7y]
+command = "fc -ln -7 | wl-copy"
+description = "Copy the previous seven commands to clipboard"
+execute = true
+
+[y8y]
+command = "fc -ln -8 | wl-copy"
+description = "Copy the previous eight commands to clipboard"
+execute = true
+
+[y9y]
+command = "fc -ln -9 | wl-copy"
+description = "Copy the previous nine commands to clipboard"
+execute = true
+
+[y0y]
+command = "fc -ln -10 | wl-copy"
+description = "Copy the previous ten commands to clipboard"
 execute = true
 
 [gc]
