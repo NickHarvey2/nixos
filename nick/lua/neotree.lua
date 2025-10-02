@@ -11,19 +11,19 @@ require('neo-tree').setup({
     sources = {
       {
         source = "filesystem", -- string
-        display_name = " 󰉓  " -- string | nil
+        display_name = " 󰉓 File " -- string | nil
       },
       {
         source = "buffers", -- string
-        display_name = " 󰈚  " -- string | nil
+        display_name = " 󰈚 Buf " -- string | nil
       },
       {
         source = "git_status", -- string
-        display_name = " 󰊢  " -- string | nil
+        display_name = " 󰊢 Git " -- string | nil
       },
       {
-        source = "example", -- string
-        display_name = " # " -- string | nil
+        source = "document_symbols", -- string
+        display_name = "  Sym " -- string | nil
       },
     },
     tabs_layout = "start",
@@ -57,7 +57,6 @@ require('neo-tree').setup({
     "buffers",
     "git_status",
     "document_symbols",
-    "example"
   },
   filesystem = {
     follow_current_file = {

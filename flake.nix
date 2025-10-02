@@ -10,10 +10,6 @@
       url = "github:robitx/gp.nvim?ref=v3.9.0";
       flake = false;
     };
-    plugin-neotree-mdheaders = {
-      url = "github:NickHarvey2/neo-tree-mdheaders";
-      flake = false;
-    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
