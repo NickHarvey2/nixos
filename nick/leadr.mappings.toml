@@ -24,6 +24,11 @@ command = " | wl-copy"
 description = "Append copy to clipboard"
 insert_type = "Append"
 
+[yx]
+command = "echo -n '' | wl-copy"
+description = "Clear the clipboard"
+execute = true
+
 [yy]
 command = "wl-copy '#COMMAND'"
 description = "Copy the current command to clipboard"

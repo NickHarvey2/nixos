@@ -111,8 +111,8 @@
     brightnessctl
     mpv
     pavucontrol
-    # bambu-studio
     kmod
+    findutils
   ];
 
   fonts.packages = with pkgs; [

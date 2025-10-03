@@ -246,6 +246,11 @@ in {
       source = ./touchpad-toggle.sh;
       executable = true;
     };
+    file.clipListen = {
+      target = "cliplisten.sh";
+      source = ./cliplisten.sh;
+      executable = true;
+    };
     # activation = {
     #   exampleActivation = lib.hm.dag.entryAfter ["writeBoundary"]
     #   # sh
