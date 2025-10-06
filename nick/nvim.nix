@@ -188,6 +188,17 @@
       type = "lua";
       config = builtins.readFile ./lua/gp.lua;
     }
+
+    {
+      plugin = zen-mode-nvim;
+      type = "lua";
+      config =
+      # lua
+      ''
+        require("zen-mode").setup()
+        vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true })
+      '';
+    }
   ];
   extraLuaConfig = builtins.readFile ./lua/init.lua;
 }
