@@ -480,6 +480,8 @@
     "move_tabs_to_panel_7": "Ctrl+Alt+8",
     "move_tabs_to_panel_8": "Ctrl+Alt+9",
     "move_tabs_to_panel_9": "Ctrl+Alt+0",
-    "search": "Alt+S"
+    "search": "Alt+S",
+    "switch_to_unpinned_tab_0": "Alt+G",
+    "switch_to_last_tab": "Alt+Shift+G"
   }
 }
