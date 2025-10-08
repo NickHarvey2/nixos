@@ -246,18 +246,23 @@ in {
       source = ./touchpad-toggle.sh;
       executable = true;
     };
-    file.clipListen = {
-      target = "cliplisten.sh";
-      source = ./cliplisten.sh;
+    file.cmdListen = {
+      target = "cmdlisten.sh";
+      source = ./cmdlisten.sh;
       executable = true;
     };
-    # activation = {
-    #   exampleActivation = lib.hm.dag.entryAfter ["writeBoundary"]
-    #   # sh
-    #   ''
-    #     # this is where the shell script goes for a home-manager activation script
-    #   '';
-    # };
+    activation = {
+      mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
+      # sh
+      ''
+        if [[ $(ls pipe 2>/dev/null | wc -l) == 0 ]]; then
+          echo 'creating fifo "pipe"'
+          mkfifo pipe
+        else
+          echo 'fifo "pipe" already exists; skipping creation'
+        fi
+      '';
+    };
   };
 
   wayland.windowManager.hyprland = {

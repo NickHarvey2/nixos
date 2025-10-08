@@ -93,6 +93,8 @@ vim.keymap.set('v', '<C-k>', '<esc>`<i[<esc>`>la]()<esc>h', { noremap = true, si
 vim.keymap.set('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
 vim.keymap.set('n', 'U', '<C-r>', { noremap = true, silent = true })
 
+vim.keymap.set('n', 'yp', 'V:!tee ~/pipe<CR>', {noremap = true, silent = true })
+
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
   callback = function()
