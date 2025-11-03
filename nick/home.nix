@@ -118,6 +118,7 @@ in {
       ripgrep
       grafana-loki
       leadr
+      ncdu
 
       # admin tools
       kubectl
