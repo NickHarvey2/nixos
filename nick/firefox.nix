@@ -45,6 +45,19 @@
       "privacy.resistFingerprinting" = true;
       "privacy.resistFingerprinting.pbMode" = true;
       "permissions.default.shortcuts" = 2;
+      "browser.ml.enable" = false;
+      "browser.ml.chat.enabled" = false;
+      "browser.ml.chat.hideFromLabs" = true;
+      "browser.ml.chat.hideLabsShortcuts" = true;
+      "browser.ml.chat.page" = false;
+      "browser.ml.chat.page.footerBadge" = false;
+      "browser.ml.chat.page.menuBadge" = false;
+      "browser.ml.chat.menu" = false;
+      "browser.ml.linkPreview.enabled" = false;
+      "browser.ml.pageAssist.enabled" = false;
+      "browser.tabs.groups.smart.enabled" = false;
+      "browser.tabs.groups.smart.userEnable" = false;
+      "extensions.ml.enabled" = false;
     };
     search = {
       default = "kagi";
