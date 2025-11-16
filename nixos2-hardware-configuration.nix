@@ -36,4 +36,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # added the following despite the warning at the top
+  hardware.amdgpu.opencl.enable = true;
 }

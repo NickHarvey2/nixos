@@ -138,6 +138,10 @@
       extraArgs = ["--disable-polkit"]; # No point in polkit since I'm the only user of these systems
     };
     udisks2.enable = true;
+    netbird = {
+      enable = true;
+      ui.enable = true;
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
