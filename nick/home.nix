@@ -154,7 +154,7 @@ in {
       conftest
       mongosh
       diff-so-fancy
-      rocmPackages.llvm.clang-tools
+      rocmPackages.llvm.clang
       bear
 
       # neovim stuff
