@@ -29,14 +29,17 @@
     nvidia = {
       # Modesetting is required
       modesetting.enable = true;
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      # Enable this if you have graphical corruption issues or application crashes after waking up from sleep.
-      # This fixes it by saving the entire vram memory to /tmp/ instead of just the bare essentials
-      powerManagement.enable = false;
 
-      # Fine grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer)
-      powerManagement.finegrained = false;
+      powerManagement = {
+        # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+        # Enable this if you have graphical corruption issues or application crashes after waking up from sleep.
+        # This fixes it by saving the entire vram memory to /tmp/ instead of just the bare essentials
+        enable = false;
+
+        # Fine grained power management. Turns off GPU when not in use.
+        # Experimental and only works on modern Nvidia GPUs (Turing or newer)
+        finegrained = false;
+      };
 
       # Use the Nvidia open source kernel module (not to be confused with the independent 3rd party "nouveau" open source driver).
       # Support is limited to the Turing and later architectures. Full list of supported GPUs is at <https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus>
@@ -80,13 +83,14 @@
     displayManager.sddm.enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
 
-  programs.steam = {
-    enable = true;
+    steam.enable = true;
+    zsh.enable = true;
   };
 
   # Configure keymap in X11
@@ -117,9 +121,6 @@
     shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = true;
-  programs = {
-    zsh.enable = true;
-  };
 
   virtualisation = {
     containers.enable = true; # Enable common container config files in /etc/containers
