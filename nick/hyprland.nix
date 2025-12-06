@@ -3,6 +3,7 @@
   hostname,
   nixos1-hostname,
   nixos2-hostname,
+  nixos3-hostname,
 }: {
   # See https://wiki.hyprland.org/Configuring/Monitors/
   monitor = ",preferred,auto,1";
@@ -105,8 +106,8 @@
   # https://wiki.hyprland.org/Configuring/Variables/#input
   input = {
     kb_layout = "us";
-    # swap caps and escape on nixos1
-    kb_options = lib.mkIf (hostname == nixos1-hostname) "caps:swapescape";
+    # swap caps and escape on nixos1 and nixos3
+    kb_options = lib.mkIf (hostname == nixos1-hostname || hostname == nixos3-hostname) "caps:swapescape";
     follow_mouse = 1;
     sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
     touchpad = {

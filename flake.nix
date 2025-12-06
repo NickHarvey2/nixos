@@ -30,6 +30,7 @@
     vu-hostname = "VUHL-J9VJKN3";
     nixos1-hostname = "nixos";
     nixos2-hostname = "nixos2";
+    nixos3-hostname = "nixos3";
   in {
     nixosConfigurations = {
       "${nixos1-hostname}" = nixpkgs.lib.nixosSystem {
@@ -47,7 +48,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos1-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {inherit inputs; hostname = nixos1-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -70,7 +71,30 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos2-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {inherit inputs; hostname = nixos2-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
+              useUserPackages = true;
+              users.nick = import ./nick/home.nix;
+            };
+          }
+        ];
+      };
+
+      "${nixos3-hostname}" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          {
+            networking.hostName = nixos3-hostname;
+          }
+
+          ./configuration.nix
+
+          ./${nixos3-hostname}-hardware-configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = {inherit inputs; hostname = nixos3-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -112,7 +136,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = vu-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {inherit inputs; hostname = vu-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };

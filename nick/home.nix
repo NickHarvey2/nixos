@@ -6,6 +6,7 @@
   hostname,
   nixos1-hostname,
   nixos2-hostname,
+  nixos3-hostname,
   vu-hostname,
   ...
 }: let
@@ -268,7 +269,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = import ./hyprland.nix {lib = lib; hostname = hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname;};
+    settings = import ./hyprland.nix {lib = lib; hostname = hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname;};
   };
 
   programs = {
