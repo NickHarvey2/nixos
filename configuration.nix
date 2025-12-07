@@ -74,14 +74,69 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    videoDrivers = [
-      "nvidia"
-    ];
-    displayManager.sddm.enable = true;
+  # PulseAudio and PipeWire use the RealtimeKit system service (which hands out realtime scheduling priority to user processes on demand) to acquire realtime priority
+  security.rtkit.enable = true;
+
+  # List services that you want to enable:
+  services = {
+    # Enable the X11 windowing system.
+    xserver = {
+      enable = true;
+      videoDrivers = [
+        "nvidia"
+      ];
+      displayManager.sddm.enable = true;
+    };
+
+    # Configure keymap in X11
+    xserver.xkb = {
+      variant = "";
+      layout = "us";
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+
+    # Support for yubikey as smartcard
+    udev = {
+      enable = true;
+      packages = [pkgs.yubikey-personalization];
+      extraRules = ''
+        SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", MODE="0666"
+      '';
+    };
+    pcscd = {
+      enable = true;
+      extraArgs = ["--disable-polkit"]; # No point in polkit since I'm the only user of these systems
+    };
+
+    # Enable automatic mounting of inserted media
+    udisks2.enable = true;
+
+    netbird = {
+      enable = true;
+      ui.enable = true;
+    };
+
+    # Enable the OpenSSH daemon.
+    # openssh.enable = true;
   };
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   programs = {
     hyprland = {
@@ -91,26 +146,6 @@
 
     steam.enable = true;
     zsh.enable = true;
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    variant = "";
-    layout = "us";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
   };
 
   users.users.nick = {
@@ -165,25 +200,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
-  services = {
-    udev = {
-      enable = true;
-      packages = [pkgs.yubikey-personalization];
-      extraRules = ''
-        SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", MODE="0666"
-      '';
-    };
-    pcscd = {
-      enable = true;
-      extraArgs = ["--disable-polkit"]; # No point in polkit since I'm the only user of these systems
-    };
-    udisks2.enable = true;
-    netbird = {
-      enable = true;
-      ui.enable = true;
-    };
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -191,18 +207,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
