@@ -27,28 +27,34 @@
     home-manager,
     ...
   } @ inputs: let
-    vu-hostname = "VUHL-J9VJKN3";
-    nixos1-hostname = "nixos";
-    nixos2-hostname = "nixos2";
-    nixos3-hostname = "nixos3";
+    hosts = {
+      vu-hostname = "VUHL-J9VJKN3";
+      nixos1-hostname = "nixos";
+      nixos2-hostname = "nixos2";
+      nixos3-hostname = "nixos3";
+    };
   in {
     nixosConfigurations = {
-      "${nixos1-hostname}" = nixpkgs.lib.nixosSystem {
+      "${hosts.nixos1-hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
           {
-            networking.hostName = nixos1-hostname;
+            networking.hostName = hosts.nixos1-hostname;
           }
 
           ./configuration.nix
 
-          ./${nixos1-hostname}-hardware-configuration.nix
+          ./${hosts.nixos1-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos1-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hyprland_kb_opts = "caps:swapescape";
+                extra_packages = [];
+              };
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -56,22 +62,31 @@
         ];
       };
 
-      "${nixos2-hostname}" = nixpkgs.lib.nixosSystem {
+      "${hosts.nixos2-hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
           {
-            networking.hostName = nixos2-hostname;
+            networking.hostName = hosts.nixos2-hostname;
           }
 
           ./configuration.nix
 
-          ./${nixos2-hostname}-hardware-configuration.nix
+          ./${hosts.nixos2-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos2-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hyprland_kb_opts = "";
+                extra_packages = with nixpkgs.pkgs; [
+                  llama-cpp
+                  openscad
+                  openscad-lsp
+                  bambu-studio
+                ];
+              };
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -79,22 +94,26 @@
         ];
       };
 
-      "${nixos3-hostname}" = nixpkgs.lib.nixosSystem {
+      "${hosts.nixos3-hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
           {
-            networking.hostName = nixos3-hostname;
+            networking.hostName = hosts.nixos3-hostname;
           }
 
           ./configuration.nix
 
-          ./${nixos3-hostname}-hardware-configuration.nix
+          ./${hosts.nixos3-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = nixos3-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hyprland_kb_opts = "caps:swapescape";
+                extra_packages = [];
+              };
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -102,7 +121,7 @@
         ];
       };
 
-      "${vu-hostname}" = nixpkgs.lib.nixosSystem {
+      "${hosts.vu-hostname}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
@@ -128,7 +147,7 @@
           }
 
           {
-            networking.hostName = vu-hostname;
+            networking.hostName = hosts.vu-hostname;
           }
 
           ./wsl-configuration.nix
@@ -136,7 +155,11 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hostname = vu-hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname; vu-hostname = vu-hostname;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hyprland_kb_opts = "";
+                extra_packages = [];
+              };
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };

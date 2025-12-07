@@ -3,11 +3,8 @@
   pkgs,
   lib,
   config,
-  hostname,
-  nixos1-hostname,
-  nixos2-hostname,
-  nixos3-hostname,
-  vu-hostname,
+  hyprland_kb_opts,
+  extra_packages,
   ...
 }: let
   identities = {
@@ -169,15 +166,7 @@ in {
       vscode-langservers-extracted
       terraform-ls
     ]
-    # only install these on nixos2
-    (
-      lib.mkIf (hostname == nixos2-hostname) [
-        llama-cpp
-        openscad
-        openscad-lsp
-        bambu-studio
-      ]
-    )
+    extra_packages
   ];
 
   home = {
@@ -269,7 +258,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = import ./hyprland.nix {lib = lib; hostname = hostname; nixos1-hostname = nixos1-hostname; nixos2-hostname = nixos2-hostname; nixos3-hostname = nixos3-hostname;};
+    settings = import ./hyprland.nix {lib = lib; kb_opts = hyprland_kb_opts;};
   };
 
   programs = {
