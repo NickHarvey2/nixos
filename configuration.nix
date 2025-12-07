@@ -85,8 +85,8 @@
       videoDrivers = [
         "nvidia"
       ];
-      displayManager.sddm.enable = true;
     };
+    displayManager.sddm.enable = true;
 
     # Configure keymap in X11
     xserver.xkb = {
