@@ -103,8 +103,8 @@
   # https://wiki.hyprland.org/Configuring/Variables/#input
   input = {
     kb_layout = "us";
-    # swap caps and escape on nixos1 and nixos3
     kb_options = kb_opts;
+    numlock_by_default = true;
     follow_mouse = 1;
     sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
     touchpad = {
