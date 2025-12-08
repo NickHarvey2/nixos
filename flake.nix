@@ -103,6 +103,7 @@
           }
 
           ./configuration.nix
+          ./nvidia.nix
 
           ./${hosts.nixos3-hostname}-hardware-configuration.nix
 
