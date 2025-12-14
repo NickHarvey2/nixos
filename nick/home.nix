@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   lib,
-  config,
+  osConfig,
+  hosts,
   hyprland_kb_opts,
   extra_packages,
   ...
@@ -166,7 +167,22 @@ in {
       vscode-langservers-extracted
       terraform-ls
     ]
-    extra_packages
+    # only install these on nixos2
+    (
+      lib.mkIf (osConfig.networking.hostName == hosts.nixos2-hostname) [
+        llama-cpp
+        openscad
+        openscad-lsp
+        bambu-studio
+        fwupd
+      ]
+    )
+    # only install these on nixos3
+    (
+      lib.mkIf (osConfig.networking.hostName == hosts.nixos3-hostname) [
+        fwupd
+      ]
+    )
   ];
 
   home = {

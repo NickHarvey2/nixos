@@ -50,11 +50,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit inputs;
-                hyprland_kb_opts = "caps:swapescape";
-                extra_packages = [];
-              };
+              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "caps:swapescape";};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -77,16 +73,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit inputs;
-                hyprland_kb_opts = "";
-                extra_packages = with nixpkgs.pkgs; [
-                  llama-cpp
-                  openscad
-                  openscad-lsp
-                  bambu-studio
-                ];
-              };
+              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "";};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -104,18 +91,12 @@
 
           ./configuration.nix
 
-          ./nvidia.nix
-
           ./${hosts.nixos3-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit inputs;
-                hyprland_kb_opts = "caps:swapescape";
-                extra_packages = [];
-              };
+              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "caps:swapescape";};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -157,11 +138,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit inputs;
-                hyprland_kb_opts = "";
-                extra_packages = [];
-              };
+              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "";};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
