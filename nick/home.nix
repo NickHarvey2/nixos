@@ -80,6 +80,7 @@ in {
       xan
       dust
       fastfetch
+      discord
 
       # container tools
       podman-tui
@@ -153,7 +154,7 @@ in {
       conftest
       mongosh
       diff-so-fancy
-      rocmPackages.llvm.clang
+      clang-tools
       bear
 
       # neovim stuff
@@ -174,13 +175,13 @@ in {
         openscad
         openscad-lsp
         bambu-studio
-        fwupd
+        fw-ectool
       ]
     )
     # only install these on nixos3
     (
       lib.mkIf (osConfig.networking.hostName == hosts.nixos3-hostname) [
-        fwupd
+        fw-ectool
       ]
     )
   ];

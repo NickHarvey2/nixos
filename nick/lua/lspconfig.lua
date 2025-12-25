@@ -1,6 +1,6 @@
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({count=-1, float=true}) end, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count=1, float=true}) end, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -62,52 +62,40 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Setup neovim lua configuration
+-- TODO replace with [lazydev.nvim](https://github.com/folke/lazydev.nvim)
 require('neodev').setup()
 
-local lsp = require('lspconfig')
-local util = require('lspconfig.util')
-
-lsp.lua_ls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = function()
-    return vim.loop.cwd()
-  end,
-  cmd = { "lua-language-server" },
-  settings = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  }
-})
-
-lsp.nixd.setup({
+-- NOTE works, but not for neovim config until I do the above TODO
+vim.lsp.config('lua_ls', {
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-lsp.gopls.setup({
+-- TODO launches correctly, but doesn't actually provide any hints
+vim.lsp.config('nixd', {
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-lsp.zk.setup({
+vim.lsp.config('gopls', {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "markdown", "md" }
 })
 
-lsp.omnisharp.setup({
+vim.lsp.config('zk', {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { "OmniSharp" },
-  root_dir = util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json")
 })
 
-lsp.clangd.setup({
+vim.lsp.config('omnisharp', {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { "clangd" },
-  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 })
+
+-- TODO test
+vim.lsp.config('clangd', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+vim.lsp.enable({'lua_ls', 'nixd', 'gopls', 'zk', 'omnisharp', 'clangd'})

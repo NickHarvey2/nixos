@@ -64,6 +64,7 @@
         modules = [
           {
             networking.hostName = hosts.nixos2-hostname;
+            services.fwupd.enable = true;
           }
 
           ./configuration.nix
@@ -87,9 +88,16 @@
         modules = [
           {
             networking.hostName = hosts.nixos3-hostname;
+            services.fwupd.enable = true;
+            swapDevices = [{
+              device = "/var/lib/swapfile";
+              size = 48*1024; # 48 GB
+            }];
           }
 
           ./configuration.nix
+
+          ./nvidia.nix
 
           ./${hosts.nixos3-hostname}-hardware-configuration.nix
 
