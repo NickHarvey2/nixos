@@ -18,6 +18,16 @@
         finegrained = false;
       };
 
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+
+        nvidiaBusId = "PCI:193:0:0";
+        amdgpuBusId = "PCI:194:0:0";
+      };
+
       # Use the Nvidia open source kernel module (not to be confused with the independent 3rd party "nouveau" open source driver).
       # Support is limited to the Turing and later architectures. Full list of supported GPUs is at <https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus>
       # Only available from driver 515.43.04+
