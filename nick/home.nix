@@ -175,7 +175,6 @@ in {
     (
       lib.mkIf (osConfig.networking.hostName == hosts.nixos3-hostname) [
         fw-ectool
-        mesa-demos
       ]
     )
   ];
