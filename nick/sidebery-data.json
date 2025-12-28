@@ -446,7 +446,7 @@
       "removePanel"
     ]
   },
-  "sidebarCSS": "div.NavigationBar {\n\tcounter-reset: panel;\n}\n\ndiv.nav-item[data-class=\"panel\"][data-type=\"tabs\"]::before {\n\tcounter-increment: panel;\n\tcontent:counter(panel);\n\tcolor:rgb(133, 133, 122);\n\tfont-size:x-small;\n\tpadding-left: 3px;\n}\n\ndiv.PinnedTabsBar {\n\tcounter-reset: pinnedtabs;\n}\n\ndiv.Tab[data-pin=\"true\"]::before {\n\tcounter-increment: pinnedtabs;\n\tcontent:counter(pinnedtabs);\n\tcolor:rgb(133, 133, 122);\n\tfont-size:x-small;\n\tpadding-left: 3px;\n\tposition: absolute;\n\tz-index: 1000;\n}\n\n",
+  "sidebarCSS": "div.NavigationBar {\n\tcounter-reset: panel;\n}\n\ndiv.nav-item[data-class=\"panel\"][data-type=\"tabs\"] {\n\tcounter-increment: panel;\n}\n\ndiv.nav-item[data-class=\"panel\"][data-type=\"tabs\"]::before {\n\tcontent:counter(panel);\n\tcolor:rgb(133, 133, 122);\n\tfont-size:x-small;\n\tpadding-left: 2px;\n}\n\ndiv.PinnedTabsBar {\n\tcounter-reset: pinnedtabs;\n}\n\ndiv.Tab[data-pin=\"true\"] {\n\tcounter-increment: pinnedtabs;\n}\n\ndiv.Tab[data-pin=\"true\"]::before {\n\tcontent:counter(pinnedtabs);\n\tcolor:rgb(133, 133, 122);\n\tfont-size:x-small;\n\tpadding-left: 2px;\n\tposition: absolute;\n\tz-index: 1000;\n}\n",
   "ver": "5.2.0",
   "keybindings": {
     "_execute_sidebar_action": "Ctrl+E",
