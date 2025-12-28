@@ -74,12 +74,13 @@
       jack.enable = true;
     };
 
-    # Support for yubikey as smartcard
+    # Support for yubikey as smartcard and for framework laptop keyboard
     udev = {
       enable = true;
       packages = [pkgs.yubikey-personalization];
       extraRules = ''
-        SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", MODE="0666"
+        SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", MODE="0660", TAG+="uaccess"
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="32ac", ATTRS{idProduct}=="0012", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
       '';
     };
     pcscd = {

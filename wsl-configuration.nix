@@ -56,7 +56,7 @@
       packages = [pkgs.yubikey-personalization];
       # extra rules are needed on WSL to make the yubikey accessible
       extraRules = ''
-        SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", MODE="0666"
+        SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", MODE="0660", TAG+="uaccess"
       '';
     };
     pcscd = {
