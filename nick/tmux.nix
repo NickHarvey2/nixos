@@ -29,6 +29,7 @@
         # https://github.com/catppuccin/tmux/issues/403
         # commenting this out until that is resolved
         # set -g @catppuccin_status_background "none"
+        set -g @catppuccin_status_background "#{@thm_surface_0}"
         set -g @catppuccin_status_connect_separator "no"
         set -g @catppuccin_status_middle_separator ""
         set -g @catppuccin_status_right_separator " "
