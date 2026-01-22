@@ -1,10 +1,10 @@
 # TODO
-- [x] reboot and make sure nothing breaks
-- [x] use `single_window_aspect_ratio` option in hyprland dwindle layout
-- [x] commit and push changes
-- [x] remove references to certificate files from ssh config (I'm not using them any more anyway)
-- [-] llama.cpp
+- [ ] llama.cpp
 - [ ] Netbird
 - [ ] sshd
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
-- [ ] Steam
+- [ ] lemurs
+- [ ] `github.com/dandavision/delta`
+- [ ] <https://www.reddit.com/r/NixOS/comments/1qfgtdg/qutebrowser_is_a_themable_keyboardcentric_browser/>
+- [ ] qute browser
+- [ ] rbw bitwarden client

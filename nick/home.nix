@@ -62,6 +62,7 @@ in {
       lsof
       yazi
       btop
+      zenith-nvidia
       obsidian
       croc
       asciinema
@@ -169,12 +170,19 @@ in {
         openscad-lsp
         bambu-studio
         fw-ectool
+        framework-tool
+        framework-tool-tui
       ]
     )
     # only install these on nixos3
     (
       lib.mkIf (osConfig.networking.hostName == hosts.nixos3-hostname) [
+        openscad
+        openscad-lsp
+        bambu-studio
         fw-ectool
+        framework-tool
+        framework-tool-tui
         via
       ]
     )

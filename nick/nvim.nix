@@ -56,7 +56,7 @@
     }
 
     # LSP
-    neodev-nvim
+    lazydev-nvim
     omnisharp-extended-lsp-nvim
     {
       plugin = nvim-lspconfig;

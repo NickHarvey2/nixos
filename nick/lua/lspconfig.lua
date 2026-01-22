@@ -62,16 +62,13 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Setup neovim lua configuration
--- TODO replace with [lazydev.nvim](https://github.com/folke/lazydev.nvim)
-require('neodev').setup()
+require('lazydev').setup()
 
--- NOTE works, but not for neovim config until I do the above TODO
 vim.lsp.config('lua_ls', {
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
--- TODO launches correctly, but doesn't actually provide any hints
 vim.lsp.config('nixd', {
   on_attach = on_attach,
   capabilities = capabilities,
