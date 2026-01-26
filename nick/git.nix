@@ -5,6 +5,11 @@
     "krb5.conf filter=git-crypt diff=git-crypt"
   ];
   settings = {
+    core.pager = "delta";
+    interactive.diffFilter = "delta --color-only";
+    delta.navigate = true;
+    delta.dark = true;
+    merge.conflictStyle = "zdiff3";
     diff.sopsdiffer.textconv = "sops -d --config /dev/null";
     push.autoSetupRemove = true;
     pull.rebase = true;

@@ -3,6 +3,6 @@
   enableSshSupport = true;
   enableZshIntegration = true;
   verbose = true;
-  pinentry.package = pkgs.pinentry-curses;
+  pinentry.package = pkgs.pinentry-rofi;
   grabKeyboardAndMouse = false;
 }

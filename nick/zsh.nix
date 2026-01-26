@@ -22,15 +22,12 @@
     ls = "exa";
     ll = "exa -alh";
     tree = "exa --tree";
-    bwu = "export BW_SESSION=$(bw unlock --raw)";
-    bwl = "bw lock";
     n = "nvim .";
     secret = "sops -d $FLAKE_DIR/secrets/secrets.yaml | yq -r ";
     secrets = "yq -r 'keys[]' $FLAKE_DIR/secrets/secrets.yaml";
     picksecret = "echo \".$(secrets | gum choose)\" | { secret $(cat -) }";
     rk = "rancher kubectl";
     scu = "sops -d $FLAKE_DIR/secrets/secrets.yaml > /dev/null"; # add an alias to decrypt sops file and redirect to /dev/null, forcing the smartcard to be unlocked
-    bws = "$FLAKE_DIR/bws.sh";
     vpn = "$FLAKE_DIR/vpn.sh";
     sci = "step certificate inspect --format=json --insecure";
     decolorize = "sed 's/\\x1B\\[[0-9;]*[A-Za-z]//g'";

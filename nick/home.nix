@@ -61,7 +61,7 @@ in {
       cava
       lsof
       yazi
-      btop
+      # btop
       zenith-nvidia
       obsidian
       croc
@@ -93,13 +93,12 @@ in {
       grype
       step-cli
       gau
-      bitwarden-cli
       openssl
       pass
-      pinentry-tty
       yubikey-manager
       sops
       sslscan
+      rofi-rbw-wayland
 
       # cli tools
       jq
@@ -147,7 +146,7 @@ in {
       opentofu
       conftest
       mongosh
-      diff-so-fancy
+      delta
       clang-tools
       bear
 
@@ -235,14 +234,14 @@ in {
       target = ".config/waybar/style.css";
       source = ./waybar.style.css;
     };
-    file.btopConf = {
-      target = ".config/btop/btop.conf";
-      source = ./btop.conf;
-    };
-    file.btopTheme = {
-      target = ".config/btop/themes/catppuccin_frappe.theme";
-      source = ./btop_catppuccin_frappe.theme;
-    };
+    # file.btopConf = {
+    #   target = ".config/btop/btop.conf";
+    #   source = ./btop.conf;
+    # };
+    # file.btopTheme = {
+    #   target = ".config/btop/themes/catppuccin_frappe.theme";
+    #   source = ./btop_catppuccin_frappe.theme;
+    # };
     file.leadrConfig = {
       target = ".config/leadr/config.toml";
       source = ./leadr.config.toml;
@@ -290,6 +289,8 @@ in {
     git = import ./git.nix;
     kitty = import ./kitty.nix {pkgs = pkgs;};
     firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
+    rbw = import ./rbw.nix {pkgs = pkgs;};
+    btop = import ./btop.nix;
   };
 
   services = {
