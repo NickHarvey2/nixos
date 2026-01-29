@@ -127,7 +127,7 @@
     "$mainMod, Q, exec, $terminal"
     "$mainMod, C, killactive,"
     "$mainMod, M, exit,"
-    # "$mainMod, P, pseudo, # dwindle"
+    "$mainMod, P, pseudo, # dwindle"
     "$mainMod, J, togglesplit, # dwindle"
     "$mainMod SHIFT, L, movewindow, r"
     "$mainMod SHIFT, H, movewindow, l"
