@@ -245,11 +245,6 @@ in {
       source = ./touchpad-toggle.sh;
       executable = true;
     };
-    file.cmdListen = {
-      target = "cmdlisten.sh";
-      source = ./cmdlisten.sh;
-      executable = true;
-    };
     activation = {
       mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
       # sh
