@@ -5,7 +5,6 @@
   osConfig,
   hosts,
   hyprland_kb_opts,
-  extra_packages,
   ...
 }: let
   identities = {
