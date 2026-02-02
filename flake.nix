@@ -18,6 +18,10 @@
       url = "github:ll-nick/leadr?ref=v2.6.0";
       flake = false;
     };
+    qute-catppuccin = {
+      url = "github:catppuccin/qutebrowser";
+      flake = false;
+    };
   };
 
   outputs = {

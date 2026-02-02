@@ -144,6 +144,22 @@
         "type": "github"
       }
     },
+    "qute-catppuccin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741931053,
+        "narHash": "sha256-FmxrgpFlp+cMUdCx5HHIiLMGWML23p+pfxTKT/X0UME=",
+        "owner": "catppuccin",
+        "repo": "qutebrowser",
+        "rev": "808adc3d7d5be6fc573d6be6e9c888cb96b5d6e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "qutebrowser",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
@@ -151,7 +167,8 @@
         "leadr": "leadr",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
-        "plugin-gp-nvim": "plugin-gp-nvim"
+        "plugin-gp-nvim": "plugin-gp-nvim",
+        "qute-catppuccin": "qute-catppuccin"
       }
     }
   },

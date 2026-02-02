@@ -73,6 +73,7 @@ in {
       dust
       fastfetch
       discord
+      python314Packages.adblock
 
       # container tools
       podman-tui
@@ -245,6 +246,10 @@ in {
       source = ./touchpad-toggle.sh;
       executable = true;
     };
+    file.quteCatppuccin = {
+      target = ".config/qutebrowser/catppuccin";
+      source = inputs.qute-catppuccin;
+    };
     activation = {
       mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
       # sh
@@ -276,6 +281,7 @@ in {
     firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
     rbw = import ./rbw.nix {pkgs = pkgs;};
     btop = import ./btop.nix;
+    qutebrowser = import ./qute.nix;
   };
 
   services = {
