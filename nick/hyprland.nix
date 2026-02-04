@@ -134,7 +134,7 @@
     "$mainMod SHIFT, J, movewindow, d"
     "$mainMod SHIFT, K, movewindow, u"
     "$mainMod, Space, exec, $menu"
-    "$mainMod, B, exec, rofi-rbw"
+    "$mainMod, B, exec, rofi-rbw --typing-key-delay 10"
     "$mainMod, F, fullscreen"
     # Enable/disable touchpad
     "$mainMod, T, execr, bash ~/touchpad-toggle.sh"

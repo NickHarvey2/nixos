@@ -1,5 +1,14 @@
 {
   enable = true;
+  searchEngines = {
+    w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+    aw = "https://wiki.archlinux.org/?search={}";
+    nw = "https://wiki.nixos.org/index.php?search={}";
+    np = "https://search.nixos.org/packages?type=packages&query={}";
+    no = "https://search.nixos.org/options?type=packages&query={}";
+    DEFAULT = "https://kagi.com/search?q={}";
+    k = "https://kagi.com/search?q={}";
+  };
   settings = {
     content = {
       desktop_capture = false;

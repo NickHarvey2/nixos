@@ -74,6 +74,8 @@ in {
       fastfetch
       discord
       python314Packages.adblock
+      rofi-power-menu
+      rofi-network-manager
 
       # container tools
       podman-tui
