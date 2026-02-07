@@ -76,6 +76,7 @@ in {
       python314Packages.adblock
       rofi-power-menu
       rofi-network-manager
+      terminal-toys
 
       # container tools
       podman-tui
