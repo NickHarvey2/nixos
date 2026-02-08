@@ -3,7 +3,7 @@
   searchEngines = {
     w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
     aw = "https://wiki.archlinux.org/?search={}";
-    nw = "https://wiki.nixos.org/index.php?search={}";
+    nw = "https://wiki.nixos.org/w/index.php?search={}";
     np = "https://search.nixos.org/packages?type=packages&query={}";
     no = "https://search.nixos.org/options?type=packages&query={}";
     DEFAULT = "https://kagi.com/search?q={}";
@@ -19,6 +19,7 @@
     tabs = {
       position = "left";
       width = "10%";
+      title.format = "{index}: {audio}{current_title}";
     };
     auto_save.session = true;
     colors = {
@@ -56,6 +57,14 @@
     config.set('colors.tabs.selected.odd.bg', config.get('colors.tabs.pinned.odd.bg'))
     config.set('colors.tabs.selected.even.fg', 'black')
     config.set('colors.tabs.selected.odd.fg', 'black')
+
+    from qutebrowser.api import message
+    try:
+        from qutebrowser.mainwindow import tabwidget
+        tabwidget.TabWidget.MUTE_STRING = "󰖁 "
+        tabwidget.TabWidget.AUDIBLE_STRING = "󰕾 "
+    except (ImportError, AttributeError) as err:
+        message.error(f"Failed to change audio indicators {err}")
   '';
   quickmarks = {
     "Finance Ameren" = "https://www.ameren.com/";
@@ -97,5 +106,7 @@
     "Hyprland Wiki" = "https://wiki.hypr.land/";
     "Qmk Docs" = "https://docs.qmk.fm/";
     "Captive Portal Login" = "http://http.badssl.com/";
+    "gmail" = "https://mail.google.com";
+    "gridfinity" = "https://gridfinitygenerator.com";
   };
 }

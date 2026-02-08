@@ -6,3 +6,4 @@
 - [ ] secure boot
 - [ ] encrypted disk
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
+- [ ] <https://tidalcycles.org>
