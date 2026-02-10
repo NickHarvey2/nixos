@@ -1,4 +1,5 @@
 # TODO
+- [ ] unbound
 - [ ] llama.cpp
 - [ ] Netbird
 - [ ] sshd
