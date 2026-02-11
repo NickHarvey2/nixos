@@ -14,6 +14,7 @@
       desktop_capture = false;
       geolocation = false;
       register_protocol_handler = false;
+      tls.certificate_errors = "block";
     };
     fonts.default_family = "JetBrainsMono";
     tabs = {

@@ -135,6 +135,7 @@
     "$mainMod SHIFT, K, movewindow, u"
     "$mainMod, Space, exec, $menu"
     "$mainMod, B, exec, rofi-rbw --clear-after 15 --keybindings 'Alt+1:copy:username,Alt+2:copy:password'"
+    "$mainMod, W, exec rofi -show windows -modes \"windows:$FLAKE_DIR/window-picker.sh\""
     "$mainMod, F, fullscreen"
     # Enable/disable touchpad
     "$mainMod, T, execr, bash ~/touchpad-toggle.sh"
