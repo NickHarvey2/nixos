@@ -3,7 +3,7 @@
   kb_opts
 }: {
   # See https://wiki.hyprland.org/Configuring/Monitors/
-  monitor = ",preferred,auto,1";
+  monitor = ",preferred,auto,1.25";
 
   # See https://wiki.hyprland.org/Configuring/Keywords/
 
