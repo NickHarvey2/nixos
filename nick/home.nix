@@ -44,6 +44,10 @@ in {
           homepage = "https://github.com/ll-nick/leadr";
         };
       };
+      myPinentryPackage = lib.mkMerge [
+        (lib.mkIf (osConfig.networking.hostName == hosts.vu-hostname) pkgs.pinentry-curses)
+        (lib.mkIf (osConfig.networking.hostName != hosts.vu-hostname) pkgs.pinentry-rofi)
+      ];
     })
   ];
 
@@ -129,7 +133,7 @@ in {
       libgcc
       gcc
       pkg-config
-      dotnet-sdk_8
+      dotnet-sdk_10
       luajit
       luajitPackages.luarocks
       go
@@ -253,18 +257,18 @@ in {
       target = ".config/qutebrowser/catppuccin";
       source = inputs.qute-catppuccin;
     };
-    activation = {
-      mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
-      # sh
-      ''
-        if [[ $(ls pipe 2>/dev/null | wc -l) == 0 ]]; then
-          echo 'creating fifo "pipe"'
-          mkfifo pipe
-        else
-          echo 'fifo "pipe" already exists; skipping creation'
-        fi
-      '';
-    };
+    # activation = {
+    #   mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
+    #   # sh
+    #   ''
+    #     if [[ $(ls pipe 2>/dev/null | wc -l) == 0 ]]; then
+    #       echo 'creating fifo "pipe"'
+    #       mkfifo pipe
+    #     else
+    #       echo 'fifo "pipe" already exists; skipping creation'
+    #     fi
+    #   '';
+    # };
   };
 
   wayland.windowManager.hyprland = {
@@ -282,7 +286,7 @@ in {
     git = import ./git.nix;
     kitty = import ./kitty.nix {pkgs = pkgs;};
     firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
-    rbw = import ./rbw.nix {pkgs = pkgs;};
+    rbw = import ./rbw.nix {pinentryPackage = pkgs.myPinentryPackage;};
     btop = import ./btop.nix;
     qutebrowser = import ./qute.nix;
   };
@@ -299,7 +303,7 @@ in {
   };
 
   services = {
-    gpg-agent = import ./gpg-agent.nix {pkgs = pkgs;};
+    gpg-agent = import ./gpg-agent.nix {pinentryPackage = pkgs.myPinentryPackage;};
   };
 
   # The state version is required and should stay at the version you

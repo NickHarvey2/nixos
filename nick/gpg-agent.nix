@@ -1,8 +1,8 @@
-{pkgs}: {
+{pinentryPackage}: {
   enable = true;
   enableSshSupport = true;
   enableZshIntegration = true;
   verbose = true;
-  pinentry.package = pkgs.pinentry-rofi;
+  pinentry.package = pinentryPackage;
   grabKeyboardAndMouse = false;
 }
