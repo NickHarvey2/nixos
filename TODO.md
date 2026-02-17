@@ -1,8 +1,9 @@
 # TODO
+- [-] Netbird
 - [ ] unbound
-- [ ] llama.cpp
-- [ ] Netbird
 - [ ] sshd
+- [ ] remove FF from config in favor of qute
+- [ ] llama.cpp
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
 - [ ] secure boot
 - [ ] encrypted disk
