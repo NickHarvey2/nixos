@@ -73,6 +73,8 @@
 
           ./configuration.nix
 
+          ./unbound.nix
+
           ./${hosts.nixos2-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
