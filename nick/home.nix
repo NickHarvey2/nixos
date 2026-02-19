@@ -67,7 +67,6 @@ in {
       zenith-nvidia
       obsidian
       croc
-      asciinema
       catdocx
       catdoc
       nixos-generators
@@ -188,7 +187,6 @@ in {
         fw-ectool
         framework-tool
         framework-tool-tui
-        via
       ]
     )
   ];
