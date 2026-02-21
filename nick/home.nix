@@ -28,10 +28,6 @@
           homepage = "https://github.com/ll-nick/leadr";
         };
       };
-      myPinentryPackage = lib.mkMerge [
-        (lib.mkIf (osConfig.networking.hostName == hosts.vu-hostname) pkgs.pinentry-curses)
-        (lib.mkIf (osConfig.networking.hostName != hosts.vu-hostname) pkgs.pinentry-rofi)
-      ];
     })
   ];
 

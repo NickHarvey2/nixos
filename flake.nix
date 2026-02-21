@@ -88,6 +88,7 @@
                   ./nick/udiskie-module.nix
                   ./nick/ssh-module.nix
                   ./nick/tmux-module.nix
+                  ./nick/pinentry-rofi.nix
                 ];
 
                 home.stateVersion = "23.11";
