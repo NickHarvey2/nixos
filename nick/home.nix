@@ -5,22 +5,7 @@
   osConfig,
   hosts,
   ...
-}: let
-  identities = {
-    NickHarvey2 = {
-      email = "NickHarvey2@proton.me";
-      identityFile = "~/.ssh/NickHarvey2-id_rsa.pub";
-      signingkey = "8B675B26E0E27514";
-      keyformat = "gpg";
-    };
-    NickHarveyVu = {
-      email = "Nick.Harvey@veteransunited.com";
-      identityFile = "~/.ssh/NickHarveyVu-id_rsa";
-      signingkey = "~/.ssh/NickHarveyVu-id_rsa";
-      keyformat = "ssh";
-    };
-  };
-in {
+}: {
   nixpkgs.overlays = [
     (final: prev: {
       # overlay to make otherwise unpackaged neovim plugins available on vimPlugins
@@ -65,7 +50,6 @@ in {
       yazi
       zenith-nvidia
       obsidian
-      croc
       catdocx
       catdoc
       nixos-generators
@@ -122,11 +106,6 @@ in {
       kubectl
       vault
       rancher
-
-      # tmux plugins
-      tmuxPlugins.sensible
-      tmuxPlugins.catppuccin
-      tmuxPlugins.battery
 
       # runtimes/compilers + dev tools
       libgcc
@@ -195,14 +174,6 @@ in {
     sessionVariables = {
       ENTR_INOTIFY_WORKAROUND = 1;
       FLAKE_DIR = "/home/nick/nixos";
-      IDENTITIES_FILE = builtins.toFile "json" (builtins.toJSON identities);
-    };
-    file.pubSshKey = {
-      target = ".ssh/NickHarvey2-id_rsa.pub";
-      # derived from gpg rsa (authentication) key using `gpg2 --export-ssh-key $kid`
-      text = ''
-        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpTYNMvVq/vr7ws7MUdSKoGzDYx53Vvh8FKxeGZm2TUGjIkTRuacwdRMB1cBxwvKHkhxJp8/citR41sUbOADC4gQb/9fRGgaVuZ8NdPbN6LOeN2mJOSqOurUEVbIxGn6nIrB53JfLtzm97GtwyQ53QrMulASDU1iyaT9OPdUgpZpN3K/YgTzVLiybMfpItS0XqIUmJfnNWSaPsaokQ4mMHsO0sXA9k3VXHwH+ivNYLyjLih0YfJKunkhxoGRXthnRd1IhWSNYC0RhkOKOfWIYDC+FZY5/eyt8drX0rxBjazAs0DpkVAoeuFLcUKdkcCbL+a7nU1tFpr2F7bgh7pPaxpebHJLoUyCnLLBRkaxPyVMta93KOlbucwttw32kXAAFJ08QuaGzIHmwQC5crCq37dbvHW+owabFwTTyI0zg70WGxffyiJEAVUGXo6wVSEwv0MWeoQN6z0VaVhDKc/JcRr30werGbWf0MUY6xwCiOSCHQ9PVQE49QUKnnhI/wdwMl9B+knuvsP5H1MmU9sf2FX1hBbtGlVFn5c/wp85UTJSF0hcQelFWzJtHxZGAe6uCFEE/HykxoKn/SOvqlZk7gT80Glf/B3ECT6EbAj1yph1mPdG6gVQml6+wq2yXC0G9NO1QVCxCK+HQj8fDNYnZZlUTAOBwXbngjaqqJ+e9QtQ== openpgp:0xF0EAB9BC
-      '';
     };
     file.commonConf = {
       # By default this file is created with keyboxd set to be enabled
@@ -224,7 +195,7 @@ in {
     };
     file.mako = {
       target = ".config/mako/config";
-      source = ./config.mako;
+      text = "";
     };
     file.waybarConf = {
       target = ".config/waybar/config.jsonc";
@@ -271,9 +242,7 @@ in {
   };
 
   programs = {
-    tmux = import ./tmux.nix {pkgs = pkgs;};
     zsh = import ./zsh.nix;
-    ssh = import ./ssh.nix {identities = identities;};
     neovim = import ./nvim.nix {pkgs = pkgs;};
     gh = import ./gh.nix;
     gpg = import ./gpg.nix;

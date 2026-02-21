@@ -82,11 +82,12 @@
             home-manager = {
               extraSpecialArgs = {inherit inputs; hosts = hosts;};
               useUserPackages = true;
-              # users.nick = import ./nick/home.nix;
               users.nick = {
                 imports = [
                   ./nick/home.nix
                   ./nick/udiskie-module.nix
+                  ./nick/ssh-module.nix
+                  ./nick/tmux-module.nix
                 ];
 
                 home.stateVersion = "23.11";
