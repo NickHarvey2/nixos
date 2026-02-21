@@ -1,11 +1,12 @@
 # TODO
-- [-] Netbird
-- [ ] unbound
+- [ ] convert hypridle, hyprlock, ~hyprpaper~, and waybar config to nix
+- [ ] refactor config to make it more sane, remove need for conditionals
+- [ ] tweak hypridle settings on nixos2
 - [ ] sshd
-- [ ] remove FF from config in favor of qute
 - [ ] llama.cpp
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
 - [ ] secure boot
 - [ ] encrypted disk
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
-- [ ] <https://tidalcycles.org>
+- [ ] remove FF from config in favor of qute
+- [ ] <https://github.com/coastalwhite/lemurs>

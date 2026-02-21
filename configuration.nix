@@ -144,13 +144,9 @@
     waybar
     rofi
     libnotify
-    hyprpaper
     hypridle
     hyprlock
     swaylock
-    networkmanagerapplet
-    nwg-look
-    udiskie
     brightnessctl
     mpv
     pavucontrol

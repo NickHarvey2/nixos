@@ -54,7 +54,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "caps:swapescape";};
+              extraSpecialArgs = {inherit inputs; hosts = hosts;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -80,9 +80,17 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "";};
+              extraSpecialArgs = {inherit inputs; hosts = hosts;};
               useUserPackages = true;
-              users.nick = import ./nick/home.nix;
+              # users.nick = import ./nick/home.nix;
+              users.nick = {
+                imports = [
+                  ./nick/home.nix
+                  ./nick/udiskie-module.nix
+                ];
+
+                home.stateVersion = "23.11";
+              };
             };
           }
         ];
@@ -110,7 +118,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "caps:swapescape";};
+              extraSpecialArgs = {inherit inputs; hosts = hosts;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };
@@ -152,7 +160,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts; hyprland_kb_opts = "";};
+              extraSpecialArgs = {inherit inputs; hosts = hosts;};
               useUserPackages = true;
               users.nick = import ./nick/home.nix;
             };

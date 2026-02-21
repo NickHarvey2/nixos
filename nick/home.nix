@@ -4,7 +4,6 @@
   lib,
   osConfig,
   hosts,
-  hyprland_kb_opts,
   ...
 }: let
   identities = {
@@ -92,6 +91,7 @@ in {
       dig
       wget
       mapcidr
+      unixtools.ifconfig
 
       # security tools
       syft
@@ -210,10 +210,6 @@ in {
       target = ".gnupg/common.conf";
       text = "";
     };
-    file.hyprpaper = {
-      target = ".config/hypr/hyprpaper.conf";
-      source = ./hyprpaper.conf;
-    };
     file.hyprlock = {
       target = ".config/hypr/hyprlock.conf";
       source = ./hyprlock.conf;
@@ -271,7 +267,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = import ./hyprland.nix {lib = lib; kb_opts = hyprland_kb_opts;};
+    settings = import ./hyprland.nix;
   };
 
   programs = {
@@ -302,9 +298,12 @@ in {
 
   services = {
     gpg-agent = import ./gpg-agent.nix {pinentryPackage = pkgs.myPinentryPackage;};
+    hyprpaper = {
+      enable = true;
+      settings = {
+        preload = "~/background";
+        wallpaper = ", ~/background";
+      };
+    };
   };
-
-  # The state version is required and should stay at the version you
-  # originally installed.
-  home.stateVersion = "23.11";
 }

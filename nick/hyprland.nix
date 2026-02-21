@@ -1,7 +1,4 @@
 {
-  lib,
-  kb_opts
-}: {
   # See https://wiki.hyprland.org/Configuring/Monitors/
   monitor = ",preferred,auto,1";
 
@@ -14,10 +11,8 @@
 
   # Autostart necessary processes (like notifications daemons, status bars, etc.)
   exec-once = [
-    "udiskie &"
     "nm-applet &"
     "waybar &"
-    "hyprpaper"
     "hypridle"
   ];
 
@@ -109,7 +104,7 @@
   # https://wiki.hyprland.org/Configuring/Variables/#input
   input = {
     kb_layout = "us";
-    kb_options = kb_opts;
+    kb_options = "caps:swapescape";
     numlock_by_default = true;
     follow_mouse = 1;
     sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
