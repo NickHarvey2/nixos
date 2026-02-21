@@ -238,7 +238,6 @@
   };
 
   programs = {
-    zsh = import ./zsh.nix;
     neovim = import ./nvim.nix {pkgs = pkgs;};
     gh = import ./gh.nix;
     gpg = import ./gpg.nix;

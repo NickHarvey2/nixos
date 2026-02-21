@@ -89,6 +89,7 @@
                   ./nick/ssh-module.nix
                   ./nick/tmux-module.nix
                   ./nick/pinentry-rofi.nix
+                  ./nick/zsh-module.nix
                 ];
 
                 home.stateVersion = "23.11";
