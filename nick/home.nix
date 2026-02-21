@@ -222,7 +222,6 @@
     gh = import ./gh.nix;
     gpg = import ./gpg.nix;
     git = import ./git.nix;
-    kitty = import ./kitty.nix {pkgs = pkgs;};
     firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
     rbw = import ./rbw.nix {pinentryPackage = pkgs.myPinentryPackage;};
     btop = import ./btop.nix;

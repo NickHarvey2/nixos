@@ -48,7 +48,6 @@
           }
 
           ./configuration.nix
-
           ./${hosts.nixos1-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -72,9 +71,7 @@
           }
 
           ./configuration.nix
-
           ./unbound.nix
-
           ./${hosts.nixos2-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -91,6 +88,7 @@
                   ./nick/pinentry-rofi.nix
                   ./nick/zsh-module.nix
                   ./nick/leadr-module.nix
+                  ./nick/kitty-module.nix
                 ];
 
                 home.stateVersion = "23.11";
@@ -114,9 +112,7 @@
           }
 
           ./configuration.nix
-
           ./nvidia.nix
-
           ./${hosts.nixos3-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
