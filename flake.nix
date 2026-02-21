@@ -90,6 +90,7 @@
                   ./nick/tmux-module.nix
                   ./nick/pinentry-rofi.nix
                   ./nick/zsh-module.nix
+                  ./nick/leadr-module.nix
                 ];
 
                 home.stateVersion = "23.11";

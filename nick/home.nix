@@ -17,17 +17,6 @@
             src = inputs.plugin-gp-nvim;
           };
         };
-      leadr = prev.rustPlatform.buildRustPackage {
-        pname = "leadr";
-        version = "2.6.0";
-        cargoLock.lockFile = inputs.leadr + "/Cargo.lock";
-        src = inputs.leadr;
-        meta = with pkgs.lib; {
-          description = "A customizable CLI command manager inspired by the leader key concept in (Neo)Vim";
-          license = licenses.mit;
-          homepage = "https://github.com/ll-nick/leadr";
-        };
-      };
     })
   ];
 
@@ -95,7 +84,6 @@
       bat
       ripgrep
       grafana-loki
-      leadr
       ncdu
 
       # admin tools
@@ -200,14 +188,6 @@
     file.waybarStyle = {
       target = ".config/waybar/style.css";
       source = ./waybar.style.css;
-    };
-    file.leadrConfig = {
-      target = ".config/leadr/config.toml";
-      source = ./leadr.config.toml;
-    };
-    file.leadrMappings = {
-      target = ".config/leadr/mappings.toml";
-      source = ./leadr.mappings.toml;
     };
     file.toggleTouchpad = {
       target = "touchpad-toggle.sh";
