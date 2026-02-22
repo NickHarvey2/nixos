@@ -44,7 +44,6 @@
       dust
       fastfetch
       discord
-      python314Packages.adblock
       rofi-power-menu
       rofi-network-manager
       terminal-toys
@@ -177,10 +176,6 @@
       source = ./touchpad-toggle.sh;
       executable = true;
     };
-    file.quteCatppuccin = {
-      target = ".config/qutebrowser/catppuccin";
-      source = inputs.qute-catppuccin;
-    };
     # example activation script:
     # activation = {
     #   mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
@@ -203,18 +198,6 @@
 
   programs = {
     neovim = import ./nvim.nix {pkgs = pkgs;};
-    qutebrowser = import ./qute.nix;
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
-    };
   };
 
   services = {

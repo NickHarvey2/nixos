@@ -78,20 +78,21 @@
               users.nick = {
                 imports = [
                   ./nick/home.nix
-                  ./nick/udiskie-module.nix
                   ./nick/ssh-module.nix
                   ./nick/tmux-module.nix
-                  ./nick/pinentry-rofi.nix
                   ./nick/zsh-module.nix
                   ./nick/leadr-module.nix
-                  ./nick/kitty-module.nix
                   ./nick/gh-module.nix
                   ./nick/git-module.nix
                   ./nick/gpg-module.nix
                   ./nick/rbw-module.nix
                   ./nick/btop-module.nix
-                  ./nick/firefox-module.nix
                   ./nick/framework-module.nix
+                  ./nick/udiskie-module.nix
+                  ./nick/pinentry-rofi.nix
+                  ./nick/kitty-module.nix
+                  ./nick/firefox-module.nix
+                  ./nick/qute-module.nix
                 ];
 
                 home.stateVersion = "23.11";
