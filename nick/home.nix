@@ -6,7 +6,6 @@
   hosts,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; lib.mkMerge [
     [
       unzip
@@ -106,15 +105,8 @@
     )
   ];
 
-  home = {
-    sessionVariables = {
-      ENTR_INOTIFY_WORKAROUND = 1;
-      FLAKE_DIR = "/home/nick/nixos";
-    };
-    file.toggleTouchpad = {
-      target = "touchpad-toggle.sh";
-      source = ./touchpad-toggle.sh;
-      executable = true;
-    };
+  home.sessionVariables = {
+    ENTR_INOTIFY_WORKAROUND = 1;
+    FLAKE_DIR = "/home/nick/nixos";
   };
 }
