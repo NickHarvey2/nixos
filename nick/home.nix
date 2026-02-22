@@ -220,8 +220,6 @@
   programs = {
     neovim = import ./nvim.nix {pkgs = pkgs;};
     firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
-    rbw = import ./rbw.nix {pinentryPackage = pkgs.myPinentryPackage;};
-    btop = import ./btop.nix;
     qutebrowser = import ./qute.nix;
   };
 

@@ -92,6 +92,8 @@
                   ./nick/gh-module.nix
                   ./nick/git-module.nix
                   ./nick/gpg-module.nix
+                  ./nick/rbw-module.nix
+                  ./nick/btop-module.nix
                 ];
 
                 home.stateVersion = "23.11";
