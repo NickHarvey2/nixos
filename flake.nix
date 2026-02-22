@@ -51,7 +51,37 @@
             home-manager = {
               extraSpecialArgs = {inherit inputs; hosts = hosts;};
               useUserPackages = true;
-              users.nick = import ./nick/home.nix;
+              users.nick = {
+                imports = [
+                  ./nick/shared-packages-module.nix
+                  ./nick/nixos1-packages-module.nix
+                  ./nick/ssh-module.nix
+                  ./nick/tmux-module.nix
+                  ./nick/zsh-module.nix
+                  ./nick/leadr-module.nix
+                  ./nick/gh-module.nix
+                  ./nick/git-module.nix
+                  ./nick/gpg-module.nix
+                  ./nick/rbw-module.nix
+                  ./nick/btop-module.nix
+                  ./nick/nvim-module.nix
+                  ./nick/udiskie-module.nix
+                  ./nick/hypr-module.nix
+                  ./nick/touchpad-toggle-module.nix
+                  ./nick/pinentry-rofi.nix
+                  ./nick/kitty-module.nix
+                  ./nick/firefox-module.nix
+                  ./nick/qute-module.nix
+                ];
+
+                home.sessionVariables = {
+                  ENTR_INOTIFY_WORKAROUND = 1;
+                  FLAKE_DIR = "/home/nick/nixos";
+                };
+
+                nixpkgs.config.allowUnfree = true;
+                home.stateVersion = "23.11";
+              };
             };
           }
         ];
@@ -92,7 +122,6 @@
                   ./nick/framework-module.nix
                   ./nick/udiskie-module.nix
                   ./nick/hypr-module.nix
-                  ./nick/touchpad-toggle-module.nix
                   ./nick/pinentry-rofi.nix
                   ./nick/kitty-module.nix
                   ./nick/firefox-module.nix
