@@ -77,7 +77,8 @@
               useUserPackages = true;
               users.nick = {
                 imports = [
-                  ./nick/home.nix
+                  ./nick/shared-packages-module.nix
+                  ./nick/nixos2-packages-module.nix
                   ./nick/ssh-module.nix
                   ./nick/tmux-module.nix
                   ./nick/zsh-module.nix
@@ -97,6 +98,11 @@
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
                 ];
+
+                home.sessionVariables = {
+                  ENTR_INOTIFY_WORKAROUND = 1;
+                  FLAKE_DIR = "/home/nick/nixos";
+                };
 
                 nixpkgs.config.allowUnfree = true;
                 home.stateVersion = "23.11";
