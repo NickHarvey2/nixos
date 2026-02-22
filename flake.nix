@@ -91,6 +91,7 @@
                   ./nick/rbw-module.nix
                   ./nick/btop-module.nix
                   ./nick/firefox-module.nix
+                  ./nick/framework-module.nix
                 ];
 
                 home.stateVersion = "23.11";
