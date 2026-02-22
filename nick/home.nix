@@ -219,9 +219,6 @@
 
   programs = {
     neovim = import ./nvim.nix {pkgs = pkgs;};
-    gh = import ./gh.nix;
-    gpg = import ./gpg.nix;
-    git = import ./git.nix;
     firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
     rbw = import ./rbw.nix {pinentryPackage = pkgs.myPinentryPackage;};
     btop = import ./btop.nix;
@@ -240,7 +237,6 @@
   };
 
   services = {
-    gpg-agent = import ./gpg-agent.nix {pinentryPackage = pkgs.myPinentryPackage;};
     hyprpaper = {
       enable = true;
       settings = {

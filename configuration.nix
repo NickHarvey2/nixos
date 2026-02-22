@@ -140,7 +140,6 @@
     libgcc
     gnumake
     mako
-    xdg-desktop-portal-hyprland
     waybar
     rofi
     libnotify

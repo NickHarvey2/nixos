@@ -89,6 +89,9 @@
                   ./nick/zsh-module.nix
                   ./nick/leadr-module.nix
                   ./nick/kitty-module.nix
+                  ./nick/gh-module.nix
+                  ./nick/git-module.nix
+                  ./nick/gpg-module.nix
                 ];
 
                 home.stateVersion = "23.11";
