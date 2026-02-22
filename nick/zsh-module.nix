@@ -20,7 +20,6 @@
     shellAliases = {
       rebuild = "$FLAKE_DIR/rebuild.sh";
       pick-account = "$FLAKE_DIR/pick-account.sh";
-      wifi = "$FLAKE_DIR/wifi.sh";
       ls = "exa";
       ll = "exa -alh";
       tree = "exa --tree";
