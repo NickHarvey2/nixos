@@ -10,10 +10,6 @@
       url = "github:robitx/gp.nvim?ref=v3.9.0";
       flake = false;
     };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     leadr = {
       url = "github:ll-nick/leadr?ref=v2.6.0";
       flake = false;
@@ -94,6 +90,7 @@
                   ./nick/gpg-module.nix
                   ./nick/rbw-module.nix
                   ./nick/btop-module.nix
+                  ./nick/firefox-module.nix
                 ];
 
                 home.stateVersion = "23.11";

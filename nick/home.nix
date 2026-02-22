@@ -198,6 +198,7 @@
       target = ".config/qutebrowser/catppuccin";
       source = inputs.qute-catppuccin;
     };
+    # example activation script:
     # activation = {
     #   mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
     #   # sh
@@ -219,7 +220,6 @@
 
   programs = {
     neovim = import ./nvim.nix {pkgs = pkgs;};
-    firefox = import ./firefox.nix {inputs = inputs; pkgs = pkgs;};
     qutebrowser = import ./qute.nix;
   };
 
