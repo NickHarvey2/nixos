@@ -30,8 +30,6 @@
       dust
       fastfetch
       discord
-      rofi-power-menu
-      rofi-network-manager
       terminal-toys
 
       # container tools
@@ -57,7 +55,6 @@
       yubikey-manager
       sops
       sslscan
-      rofi-rbw-wayland
 
       # cli tools
       jq
@@ -114,62 +111,10 @@
       ENTR_INOTIFY_WORKAROUND = 1;
       FLAKE_DIR = "/home/nick/nixos";
     };
-    file.hyprlock = {
-      target = ".config/hypr/hyprlock.conf";
-      source = ./hyprlock.conf;
-    };
-    file.hypridle = {
-      target = ".config/hypr/hypridle.conf";
-      source = ./hypridle.conf;
-    };
-    file.rofi = {
-      target = ".config/rofi/config.rasi";
-      source = ./config.rasi;
-    };
-    file.mako = {
-      target = ".config/mako/config";
-      text = "";
-    };
-    file.waybarConf = {
-      target = ".config/waybar/config.jsonc";
-      source = ./waybar.config.jsonc;
-    };
-    file.waybarStyle = {
-      target = ".config/waybar/style.css";
-      source = ./waybar.style.css;
-    };
     file.toggleTouchpad = {
       target = "touchpad-toggle.sh";
       source = ./touchpad-toggle.sh;
       executable = true;
-    };
-    # example activation script:
-    # activation = {
-    #   mkFifoPipe = lib.hm.dag.entryAfter ["writeBoundary"]
-    #   # sh
-    #   ''
-    #     if [[ $(ls pipe 2>/dev/null | wc -l) == 0 ]]; then
-    #       echo 'creating fifo "pipe"'
-    #       mkfifo pipe
-    #     else
-    #       echo 'fifo "pipe" already exists; skipping creation'
-    #     fi
-    #   '';
-    # };
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    settings = import ./hyprland.nix;
-  };
-
-  services = {
-    hyprpaper = {
-      enable = true;
-      settings = {
-        preload = "~/background";
-        wallpaper = ", ~/background";
-      };
     };
   };
 }
