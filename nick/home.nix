@@ -6,20 +6,6 @@
   hosts,
   ...
 }: {
-  nixpkgs.overlays = [
-    (final: prev: {
-      # overlay to make otherwise unpackaged neovim plugins available on vimPlugins
-      vimPlugins =
-        prev.vimPlugins
-        // {
-          gp-nvim = prev.vimUtils.buildVimPlugin {
-            name = "gp";
-            src = inputs.plugin-gp-nvim;
-          };
-        };
-    })
-  ];
-
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; lib.mkMerge [
     [
@@ -95,8 +81,6 @@
       gcc
       pkg-config
       dotnet-sdk_10
-      luajit
-      luajitPackages.luarocks
       go
       go-tools
       zig
@@ -116,17 +100,6 @@
       delta
       clang-tools
       bear
-
-      # neovim stuff
-      tree-sitter
-
-      # language servers
-      nixd
-      gopls
-      lua-language-server
-      omnisharp-roslyn
-      vscode-langservers-extracted
-      terraform-ls
     ]
     # only install these on nixos2
     (
@@ -140,12 +113,6 @@
     sessionVariables = {
       ENTR_INOTIFY_WORKAROUND = 1;
       FLAKE_DIR = "/home/nick/nixos";
-    };
-    file.commonConf = {
-      # By default this file is created with keyboxd set to be enabled
-      # So create an empty file to prevent this
-      target = ".gnupg/common.conf";
-      text = "";
     };
     file.hyprlock = {
       target = ".config/hypr/hyprlock.conf";
@@ -194,10 +161,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = import ./hyprland.nix;
-  };
-
-  programs = {
-    neovim = import ./nvim.nix {pkgs = pkgs;};
   };
 
   services = {

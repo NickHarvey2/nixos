@@ -14,6 +14,13 @@
     ];
   };
 
+  home.file.commonConf = {
+    # By default this file is created with keyboxd set to be enabled
+    # So create an empty file to prevent this
+    target = ".gnupg/common.conf";
+    text = "";
+  };
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;

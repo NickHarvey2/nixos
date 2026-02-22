@@ -87,6 +87,7 @@
                   ./nick/gpg-module.nix
                   ./nick/rbw-module.nix
                   ./nick/btop-module.nix
+                  ./nick/nvim-module.nix
                   ./nick/framework-module.nix
                   ./nick/udiskie-module.nix
                   ./nick/pinentry-rofi.nix
