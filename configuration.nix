@@ -123,7 +123,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
-  security.sudo.wheelNeedsPassword = true;
+  security = {
+    sudo.wheelNeedsPassword = true;
+    pam.services.hyprlock = {};
+  };
 
   virtualisation = {
     containers.enable = true; # Enable common container config files in /etc/containers
@@ -143,9 +146,6 @@
     waybar
     rofi
     libnotify
-    hypridle
-    hyprlock
-    swaylock
     brightnessctl
     mpv
     pavucontrol

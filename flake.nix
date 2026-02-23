@@ -67,6 +67,7 @@
                   ./nick/nvim-module.nix
                   ./nick/udiskie-module.nix
                   ./nick/hypr-module.nix
+                  ./nick/suspend-module.nix
                   ./nick/touchpad-toggle-module.nix
                   ./nick/pinentry-rofi.nix
                   ./nick/kitty-module.nix
@@ -178,6 +179,7 @@
                   ./nick/framework-module.nix
                   ./nick/udiskie-module.nix
                   ./nick/hypr-module.nix
+                  ./nick/suspend-module.nix
                   ./nick/touchpad-toggle-module.nix
                   ./nick/pinentry-rofi.nix
                   ./nick/kitty-module.nix

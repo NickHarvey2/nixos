@@ -8,5 +8,6 @@
     obsidian
     discord
     llama-cpp
+    cmatrix
   ];
 }
