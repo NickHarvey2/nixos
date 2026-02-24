@@ -122,6 +122,7 @@
                   ./nick/framework-module.nix
                   ./nick/udiskie-module.nix
                   ./nick/hypr-module.nix
+                  ./nick/saver-module.nix
                   ./nick/pinentry-rofi.nix
                   ./nick/kitty-module.nix
                   ./nick/firefox-module.nix
