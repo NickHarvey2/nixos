@@ -143,7 +143,6 @@
     libgcc
     gnumake
     mako
-    waybar
     rofi
     libnotify
     brightnessctl
