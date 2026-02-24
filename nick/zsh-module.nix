@@ -2,10 +2,12 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    # autosuggestions.enable = true;
+    autosuggestions.enable = true;
     # zsh-autoenv.enable = true;
     syntaxHighlighting.enable = true;
-    initContent = ''
+    initContent =
+    # sh
+    ''
       function jwt() {
         echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
       }
@@ -13,9 +15,16 @@
         podman run -it -v $HOME/.edgerc:/root/.edgerc:ro -v .:/workdir:rw akamai/shell:v2.26.0 akamai $@ | tail -n+12
       }
       unalias gau
-      source <(leadr --zsh)
-      source <(netbird completion zsh)
+      which leadr > /dev/null
+      if (( $? == 0 )); then
+        source <(leadr --zsh)
+      fi
+      which netbird > /dev/null
+      if (( $? == 0 )); then
+        source <(netbird completion zsh)
+      fi
     '';
+    # TODO completions for podman, rancher, gh, rbw, step, dotnet, gum, dig, curl
 
     shellAliases = {
       rebuild = "$FLAKE_DIR/rebuild.sh";
