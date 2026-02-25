@@ -40,6 +40,7 @@
         geolocation = false;
         register_protocol_handler = false;
         tls.certificate_errors = "block";
+        notifications.enabled = false;
       };
       fonts.default_family = "JetBrainsMono";
       tabs = {
@@ -64,7 +65,6 @@
     perDomainSettings = {
       "https://*.google.com/*".content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:130.0) Gecko/20100101 Firefox/130";
       "https://*.google.com/*".colors.webpage.darkmode.enabled = false;
-      "https://*.google.com/*".content.notifications.enabled = true;
     };
     keyBindings = {
       normal = {

@@ -8,13 +8,6 @@
     rofi-rbw-wayland
   ];
 
-  home = {
-    file.rofi = {
-      target = ".config/rofi/config.rasi";
-      source = ./config.rasi;
-    };
-  };
-
   programs = {
     hyprlock = {
       enable = true;
@@ -183,6 +176,11 @@
         };
       };
       style = builtins.readFile ./waybar.style.css;
+    };
+    rofi = {
+      enable = true;
+      modes = [ "drun" "run" ];
+      theme = "solarized";
     };
   };
 
