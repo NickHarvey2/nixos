@@ -73,25 +73,25 @@
       };
     };
     extraConfig =
-    # py
-    ''
-      import catppuccin
-      catppuccin.setup(c, 'macchiato', True)
+      # py
+      ''
+        import catppuccin
+        catppuccin.setup(c, 'macchiato', True)
 
-      # override catppuccin colors for selected tab
-      config.set('colors.tabs.selected.even.bg', config.get('colors.tabs.pinned.even.bg'))
-      config.set('colors.tabs.selected.odd.bg', config.get('colors.tabs.pinned.odd.bg'))
-      config.set('colors.tabs.selected.even.fg', 'black')
-      config.set('colors.tabs.selected.odd.fg', 'black')
+        # override catppuccin colors for selected tab
+        config.set('colors.tabs.selected.even.bg', config.get('colors.tabs.pinned.even.bg'))
+        config.set('colors.tabs.selected.odd.bg', config.get('colors.tabs.pinned.odd.bg'))
+        config.set('colors.tabs.selected.even.fg', 'black')
+        config.set('colors.tabs.selected.odd.fg', 'black')
 
-      from qutebrowser.api import message
-      try:
-          from qutebrowser.mainwindow import tabwidget
-          tabwidget.TabWidget.MUTE_STRING = "󰖁 "
-          tabwidget.TabWidget.AUDIBLE_STRING = "󰕾 "
-      except (ImportError, AttributeError) as err:
-          message.error(f"Failed to change audio indicators {err}")
-    '';
+        from qutebrowser.api import message
+        try:
+            from qutebrowser.mainwindow import tabwidget
+            tabwidget.TabWidget.MUTE_STRING = "󰖁 "
+            tabwidget.TabWidget.AUDIBLE_STRING = "󰕾 "
+        except (ImportError, AttributeError) as err:
+            message.error(f"Failed to change audio indicators {err}")
+      '';
     quickmarks = {
       "Finance Ameren" = "https://www.ameren.com/";
       "Finance American Express" = "https://www.americanexpress.com/en-us/account/login?inav=iNavLnkLog";

@@ -49,7 +49,10 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hosts = hosts;
+              };
               useUserPackages = true;
               users.nick = {
                 imports = [
@@ -103,7 +106,10 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hosts = hosts;
+              };
               useUserPackages = true;
               users.nick = {
                 imports = [
@@ -148,10 +154,12 @@
           {
             networking.hostName = hosts.nixos3-hostname;
             services.fwupd.enable = true;
-            swapDevices = [{
-              device = "/var/lib/swapfile";
-              size = 48*1024; # 48 GB
-            }];
+            swapDevices = [
+              {
+                device = "/var/lib/swapfile";
+                size = 48 * 1024; # 48 GB
+              }
+            ];
           }
 
           ./configuration.nix
@@ -161,7 +169,10 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hosts = hosts;
+              };
               useUserPackages = true;
               users.nick = {
                 imports = [
@@ -234,7 +245,10 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              extraSpecialArgs = {inherit inputs; hosts = hosts;};
+              extraSpecialArgs = {
+                inherit inputs;
+                hosts = hosts;
+              };
               useUserPackages = true;
               users.nick = {
                 imports = [

@@ -179,13 +179,13 @@
         plugin = onedark-nvim;
         type = "lua";
         config =
-        # lua
-        ''
-          require("onedark").setup({
-            transparent = true
-          })
-          vim.cmd.colorscheme("onedark")
-        '';
+          # lua
+          ''
+            require("onedark").setup({
+              transparent = true
+            })
+            vim.cmd.colorscheme("onedark")
+          '';
       }
 
       # indentation guides on blank lines
@@ -206,12 +206,12 @@
         plugin = zk-nvim;
         type = "lua";
         config =
-        # lua
-        ''
-          require("zk").setup({
-            picker = "telescope"
-          })
-        '';
+          # lua
+          ''
+            require("zk").setup({
+              picker = "telescope"
+            })
+          '';
       }
 
       {
@@ -224,11 +224,11 @@
         plugin = zen-mode-nvim;
         type = "lua";
         config =
-        # lua
-        ''
-          require("zen-mode").setup()
-          vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true })
-        '';
+          # lua
+          ''
+            require("zen-mode").setup()
+            vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true })
+          '';
       }
     ];
     extraLuaConfig = builtins.readFile ./lua/init.lua;

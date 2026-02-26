@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.gpg = {
     enable = true;
     # disable ccid on scdaemon so it doesn't conflict with pcscd

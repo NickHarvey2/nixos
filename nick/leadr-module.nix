@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  tomlFormat = pkgs.formats.toml { };
+  tomlFormat = pkgs.formats.toml {};
   leadrConfig = {
     leadr_key = "<C-g>";
     redraw_prompt_line = true;

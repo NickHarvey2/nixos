@@ -6,24 +6,24 @@
     # zsh-autoenv.enable = true;
     syntaxHighlighting.enable = true;
     initContent =
-    # sh
-    ''
-      function jwt() {
-        echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
-      }
-      function akamai() {
-        podman run -it -v $HOME/.edgerc:/root/.edgerc:ro -v .:/workdir:rw akamai/shell:v2.26.0 akamai $@ | tail -n+12
-      }
-      unalias gau
-      which leadr > /dev/null
-      if (( $? == 0 )); then
-        source <(leadr --zsh)
-      fi
-      which netbird > /dev/null
-      if (( $? == 0 )); then
-        source <(netbird completion zsh)
-      fi
-    '';
+      # sh
+      ''
+        function jwt() {
+          echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
+        }
+        function akamai() {
+          podman run -it -v $HOME/.edgerc:/root/.edgerc:ro -v .:/workdir:rw akamai/shell:v2.26.0 akamai $@ | tail -n+12
+        }
+        unalias gau
+        which leadr > /dev/null
+        if (( $? == 0 )); then
+          source <(leadr --zsh)
+        fi
+        which netbird > /dev/null
+        if (( $? == 0 )); then
+          source <(netbird completion zsh)
+        fi
+      '';
     # TODO completions for podman, rancher, gh, rbw, step, dotnet, gum, dig, curl
 
     shellAliases = {

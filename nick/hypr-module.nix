@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     rofi-power-menu
     rofi-network-manager
@@ -179,7 +176,7 @@
     };
     rofi = {
       enable = true;
-      modes = [ "drun" "run" ];
+      modes = ["drun" "run"];
       theme = "solarized";
     };
   };
@@ -195,7 +192,7 @@
     hypridle = {
       enable = true;
       settings = {
-        general  = {
+        general = {
           # avoid running multiple hyprlock instances
           lock_cmd = "pidof hyprlock || hyprlock";
           before_sleep_cmd = "loginctl lock-session";
