@@ -188,8 +188,11 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "~/background";
-        wallpaper = ", ~/background";
+        wallpaper = {
+          monitor = "HDMI-A-1";
+          path = "~/background";
+          fit_mode = "cover";
+        };
       };
     };
     hypridle = {
@@ -401,16 +404,13 @@
         ", switch:Lid Switch, exec, hyprlock"
       ];
 
-      # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-      # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
-      # Example windowrule v1
-      # windowrule = float, ^(kitty)$
-      # Example windowrule v2
-      # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-      windowrulev2 = [
-        "suppressevent maximize, class:.*" # You'll probably like this.
-        "fullscreen, title:^(kitty-full)$"
-        "animation none, title:^(kitty-full)$"
+      windowrule = [
+        {
+          name = "screensaver kitty window";
+          "match:title" = "^(kitty-full)$";
+          fullscreen = true;
+          no_anim = true;
+        }
       ];
     };
   };
