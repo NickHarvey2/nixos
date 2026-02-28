@@ -1,4 +1,4 @@
-{...}: {
+{
   services = {
     unbound = {
       enable = true;
@@ -39,8 +39,12 @@
             "255.255.255.255/32"
             "2001:db8::/32"
           ];
+          local-zone = [
+            ''"home.arpa." static''
+          ];
           local-data = [
-            "'testnetbird83784. TXT \"qwerty\"'"
+            ''"testnetbird.home.arpa. IN TXT qwerty"''
+            ''"nixos2.home.arpa. IN A 100.90.219.187"''
           ];
         };
         forward-zone = [

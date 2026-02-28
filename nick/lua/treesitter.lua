@@ -64,5 +64,8 @@ vim.defer_fn(function()
   }
   vim.wo.foldmethod = 'expr'
   vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-  vim.api.nvim_create_autocmd({ "BufWinEnter" }, { pattern = { "*" }, command = "normal zR", }) -- unfold all on buffer open
+  -- TODO see if the following 3 lines makes folding behave the way I prefer
+  vim.opt.foldlevel = 99
+  vim.opt.foldlevelstart = 99
+  vim.opt.foldenable = true
 end, 0)

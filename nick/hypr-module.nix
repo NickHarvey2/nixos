@@ -118,7 +118,7 @@
           idle_inhibitor = {
             format = "{icon}";
             format-icons = {
-              activated = ";";
+              activated = "󰅶";
               deactivated = "󰾫";
             };
           };
@@ -156,7 +156,7 @@
             tooltip-format = "{ifname} via {gwaddr} 󰒄";
             format-linked = "{ifname} (No IP) ⚠";
             format-disconnected = "Disconnected ⚠";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
+            on-click = "rofi-network-manager";
           };
           pulseaudio = {
             format = "{volume}% {icon}  {format_source}";
@@ -182,6 +182,9 @@
   };
 
   services = {
+    mako = {
+      enable = true;
+    };
     hyprpaper = {
       enable = true;
       settings = {

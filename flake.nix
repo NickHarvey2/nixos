@@ -44,6 +44,7 @@
           }
 
           ./configuration.nix
+          ./netbird.nix
           ./${hosts.nixos1-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -100,7 +101,9 @@
           }
 
           ./configuration.nix
+          ./netbird.nix
           ./unbound.nix
+          # ./sshd.nix
           ./${hosts.nixos2-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -163,6 +166,7 @@
           }
 
           ./configuration.nix
+          ./netbird.nix
           ./nvidia.nix
           ./${hosts.nixos3-hostname}-hardware-configuration.nix
 

@@ -7,3 +7,4 @@
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
 - [ ] <https://github.com/nixpak/nixpak>
+- [ ] convert vpn.sh to rofi script

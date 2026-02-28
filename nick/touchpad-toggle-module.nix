@@ -1,11 +1,4 @@
 {
-  inputs,
-  pkgs,
-  lib,
-  osConfig,
-  hosts,
-  ...
-}: {
   home.file.toggleTouchpad = {
     target = "touchpad-toggle.sh";
     source = ./touchpad-toggle.sh;

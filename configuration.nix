@@ -2,7 +2,6 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
   ...
 }: {
@@ -91,14 +90,6 @@
 
     # Enable automatic mounting of inserted media
     udisks2.enable = true;
-
-    netbird = {
-      enable = true;
-      ui.enable = true;
-    };
-
-    # Enable the OpenSSH daemon.
-    # openssh.enable = true;
   };
 
   # Open ports in the firewall.
@@ -123,6 +114,9 @@
     home = "/home/nick";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keyFiles = [
+      ./nick/NickHarvey2-id_rsa.pub
+    ];
   };
   security = {
     sudo.wheelNeedsPassword = true;
@@ -143,8 +137,8 @@
     acpi
     libgcc
     gnumake
-    mako
-    rofi
+    # mako
+    # rofi
     libnotify
     brightnessctl
     mpv

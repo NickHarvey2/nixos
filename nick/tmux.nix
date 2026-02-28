@@ -1,4 +1,4 @@
-{pkgs}: {
+{pkgs, ...}: {
   enable = true;
   terminal = "tmux-256color";
   # Force tmux to use /tmp for sockets (WSL2 compat)
