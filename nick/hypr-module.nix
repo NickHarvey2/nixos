@@ -83,16 +83,6 @@
           modules-center = [
             "hyprland/window"
           ];
-          modules-right = [
-            "pulseaudio"
-            "network"
-            "cpu"
-            "memory"
-            "temperature"
-            "battery"
-            "idle_inhibitor"
-            "clock"
-          ];
           "hyprland/workspaces" = {
             disable-scroll = true;
             all-outputs = true;
@@ -138,18 +128,6 @@
             format = "{temperatureC}°C {icon}";
             format-icons = ["" "" ""];
           };
-          battery = {
-            states = {
-              warning = 30;
-              critical = 15;
-            };
-            format = "{capacity}% {icon}";
-            format-full = "{capacity}% {icon}";
-            format-charging = "{capacity}% ";
-            format-plugged = "{capacity}% ";
-            format-alt = "{time} {icon}";
-            format-icons = ["" "" "" "" ""];
-          };
           network = {
             format-wifi = "{essid} ({signalStrength}%) ";
             format-ethernet = "{ipaddr}/{cidr} 󰛳";
@@ -190,7 +168,8 @@
       settings = {
         splash = false;
         wallpaper = {
-          monitor = "HDMI-A-1";
+          # monitor = "HDMI-A-1";
+          monitor = ""; # set to empty to make this the fallback wallpaper
           path = "~/background";
           fit_mode = "cover";
         };
@@ -213,6 +192,7 @@
     enable = true;
     settings = {
       # See https://wiki.hyprland.org/Configuring/Monitors/
+      # monitor = name, resolution, position, scale
       monitor = ",preferred,auto,1";
 
       # See https://wiki.hyprland.org/Configuring/Keywords/
