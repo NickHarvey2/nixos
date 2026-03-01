@@ -51,6 +51,10 @@
         set -g set-titles-string '#{window_name}'
         set -g set-titles
 
+        set-option -g status-interval 5
+        set-option -g automatic-rename on
+        set-option -g automatic-rename-format '#{b:pane_current_path}:#{b:pane_current_command}'
+
         setw -g mode-keys vi
         unbind-key -T copy-mode-vi v                             # Unbind v for block toggling
         bind-key -T copy-mode-vi 'v' send -X begin-selection     # Begin selection in copy mode.

@@ -193,7 +193,10 @@
     settings = {
       # See https://wiki.hyprland.org/Configuring/Monitors/
       # monitor = name, resolution, position, scale
-      monitor = ",preferred,auto,1";
+      monitor = [
+        "HDMI-A-1,5120x1440,auto,1"
+        ",preferred,auto,1"
+      ];
 
       # See https://wiki.hyprland.org/Configuring/Keywords/
 

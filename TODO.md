@@ -1,8 +1,5 @@
 # TODO
-- [ ] move waybar battery to separate module so it is only loaded on laptops
-- [ ] fix issue where hyprland uses wrong resolution after switching monitors
-- [ ] zsh theme that includes hostname
-- [ ] tmux window auto rename to `{pwd} - {procname}`
+- [ ] rocm
 - [ ] llama.cpp as service
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
 - [ ] secure boot
@@ -10,4 +7,3 @@
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
 - [ ] <https://github.com/nixpak/nixpak>
-- [ ] convert vpn.sh to rofi script

@@ -46,7 +46,7 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "kafeitu";
       plugins = [
         "git"
         "history"
