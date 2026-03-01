@@ -42,7 +42,8 @@
         tls.certificate_errors = "block";
         notifications.enabled = false;
       };
-      fonts.default_family = "JetBrainsMono";
+      fonts.default_family = "JetBrainsMono Nerd Font";
+      session.lazy_restore = true;
       tabs = {
         position = "left";
         width = "10%";

@@ -1,4 +1,6 @@
 # TODO
+- [ ] fix treesitter
+- [ ] rip out netbird ssh client bullshit
 - [ ] sshd
 - [ ] llama.cpp as service
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)

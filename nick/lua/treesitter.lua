@@ -1,71 +1,101 @@
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
-  require('nvim-treesitter.configs').setup {
-    auto_install = false,
+  -- require('nvim-treesitter.configs').setup {
+  --   auto_install = false,
+  --
+  --   highlight = {
+  --     enable = true,
+  --     additional_vim_regex_highlighting = { "markdown" }
+  --   },
+  --   indent = { enable = true },
+  --   incremental_selection = {
+  --     enable = true,
+  --     keymaps = {
+  --       init_selection = '<c-space>',
+  --       node_incremental = '<c-space>',
+  --       scope_incremental = '<c-s>',
+  --       node_decremental = '<M-space>',
+  --     },
+  --   },
+  --   textobjects = {
+  --     select = {
+  --       enable = true,
+  --       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+  --       keymaps = {
+  --         -- You can use the capture groups defined in textobjects.scm
+  --         ['aa'] = '@parameter.outer',
+  --         ['ia'] = '@parameter.inner',
+  --         ['af'] = '@function.outer',
+  --         ['if'] = '@function.inner',
+  --         ['ac'] = '@class.outer',
+  --         ['ic'] = '@class.inner',
+  --       },
+  --     },
+  --       move = {
+  --         enable = true,
+  --         set_jumps = true, -- whether to set jumps in the jumplist
+  --         goto_next_start = {
+  --           [']m'] = '@function.outer',
+  --           [']]'] = '@class.outer',
+  --         },
+  --         goto_next_end = {
+  --           [']M'] = '@function.outer',
+  --           [']['] = '@class.outer',
+  --         },
+  --         goto_previous_start = {
+  --           ['[m'] = '@function.outer',
+  --           ['[['] = '@class.outer',
+  --         },
+  --         goto_previous_end = {
+  --           ['[M'] = '@function.outer',
+  --           ['[]'] = '@class.outer',
+  --         },
+  --       },
+  --       swap = {
+  --         enable = true,
+  --         swap_next = {
+  --           ['<leader>a'] = '@parameter.inner',
+  --         },
+  --         swap_previous = {
+  --           ['<leader>A'] = '@parameter.inner',
+  --         },
+  --       },
+  --     },
+  -- }
+  --
+  -- vim.wo.foldmethod = 'expr'
+  -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+  -- -- TODO see if the following 3 lines makes folding behave the way I prefer
+  -- vim.opt.foldlevel = 99
+  -- vim.opt.foldlevelstart = 99
+  -- vim.opt.foldenable = true
 
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { "markdown" }
-    },
-    indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = '<c-space>',
-        node_incremental = '<c-space>',
-        scope_incremental = '<c-s>',
-        node_decremental = '<M-space>',
-      },
-    },
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-        keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ['aa'] = '@parameter.outer',
-          ['ia'] = '@parameter.inner',
-          ['af'] = '@function.outer',
-          ['if'] = '@function.inner',
-          ['ac'] = '@class.outer',
-          ['ic'] = '@class.inner',
-        },
-      },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            [']m'] = '@function.outer',
-            [']]'] = '@class.outer',
-          },
-          goto_next_end = {
-            [']M'] = '@function.outer',
-            [']['] = '@class.outer',
-          },
-          goto_previous_start = {
-            ['[m'] = '@function.outer',
-            ['[['] = '@class.outer',
-          },
-          goto_previous_end = {
-            ['[M'] = '@function.outer',
-            ['[]'] = '@class.outer',
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ['<leader>a'] = '@parameter.inner',
-          },
-          swap_previous = {
-            ['<leader>A'] = '@parameter.inner',
-          },
-        },
-      },
+  -------------- OLD CONFIG ABOVE NEW BELOW ------------------------
+  local filetypes = {
+    'markdown',
+    'lua',
+    'python',
+    'nix',
+    'sh',
+    'json',
+    'yaml',
+    'toml',
+    'zig',
+    'css',
+    'html',
   }
-  vim.wo.foldmethod = 'expr'
-  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-  -- TODO see if the following 3 lines makes folding behave the way I prefer
-  vim.opt.foldlevel = 99
-  vim.opt.foldlevelstart = 99
-  vim.opt.foldenable = true
+
+  for _, filetype in ipairs(filetypes) do
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = { filetype },
+      callback = function()
+        vim.treesitter.start()
+        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo[0][0].foldmethod = 'expr'
+        vim.opt.foldlevel = 99
+        vim.opt.foldlevelstart = 99
+        vim.opt.foldenable = true
+      end,
+    })
+  end
 end, 0)
