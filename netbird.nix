@@ -6,14 +6,11 @@
   ...
 }: {
   # TODO <netbird service reconfigure --service-env NB_DISABLE_SSH_CONFIG=true>
-  services.netbird = {
-    enable = true;
-    clients.wt0 = {
-      port = 51821;
-      ui.enable = false;
-      openFirewall = true;
-      openInternalFirewall = true;
-      environment.NB_DISABLE_SSH_CONFIG = "1";
-    };
+  services.netbird.clients.default = {
+    port = 51820;
+    name = "netbird";
+    interface = "wt0";
+    hardened = false;
+    environment.NB_DISABLE_SSH_CONFIG = "1";
   };
 }
