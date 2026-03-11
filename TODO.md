@@ -10,4 +10,3 @@
 - [ ] <https://github.com/neomutt/neomutt>
 - [ ] <https://github.com/nixpak/nixpak>
 - [ ] DNS adblocking
-- [ ] <https://github.com/rvaiya/warpd>
