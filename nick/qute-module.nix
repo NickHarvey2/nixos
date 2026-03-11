@@ -62,6 +62,7 @@
           };
         };
       };
+      url.default_page = "about:blank";
     };
     perDomainSettings = {
       "https://*.google.com/*".content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:130.0) Gecko/20100101 Firefox/130";
@@ -69,8 +70,8 @@
     };
     keyBindings = {
       normal = {
-        "sm" = "cmd-set-text -s :set-mark";
-        "jm" = "cmd-set-text -s :jump-mark";
+        "e" = "set tabs.width 30%";
+        "E" = "set tabs.width 10%";
       };
     };
     extraConfig =
@@ -135,6 +136,7 @@
       "Captive Portal Login" = "http://http.badssl.com/";
       "gmail" = "https://mail.google.com";
       "gridfinity" = "https://gridfinitygenerator.com";
+      "netbird dashboard" = "https://app.netbird.io";
     };
   };
 }

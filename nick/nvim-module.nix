@@ -185,6 +185,7 @@
               transparent = true
             })
             vim.cmd.colorscheme("onedark")
+            vim.api.nvim_set_hl(0, 'Visual', {bg='#56b6c2', fg='#000000'})
           '';
       }
 

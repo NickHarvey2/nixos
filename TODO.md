@@ -2,8 +2,12 @@
 - [ ] rocm
 - [ ] llama.cpp as service
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
-- [ ] secure boot
-- [ ] encrypted disk
+- [ ] <https://github.com/andersonjoseph/jailed-agents>
+- [ ] <https://github.com/MSmaili/wiremux.nvim>
+- [ ] <https://wiki.nixos.org/wiki/Secure_Boot>
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
+- [ ] <https://github.com/neomutt/neomutt>
 - [ ] <https://github.com/nixpak/nixpak>
+- [ ] DNS adblocking
+- [ ] <https://github.com/rvaiya/warpd>

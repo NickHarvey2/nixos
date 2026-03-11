@@ -67,7 +67,7 @@ vim.keymap.set('n', '<S-TAB>', '<S-v><<esc>', { noremap = true, silent = true })
 vim.keymap.set('v', '<TAB>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('v', '<S-TAB>', '<gv', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-W>|', ':vsplit<CR><C-W>l', { noremap = true })
-vim.keymap.set({ 'n', 'v' }, '<C-W>-', ':split<CR>', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<C-W>_', ':split<CR>', { noremap = true })
 vim.keymap.set('n', '<C-PageUp>', ':bprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-PageDown>', ':bnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<A-i>', ':b#<CR>', { noremap = true, silent = true })
@@ -89,11 +89,12 @@ vim.keymap.set('v', '\'', '<esc>`>a\'<esc>`<i\'<esc>lv`>l', { noremap = true, si
 vim.keymap.set('v', '~', '<esc>`>a~<esc>`<i~<esc>lv`>l', { noremap = true, silent = true })
 vim.keymap.set('v', '`', '<esc>`>a`<esc>`<i`<esc>lv`>l', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-k>', '<esc>`<i[<esc>`>la]()<esc>h', { noremap = true, silent = true })
-
+-- in insert mode ctrl backspace should map to ctrl-w (emacs for deleting previous word)
 vim.keymap.set('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
+-- bind capital U to redo (opposite of lowercase u as undo)
 vim.keymap.set('n', 'U', '<C-r>', { noremap = true, silent = true })
-
-vim.keymap.set('n', 'yp', ':.w !cat >> ~/pipe<CR><CR>', {noremap = true, silent = true })
+-- clear quickfix list
+vim.keymap.set('n', '<leader>cqf', ':call setqflist([], "r") | cclose<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',

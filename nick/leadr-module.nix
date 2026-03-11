@@ -28,113 +28,190 @@
     panel.layout.symbols.surround = "󰅪";
   };
   leadrMappings = {
-    id.command = "date +%Y%m%d";
-    id.description = "Insert current date in YYYYMMDD format";
-    id.insert_type = "Insert";
-    id.evaluate = true;
+    id = {
+      command = "date +%Y%m%d";
+      description = "Insert current date in YYYYMMDD format";
+      insert_type = "Insert";
+      evaluate = true;
+    };
 
-    sb.command = "'#CURSOR`#COMMAND`'";
-    sb.description = "Surround with backticks";
-    sb.insert_type = "Surround";
+    sb = {
+      command = "'#CURSOR`#COMMAND`'";
+      description = "Surround with backticks";
+      insert_type = "Surround";
+    };
 
-    sq.command = "\"#COMMAND\"";
-    sq.description = "Surround with quotes";
-    sq.insert_type = "Surround";
+    sq = {
+      command = "\"#COMMAND\"";
+      description = "Surround with quotes";
+      insert_type = "Surround";
+    };
 
-    sl.command = "IFS=$'\\n' read -rd '' -A #CURSOR <<< $(#COMMAND)";
-    sl.description = "read in command as a newline delimited list";
-    sl.insert_type = "Surround";
+    sl = {
+      command = "IFS=$'\\n' read -rd '' -A #CURSOR <<< $(#COMMAND)";
+      description = "read in command as a newline delimited list";
+      insert_type = "Surround";
+    };
 
-    ay.command = " | wl-copy";
-    ay.description = "Append copy to clipboard";
-    ay.insert_type = "Append";
+    ay = {
+      command = " | wl-copy";
+      description = "Append copy to clipboard";
+      insert_type = "Append";
+    };
 
-    yx.command = "echo -n '' | wl-copy";
-    yx.description = "Clear the clipboard";
-    yx.execute = true;
+    yx = {
+      command = "echo -n '' | wl-copy";
+      description = "Clear the clipboard";
+      execute = true;
+    };
 
-    yy.command = "wl-copy '#COMMAND'";
-    yy.description = "Copy the current command to clipboard";
-    yy.insert_type = "Surround";
-    yy.execute = true;
+    yy = {
+      command = "wl-copy '#COMMAND'";
+      description = "Copy the current command to clipboard";
+      insert_type = "Surround";
+      execute = true;
+    };
 
-    y1y.command = "fc -ln -1 | wl-copy";
-    y1y.description = "Copy the previous command to clipboard";
-    y1y.execute = true;
+    y1y = {
+      command = "fc -ln -1 | wl-copy";
+      description = "Copy the previous command to clipboard";
+      execute = true;
+    };
 
-    y2y.command = "fc -ln -2 | wl-copy";
-    y2y.description = "Copy the previous two commands to clipboard";
-    y2y.execute = true;
+    y2y = {
+      command = "fc -ln -2 | wl-copy";
+      description = "Copy the previous two commands to clipboard";
+      execute = true;
+    };
 
-    y3y.command = "fc -ln -3 | wl-copy";
-    y3y.description = "Copy the previous three commands to clipboard";
-    y3y.execute = true;
+    y3y = {
+      command = "fc -ln -3 | wl-copy";
+      description = "Copy the previous three commands to clipboard";
+      execute = true;
+    };
 
-    y4y.command = "fc -ln -4 | wl-copy";
-    y4y.description = "Copy the previous four commands to clipboard";
-    y4y.execute = true;
+    y4y = {
+      command = "fc -ln -4 | wl-copy";
+      description = "Copy the previous four commands to clipboard";
+      execute = true;
+    };
 
-    y5y.command = "fc -ln -5 | wl-copy";
-    y5y.description = "Copy the previous five commands to clipboard";
-    y5y.execute = true;
+    y5y = {
+      command = "fc -ln -5 | wl-copy";
+      description = "Copy the previous five commands to clipboard";
+      execute = true;
+    };
 
-    y6y.command = "fc -ln -6 | wl-copy";
-    y6y.description = "Copy the previous six commands to clipboard";
-    y6y.execute = true;
+    y6y = {
+      command = "fc -ln -6 | wl-copy";
+      description = "Copy the previous six commands to clipboard";
+      execute = true;
+    };
 
-    y7y.command = "fc -ln -7 | wl-copy";
-    y7y.description = "Copy the previous seven commands to clipboard";
-    y7y.execute = true;
+    y7y = {
+      command = "fc -ln -7 | wl-copy";
+      description = "Copy the previous seven commands to clipboard";
+      execute = true;
+    };
 
-    y8y.command = "fc -ln -8 | wl-copy";
-    y8y.description = "Copy the previous eight commands to clipboard";
-    y8y.execute = true;
+    y8y = {
+      command = "fc -ln -8 | wl-copy";
+      description = "Copy the previous eight commands to clipboard";
+      execute = true;
+    };
 
-    y9y.command = "fc -ln -9 | wl-copy";
-    y9y.description = "Copy the previous nine commands to clipboard";
-    y9y.execute = true;
+    y9y = {
+      command = "fc -ln -9 | wl-copy";
+      description = "Copy the previous nine commands to clipboard";
+      execute = true;
+    };
 
-    y0y.command = "fc -ln -10 | wl-copy";
-    y0y.description = "Copy the previous ten commands to clipboard";
-    y0y.execute = true;
+    y0y = {
+      command = "fc -ln -10 | wl-copy";
+      description = "Copy the previous ten commands to clipboard";
+      execute = true;
+    };
 
-    gc.command = "git commit -m '#CURSOR'";
-    gc.description = "Start a Git commit";
+    gc = {
+      command = "git commit -m '#CURSOR'";
+      description = "Start a Git commit";
+    };
 
-    gs.command = "git status";
-    gs.description = "Git status";
-    gs.execute = true;
+    gs = {
+      command = "git status";
+      description = "Git status";
+      execute = true;
+    };
 
-    gd.command = "git diff";
-    gd.description = "Git diff";
-    gd.execute = true;
+    gd = {
+      command = "git diff";
+      description = "Git diff";
+      execute = true;
+    };
 
-    gD.command = "git diff --staged";
-    gD.description = "Git diff staged";
-    gD.execute = true;
+    gD = {
+      command = "git diff --staged";
+      description = "Git diff staged";
+      execute = true;
+    };
 
-    gaa.command = "git add .";
-    gaa.description = "Git add all";
-    gaa.execute = true;
+    gaa = {
+      command = "git add .";
+      description = "Git add all";
+      execute = true;
+    };
 
-    gap.command = "git add . --patch";
-    gap.description = "Git add patch -- interactively stage chunks";
-    gap.execute = true;
+    gap = {
+      command = "git add . --patch";
+      description = "Git add patch -- interactively stage chunks";
+      execute = true;
+    };
 
-    gp.command = "git push #CURSOR";
-    gp.description = "Start a git push";
+    gpu = {
+      command = "git push #CURSOR";
+      description = "Start a git push";
+    };
 
-    gl.command = "git pull";
-    gl.description = "Git pull";
-    gl.execute = true;
+    gpb = {
+      command = "git push --set-upstream origin $(git branch --show-current)";
+      description = "Start a git push of a new current local branch to remote";
+    };
 
-    gg.command = "echo UPDATESTARTUPTTY | gpg-connect-agent";
-    gg.description = "kick gpg agent";
-    gg.execute = true;
+    gl = {
+      command = "git l";
+      description = "Compact view of git history";
+      execute = true;
+    };
 
-    ps.command = "sudo ";
-    ps.description = "Prepend sudo";
-    ps.insert_type = "Prepend";
+    gpl = {
+      command = "git pull";
+      description = "Git pull";
+      execute = true;
+    };
+
+    gg = {
+      command = "echo UPDATESTARTUPTTY | gpg-connect-agent";
+      description = "kick gpg agent";
+      execute = true;
+    };
+
+    ps = {
+      command = "sudo ";
+      description = "Prepend sudo";
+      insert_type = "Prepend";
+    };
+
+    nu = {
+      command = "netbird up";
+      description = "connnect to netbird";
+      execute = true;
+    };
+
+    nd = {
+      command = "netbird down";
+      description = "disconnnect from netbird";
+      execute = true;
+    };
   };
 in {
   nixpkgs.overlays = [

@@ -41,6 +41,7 @@
         modules = [
           {
             networking.hostName = hosts.nixos1-hostname;
+            boot.kernelParams = ["snd-intel-dspcfg.dsp_driver=1"]; # Required for audio
           }
 
           ./configuration.nix
@@ -99,6 +100,7 @@
           {
             networking.hostName = hosts.nixos2-hostname;
             services.fwupd.enable = true;
+            hardware.amdgpu.opencl.enable = true; # move to rocm.nix
           }
 
           ./configuration.nix

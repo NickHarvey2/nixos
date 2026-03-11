@@ -191,6 +191,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      # "debug:disable_logs" = false;
       # See https://wiki.hyprland.org/Configuring/Monitors/
       # monitor = name, resolution, position, scale
       monitor = [
@@ -229,6 +230,10 @@
         # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
         allow_tearing = false;
         layout = "dwindle";
+      };
+
+      layout = {
+        single_window_aspect_ratio = "16 9"; # limit max width of a window to make dwindle on an ultrawide not terrible
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#ecosystem
@@ -275,7 +280,6 @@
       dwindle = {
         pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = true; # You probably want this
-        single_window_aspect_ratio = "16 9"; # limit max width of a window to make dwindle on an ultrawide not terrible
       };
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
@@ -318,6 +322,8 @@
         "$mainMod, M, exit,"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, J, togglesplit, # dwindle"
+        "$mainMod, U, exec, hyprctl keyword layout:single_window_aspect_ratio 32 9; hyprctl dispatch forcerendererreload"
+        "$mainMod, Y, exec, hyprctl keyword layout:single_window_aspect_ratio 16 9; hyprctl dispatch forcerendererreload"
         "$mainMod SHIFT, L, movewindow, r"
         "$mainMod SHIFT, H, movewindow, l"
         "$mainMod SHIFT, J, movewindow, d"

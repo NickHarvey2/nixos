@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    arduino-cli
+    openapi-tui
     unzip
     zip
     wl-clipboard
