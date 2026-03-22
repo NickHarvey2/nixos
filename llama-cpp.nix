@@ -42,6 +42,5 @@
     rocmPackages.rocminfo
     rocmPackages.clr
     rocmPackages.rocm-smi
-    llama-cpp-rocm
   ];
 }

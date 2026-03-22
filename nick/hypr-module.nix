@@ -154,7 +154,7 @@
     };
     rofi = {
       enable = true;
-      modes = ["drun" "run"];
+      modes = ["drun" "run" "window"];
       theme = "solarized";
     };
   };
@@ -321,7 +321,7 @@
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, P, pseudo, # dwindle"
-        "$mainMod, J, togglesplit, # dwindle"
+        "$mainMod, J, layoutmsg, togglesplit # dwindle"
         "$mainMod, U, exec, hyprctl keyword layout:single_window_aspect_ratio 32 9; hyprctl dispatch forcerendererreload"
         "$mainMod, Y, exec, hyprctl keyword layout:single_window_aspect_ratio 16 9; hyprctl dispatch forcerendererreload"
         "$mainMod SHIFT, L, movewindow, r"
@@ -330,7 +330,7 @@
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod, Space, exec, $menu"
         "$mainMod, B, exec, rofi-rbw --clear-after 15 --keybindings 'Alt+1:copy:username,Alt+2:copy:password'"
-        "$mainMod, W, exec, rofi -show windows -modes \"windows:$FLAKE_DIR/window-picker.sh\""
+        "$mainMod, W, exec, rofi -show windows"
         "$mainMod, N, exec, rofi-network-manager"
         "$mainMod, F, fullscreen"
         # Move focus with mainMod + arrow keys
@@ -400,6 +400,14 @@
           "match:title" = "^(kitty-full)$";
           fullscreen = true;
           no_anim = true;
+        }
+        {
+          name = "floating kitty window";
+          "match:title" = "^(kitty-float)$";
+          no_anim = true;
+          float = true;
+          center = true;
+          size = "1024 768";
         }
       ];
     };

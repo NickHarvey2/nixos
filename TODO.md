@@ -1,6 +1,6 @@
 # TODO
-- [ ] rocm
-- [ ] llama.cpp as service
+- [x] rocm
+- [x] llama.cpp as service
 - [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
 - [ ] <https://github.com/andersonjoseph/jailed-agents>
 - [ ] <https://github.com/MSmaili/wiremux.nvim>

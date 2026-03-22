@@ -35,6 +35,7 @@
       k = "https://kagi.com/search?q={}";
     };
     settings = {
+      editor.command = ["kitty" "--title" "kitty-float" "--" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l"];
       content = {
         desktop_capture = false;
         geolocation = false;
@@ -70,8 +71,10 @@
     };
     keyBindings = {
       normal = {
-        "e" = "set tabs.width 30%";
-        "E" = "set tabs.width 10%";
+        "te" = "set tabs.width 30% ;; set tabs.show always";
+        "tE" = "set tabs.width 10% ;; set tabs.show always";
+        "ta" = "set tabs.show never";
+        "tA" = "set tabs.show always";
       };
     };
     extraConfig =
