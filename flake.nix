@@ -100,13 +100,13 @@
           {
             networking.hostName = hosts.nixos2-hostname;
             services.fwupd.enable = true;
-            hardware.amdgpu.opencl.enable = true; # move to rocm.nix
           }
 
           ./configuration.nix
           ./netbird.nix
           ./unbound.nix
           ./sshd.nix
+          ./llama-cpp.nix
           ./${hosts.nixos2-hostname}-hardware-configuration.nix
 
           home-manager.nixosModules.home-manager

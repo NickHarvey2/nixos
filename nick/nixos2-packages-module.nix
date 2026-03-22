@@ -4,7 +4,6 @@
     yazi
     obsidian
     discord
-    llama-cpp
     cmatrix
   ];
 }

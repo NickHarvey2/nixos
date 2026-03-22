@@ -30,6 +30,19 @@ in {
       enable = true;
       enableDefaultConfig = false;
       matchBlocks = {
+        "nixos2" = {
+          match = "User nick Host nixos2";
+          hostname = "nixos2.home.arpa";
+          identityFile = identities.NickHarvey2.identityFile;
+          port = 5931;
+          localForwards = [
+            {
+              bind.port = 8080;
+              host.address = "127.0.0.1";
+              host.port = 8080;
+            }
+          ];
+        };
         "gitlab.redchimney.com" = {
           match = "User git Host gitlab.redchimney.com";
           identityFile = identities.NickHarveyVu.identityFile;
