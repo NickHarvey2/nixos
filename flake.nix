@@ -18,6 +18,10 @@
       url = "github:catppuccin/qutebrowser";
       flake = false;
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
