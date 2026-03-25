@@ -34,6 +34,30 @@
         top-k = "40";
         jinja = "on";
       };
+      "Qwen3.5-35B-A3B" = {
+        hf-repo = "unsloth/Qwen3.5-35B-A3B-GGUF";
+        hf-file = "Qwen3.5-35B-A3B-UD-Q8_K_XL.gguf";
+        alias = "unsloth/Qwen3.5-35B-A3B";
+        fit = "on";
+        seed = "3407";
+        temp = "1.0";
+        top-p = "0.95";
+        min-p = "0.01";
+        top-k = "40";
+        jinja = "on";
+      };
+      "DeepSeek-R1-Distill-Llama-70B" = {
+        hf-repo = "unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF";
+        hf-file = "DeepSeek-R1-Distill-Llama-70B-UD-Q5_K_XL.gguf";
+        alias = "unsloth/DeepSeek-R1-Distill-Llama-70B";
+        fit = "on";
+        seed = "3407";
+        temp = "1.0";
+        top-p = "0.95";
+        min-p = "0.01";
+        top-k = "40";
+        jinja = "on";
+      };
     };
   };
 
