@@ -31,11 +31,15 @@
       nw = "https://wiki.nixos.org/w/index.php?search={}";
       np = "https://search.nixos.org/packages?type=packages&query={}";
       no = "https://search.nixos.org/options?type=packages&query={}";
+      nm = "https://nix.dev/manual/nix/2.18/introduction?search={}";
       DEFAULT = "https://kagi.com/search?q={}";
       k = "https://kagi.com/search?q={}";
     };
     settings = {
-      editor.command = ["kitty" "--title" "kitty-float" "--" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l"];
+      editor.command = ["kitty" "--title" "kitty-float" "--" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l" "+ZenMode"];
+      hints = {
+        chars = "asdfghjklwertyuioxcvbnm";
+      };
       content = {
         desktop_capture = false;
         geolocation = false;
