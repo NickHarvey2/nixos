@@ -38,7 +38,7 @@
     settings = {
       editor.command = ["kitty" "--title" "kitty-float" "--" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l" "+ZenMode"];
       hints = {
-        chars = "asdfghjklwertyuioxcvbnm";
+        chars = "asdfghjklqwertyuiopzxcvbnm";
       };
       content = {
         desktop_capture = false;
