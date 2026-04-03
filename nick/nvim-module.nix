@@ -32,6 +32,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    initLua = builtins.readFile ./lua/init.lua;
     plugins = with pkgs.vimPlugins; [
       # Note when converting from lazy.nvim:
       # lazy automatically calls require("plugin").setup(opts)
@@ -232,6 +233,5 @@
           '';
       }
     ];
-    initLua = builtins.readFile ./lua/init.lua;
   };
 }
