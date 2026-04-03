@@ -1,9 +1,8 @@
 # TODO
-- [x] rocm
-- [x] llama.cpp as service
-- [ ] [Crush](https://github.com/charmbracelet/crush?tab=readme-ov-file#nixos--home-manager-module-usage-via-nur)
+- [ ] <https://github.com/atuinsh/atuin>
+- [ ] <https://github.com/anomalyco/opencode>
+- [ ] <https://github.com/sudo-tee/opencode.nvim>
 - [ ] <https://github.com/andersonjoseph/jailed-agents>
-- [ ] <https://github.com/MSmaili/wiremux.nvim>
 - [ ] <https://wiki.nixos.org/wiki/Secure_Boot>
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
