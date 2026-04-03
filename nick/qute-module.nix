@@ -46,6 +46,7 @@
         register_protocol_handler = false;
         tls.certificate_errors = "block";
         notifications.enabled = false;
+        autoplay = false;
       };
       fonts.default_family = "JetBrainsMono Nerd Font";
       session.lazy_restore = true;
