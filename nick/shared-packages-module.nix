@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    libqalculate
     arduino-cli
     openapi-tui
     unzip
