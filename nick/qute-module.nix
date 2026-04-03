@@ -57,7 +57,7 @@
       auto_save.session = true;
       colors = {
         webpage = {
-          darkmode.enabled = true;
+          darkmode.enabled = false;
           preferred_color_scheme = "dark";
         };
         tabs = {
