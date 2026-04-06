@@ -177,15 +177,15 @@
 
       {
         # theme inspired by the atom
-        plugin = onedark-nvim;
+        plugin = catppuccin-nvim;
         type = "lua";
         config =
           # lua
           ''
-            require("onedark").setup({
-              transparent = true
+            require("catppuccin").setup({
+              transparent_background = true
             })
-            vim.cmd.colorscheme("onedark")
+            vim.cmd.colorscheme("catppuccin-frappe")
             vim.api.nvim_set_hl(0, 'Visual', {bg='#56b6c2', fg='#000000'})
           '';
       }
