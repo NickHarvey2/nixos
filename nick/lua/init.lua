@@ -94,7 +94,7 @@ vim.keymap.set('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
 -- bind capital U to redo (opposite of lowercase u as undo)
 vim.keymap.set('n', 'U', '<C-r>', { noremap = true, silent = true })
 -- clear quickfix list
-vim.keymap.set('n', '<leader>cqf', ':call setqflist([], "r") | cclose<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fc', ':call setqflist([], "r") | cclose<CR>', { noremap = true, silent = true, desc = "Quick[F]ix [C]lear" })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',

@@ -13,19 +13,17 @@ require("gitsigns").setup({
     vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
       { buffer = bufnr, desc = 'Preview git hunk' })
     vim.keymap.set('n', '<leader>hs', require('gitsigns').stage_hunk,
-      { buffer = bufnr, desc = 'Stage git hunk' })
+      { buffer = bufnr, desc = 'Stage/Unstage git hunk' })
     vim.keymap.set('n', '<leader>hr', require('gitsigns').reset_hunk,
       { buffer = bufnr, desc = 'Reset git hunk' })
-    vim.keymap.set('n', '<leader>hu', require('gitsigns').undo_stage_hunk,
-      { buffer = bufnr, desc = 'Undo stage git hunk' })
 
     vim.keymap.set('n', '<leader>hS', require('gitsigns').stage_buffer,
       { buffer = bufnr, desc = 'Stage git buffer' })
     vim.keymap.set('n', '<leader>hR', require('gitsigns').reset_buffer,
       { buffer = bufnr, desc = 'Reset git buffer' })
 
-    vim.keymap.set('n', '<leader>hd', require('gitsigns').toggle_deleted,
-      { buffer = bufnr, desc = 'Toggle deleted lines' })
+    vim.keymap.set('n', '<leader>hP', require('gitsigns').preview_hunk_inline,
+      { buffer = bufnr, desc = 'Preview git hunk inline' })
     vim.keymap.set('n', '<leader>hq', function()
       require('gitsigns').setqflist('all')
     end, { buffer = bufnr, desc = 'List hunks in quick fix' })

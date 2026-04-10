@@ -229,7 +229,7 @@
           # lua
           ''
             require("zen-mode").setup()
-            vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true })
+            vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true, desc = "Toggle [Z]en [M]ode" })
           '';
       }
     ];

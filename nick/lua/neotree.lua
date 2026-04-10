@@ -7,6 +7,7 @@ require('neo-tree').setup({
     }
   },
   source_selector = {
+    truncation_character = "…",
     winbar = true,
     sources = {
       {
