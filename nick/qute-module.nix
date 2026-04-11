@@ -138,6 +138,10 @@
       "Cypher Speaker" = "https://callmepartario.github.io/og-csrd/#type-speaker";
       "Cypher Warrior" = "https://callmepartario.github.io/og-csrd/#type-warrior";
       "Cypher Weapons" = "https://callmepartario.github.io/og-csrd/#equipment-weapons";
+      "Cypher GM Intrusions" = "https://callmepartario.github.io/og-csrd/#special-rolls-gm-intrusion";
+      "Cypher Minor Effects" = "https://callmepartario.github.io/og-csrd/#special-rolls-minor-effect";
+      "Cypher Major Effects" = "https://callmepartario.github.io/og-csrd/#special-rolls-major-effect";
+      "Cypher Distance" = "https://callmepartario.github.io/og-csrd/#rules-distance";
       "Hyprland Hyprctl" = "https://wiki.hypr.land/Configuring/Using-hyprctl/";
       "Hyprland Wiki" = "https://wiki.hypr.land/";
       "Qmk Docs" = "https://docs.qmk.fm/";

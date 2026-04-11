@@ -108,6 +108,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 vim.api.nvim_set_hl(0, 'SpellBad', {bg='#550000', underline=true})
+vim.keymap.set('n', 'z=', require('telescope.builtin').spell_suggest(), { noremap = true, silent = true })
 
 Sops = {
   -- Function to decrypt SOPS files
