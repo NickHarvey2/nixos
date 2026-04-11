@@ -18,6 +18,7 @@
       url = "github:catppuccin/qutebrowser";
       flake = false;
     };
+    jailed-agents.url = "github:andersonjoseph/jailed-agents/main";
   };
 
   outputs = {
