@@ -1,8 +1,10 @@
 # TODO
-- [-] <https://github.com/atuinsh/atuin>
+- [x] <https://github.com/atuinsh/atuin> 
+    - [ ] atuin sync server
+- [ ] catppuccin frappe theme for: atuin, lualine, leadr
 - [ ] <https://github.com/anomalyco/opencode>
-- [ ] <https://github.com/sudo-tee/opencode.nvim>
 - [ ] <https://github.com/andersonjoseph/jailed-agents>
+- [ ] <https://github.com/sudo-tee/opencode.nvim>
 - [ ] <https://wiki.nixos.org/wiki/Secure_Boot>
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
