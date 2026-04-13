@@ -80,6 +80,7 @@
                   ./nick/kitty-module.nix
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
+                  ./nick/atuin-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -141,6 +142,7 @@
                   ./nick/kitty-module.nix
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
+                  ./nick/atuin-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -207,6 +209,7 @@
                   ./nick/kitty-module.nix
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
+                  ./nick/atuin-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -274,6 +277,7 @@
                   ./nick/btop-module.nix
                   ./nick/nvim-module.nix
                   ./nick/pinentry-curses.nix
+                  ./nick/atuin-module.nix
                 ];
 
                 home.sessionVariables = {
