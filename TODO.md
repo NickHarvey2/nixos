@@ -1,5 +1,5 @@
 # TODO
-- [ ] <https://github.com/atuinsh/atuin>
+- [-] <https://github.com/atuinsh/atuin>
 - [ ] <https://github.com/anomalyco/opencode>
 - [ ] <https://github.com/sudo-tee/opencode.nvim>
 - [ ] <https://github.com/andersonjoseph/jailed-agents>
