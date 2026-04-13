@@ -27,9 +27,9 @@ require('neo-tree').setup({
         display_name = "  Sym " -- string | nil
       },
     },
-    tabs_layout = "start",
+    tabs_layout = "active",
     content_layout = "start",
-    separator = { left = "▏", right= "▕" },
+    separator = "",
   },
   close_if_last_window = false,
   enable_git_status = true,

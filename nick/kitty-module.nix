@@ -5,7 +5,7 @@
       package = pkgs.nerd-fonts.jetbrains-mono;
       name = "JetBrainsMono Nerd Font";
     };
-    themeFile = "OneHalfDark";
+    themeFile = "Catppuccin-Frappe";
     settings = {
       background_opacity = 0.8;
       dynamic_background_opacity = true;
