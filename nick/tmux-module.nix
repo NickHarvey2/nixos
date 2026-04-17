@@ -19,7 +19,7 @@
           ''
             set -g @catppuccin_flavour 'frappe' # options: latte, frappe, macchiato, mocha
 
-            set -g @catppuccin_window_status_style "rounded"
+            set -g @catppuccin_window_status_style "rounded" # basic, rounded, slanted, custom, or none
 
             set -g @catppuccin_window_number_position "right"
             set -g @catppuccin_status_connect_separator "no"
@@ -35,10 +35,10 @@
             # https://github.com/catppuccin/tmux/issues/403
             # commenting this out until that is resolved
             # set -g @catppuccin_status_background "none"
+            # set -g @catppuccin_window_left_separator "#[bg=#{@_ctp_status_bg},reverse]#[none]"
+            # set -g @catppuccin_window_right_separator "#[fg=#{@thm_rosewater},reverse] #[none]"
+
             set -g @catppuccin_status_background "#{@thm_surface_0}"
-            set -g @catppuccin_status_connect_separator "no"
-            set -g @catppuccin_status_middle_separator ""
-            set -g @catppuccin_status_right_separator " "
           '';
       }
     ];

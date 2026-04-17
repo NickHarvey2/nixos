@@ -19,6 +19,7 @@
       flake = false;
     };
     jailed-agents.url = "github:andersonjoseph/jailed-agents/main";
+    semdiff.url = "github:Ataraxy-Labs/sem?ref=v0.3.20";
   };
 
   outputs = {
@@ -278,6 +279,7 @@
                   ./nick/nvim-module.nix
                   ./nick/pinentry-curses.nix
                   ./nick/atuin-module.nix
+                  ./nick/semdiff-module.nix
                 ];
 
                 home.sessionVariables = {
