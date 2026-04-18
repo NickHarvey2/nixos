@@ -5,5 +5,7 @@
     obsidian
     discord
     cmatrix
+    bambu-studio
+    openscad
   ];
 }
