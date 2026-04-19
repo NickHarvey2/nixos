@@ -28,7 +28,10 @@
         hf-repo = "unsloth/gpt-oss-20b-GGUF";
         hf-file = "gpt-oss-20b-UD-Q8_K_XL.gguf";
         alias = "unsloth/gpt-oss-20b";
-        c = "65536";
+        c = "131072";
+        cache-type-k = "q8_0";
+        cache-type-v = "q8_0";
+        context-shift = true;
         fit = "on";
         seed = "3407";
         temp = "1.0";
@@ -66,7 +69,7 @@
       "gemma-4-31B-it-GGUF" = {
         hf-repo = "unsloth/gemma-4-31B-it-GGUF";
         hf-file = "gemma-4-31B-it-UD-Q8_K_XL.gguf";
-        alias = "unsloth/gemma-4-31B-it-GGUF";
+        alias = "unsloth/gemma-4-31B-it";
         c = "65536";
         fit = "on";
         seed = "3407";
