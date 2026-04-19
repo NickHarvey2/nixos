@@ -7,5 +7,6 @@
     cmatrix
     bambu-studio
     openscad
+    transmission_4
   ];
 }
