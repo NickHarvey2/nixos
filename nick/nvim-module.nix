@@ -15,7 +15,7 @@
           };
           haunt-nvim = prev.vimUtils.buildVimPlugin {
             name = "haunt";
-            src = inputs.plugin-haunt.nvim;
+            src = inputs.plugin-haunt-nvim;
           };
         };
     })
@@ -224,6 +224,12 @@
         plugin = gp-nvim;
         type = "lua";
         config = builtins.readFile ./lua/gp.lua;
+      }
+
+      {
+        plugin = haunt-nvim;
+        type = "lua";
+        config = builtins.readFile ./lua/haunt.lua;
       }
 
       {

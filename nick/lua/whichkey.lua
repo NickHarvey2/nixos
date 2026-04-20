@@ -11,4 +11,5 @@ require('which-key').add {
   {'<leader>w', group = '[W]orkspace'},
   {'<leader>b', group = '[B]uffer'},
   {'<leader>t', group = '[T]able'},
+  {'<leader>a', group = 'Haunt [A]nnotation'},
 }

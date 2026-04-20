@@ -417,6 +417,23 @@
         "type": "github"
       }
     },
+    "plugin-haunt-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771867544,
+        "narHash": "sha256-Va/gfZq1T5egkKBnkVLr04mLEvGSmsrxHK5+itV3Vck=",
+        "owner": "TheNoeTrevino",
+        "repo": "haunt.nvim",
+        "rev": "666d83868bac8b38f1dc765d9da6eca4d92c826f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TheNoeTrevino",
+        "ref": "v0.8.1",
+        "repo": "haunt.nvim",
+        "type": "github"
+      }
+    },
     "qute-catppuccin": {
       "flake": false,
       "locked": {
@@ -441,6 +458,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
         "plugin-gp-nvim": "plugin-gp-nvim",
+        "plugin-haunt-nvim": "plugin-haunt-nvim",
         "qute-catppuccin": "qute-catppuccin",
         "semdiff": "semdiff"
       }
