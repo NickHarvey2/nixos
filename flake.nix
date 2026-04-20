@@ -85,6 +85,8 @@
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
                   ./nick/atuin-module.nix
+                  ./nick/semdiff-module.nix
+                  ./nick/nix-index-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -146,6 +148,8 @@
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
                   ./nick/atuin-module.nix
+                  ./nick/semdiff-module.nix
+                  ./nick/nix-index-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -212,6 +216,8 @@
                   ./nick/firefox-module.nix
                   ./nick/qute-module.nix
                   ./nick/atuin-module.nix
+                  ./nick/semdiff-module.nix
+                  ./nick/nix-index-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -280,6 +286,7 @@
                   ./nick/pinentry-curses.nix
                   ./nick/atuin-module.nix
                   ./nick/semdiff-module.nix
+                  ./nick/nix-index-module.nix
                 ];
 
                 home.sessionVariables = {
