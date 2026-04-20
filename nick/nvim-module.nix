@@ -13,6 +13,10 @@
             name = "gp";
             src = inputs.plugin-gp-nvim;
           };
+          haunt-nvim = prev.vimUtils.buildVimPlugin {
+            name = "haunt";
+            src = inputs.plugin-haunt.nvim;
+          };
         };
     })
   ];

@@ -10,6 +10,10 @@
       url = "github:robitx/gp.nvim?ref=v3.9.0";
       flake = false;
     };
+    plugin-haunt-nvim = {
+      url = "github:TheNoeTrevino/haunt.nvim?ref=v0.8.1";
+      flake = false;
+    };
     leadr = {
       url = "github:ll-nick/leadr?ref=v2.6.0";
       flake = false;
