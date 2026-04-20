@@ -7,25 +7,33 @@
   leadrConfig = {
     leadr_key = "<C-g>";
     redraw_prompt_line = true;
-    panel.enabled = true;
-    panel.delay_ms = 500;
-    panel.fail_silently = true;
-    panel.theme_name = "catppuccin-frappe";
-    panel.layout.border_type = "Rounded";
-    panel.layout.height = 10;
-    panel.layout.padding = 2;
-    panel.layout.columns.width = 40;
-    panel.layout.columns.spacing = 5;
-    panel.layout.columns.centred = false;
-    panel.layout.symbols.append = "󰌒";
-    panel.layout.symbols.arrow = "→";
-    panel.layout.symbols.evaluate = "󰊕";
-    panel.layout.symbols.execute = "󰌑";
-    panel.layout.symbols.insert = "";
-    panel.layout.symbols.prepend = "⇤";
-    panel.layout.symbols.replace = " ";
-    panel.layout.symbols.sequence_begin = "󰄾";
-    panel.layout.symbols.surround = "󰅪";
+    panel = {
+      enabled = true;
+      delay_ms = 500;
+      fail_silently = true;
+      theme_name = "catppuccin-frappe";
+      layout = {
+        border_type = "Rounded";
+        height = 10;
+        padding = 2;
+        columns = {
+          width = 40;
+          spacing = 5;
+          centred = false;
+        };
+        symbols = {
+          append = "󰌒";
+          arrow = "→";
+          evaluate = "󰊕";
+          execute = "󰌑";
+          insert = "";
+          prepend = "⇤";
+          replace = " ";
+          sequence_begin = "󰄾";
+          surround = "󰅪";
+        };
+      };
+    };
   };
   leadrMappings = {
     id = {

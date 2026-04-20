@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     bitwarden-cli
+    statix
     libqalculate
     arduino-cli
     openapi-tui

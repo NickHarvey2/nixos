@@ -6,10 +6,13 @@
   ...
 }: {
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
+  };
 
   nixpkgs.config.allowUnfree = true;
 

@@ -59,7 +59,6 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                hosts = hosts;
               };
               useUserPackages = true;
               users.nick = {
@@ -121,7 +120,6 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                hosts = hosts;
               };
               useUserPackages = true;
               users.nick = {
@@ -187,7 +185,6 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                hosts = hosts;
               };
               useUserPackages = true;
               users.nick = {
@@ -265,7 +262,6 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                hosts = hosts;
               };
               useUserPackages = true;
               users.nick = {

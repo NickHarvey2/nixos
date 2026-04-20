@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  semPkg = inputs.semdiff.packages.${pkgs.system}.default;
+  semPkg = inputs.semdiff.packages.${pkgs.stdenv.hostPlatform.system}.default;
   semdiff = pkgs.symlinkJoin {
     name = "semdiff";
     paths = [ semPkg ];
