@@ -7,20 +7,15 @@ require("gitsigns").setup({
     changedelete = { text = '~' },
   },
   on_attach = function(bufnr)
-    if string.match(vim.api.nvim_buf_get_name(bufnr),"secrets/secrets.yaml") ~= nil or string.match(vim.api.nvim_buf_get_name(bufnr),"secrets/secrets.json") ~= nil or string.match(vim.api.nvim_buf_get_name(bufnr),"secrets/secrets.ini") ~= nil or string.match(vim.api.nvim_buf_get_name(bufnr),"secrets/secrets.env") ~= nil then
+    if string.match(vim.api.nvim_buf_get_name(bufnr), "secrets/secrets.yaml") ~= nil or string.match(vim.api.nvim_buf_get_name(bufnr), "secrets/secrets.json") ~= nil or string.match(vim.api.nvim_buf_get_name(bufnr), "secrets/secrets.ini") ~= nil or string.match(vim.api.nvim_buf_get_name(bufnr), "secrets/secrets.env") ~= nil then
       return false -- do not attach
     end
-    vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
-      { buffer = bufnr, desc = 'Preview git hunk' })
-    vim.keymap.set('n', '<leader>hs', require('gitsigns').stage_hunk,
-      { buffer = bufnr, desc = 'Stage/Unstage git hunk' })
-    vim.keymap.set('n', '<leader>hr', require('gitsigns').reset_hunk,
-      { buffer = bufnr, desc = 'Reset git hunk' })
+    vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+    vim.keymap.set('n', '<leader>hs', require('gitsigns').stage_hunk, { buffer = bufnr, desc = 'Stage/Unstage git hunk' })
+    vim.keymap.set('n', '<leader>hr', require('gitsigns').reset_hunk, { buffer = bufnr, desc = 'Reset git hunk' })
 
-    vim.keymap.set('n', '<leader>hS', require('gitsigns').stage_buffer,
-      { buffer = bufnr, desc = 'Stage git buffer' })
-    vim.keymap.set('n', '<leader>hR', require('gitsigns').reset_buffer,
-      { buffer = bufnr, desc = 'Reset git buffer' })
+    vim.keymap.set('n', '<leader>hS', require('gitsigns').stage_buffer, { buffer = bufnr, desc = 'Stage git buffer' })
+    vim.keymap.set('n', '<leader>hR', require('gitsigns').reset_buffer, { buffer = bufnr, desc = 'Reset git buffer' })
 
     vim.keymap.set('n', '<leader>hP', require('gitsigns').preview_hunk_inline,
       { buffer = bufnr, desc = 'Preview git hunk inline' })
@@ -50,6 +45,5 @@ require("gitsigns").setup({
       end)
       return '<Ignore>'
     end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk in current buffer' })
-
   end,
 })
