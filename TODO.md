@@ -2,6 +2,8 @@
 - [x] <https://github.com/atuinsh/atuin> 
     - [ ] atuin sync server
 - [ ] catppuccin frappe theme for: atuin, lualine, leadr
+- [ ] <https://sr.ht/~alexdavid/jail.nix>
+- [ ] <https://github.com/nixpak/nixpak>
 - [ ] <https://github.com/anomalyco/opencode>
 - [ ] <https://github.com/andersonjoseph/jailed-agents>
 - [ ] <https://github.com/sudo-tee/opencode.nvim>
@@ -9,5 +11,4 @@
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
 - [ ] <https://github.com/neomutt/neomutt>
-- [ ] <https://github.com/nixpak/nixpak>
 - [ ] DNS adblocking
