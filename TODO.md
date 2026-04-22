@@ -1,12 +1,13 @@
 # TODO
 - [x] <https://github.com/atuinsh/atuin> 
     - [ ] atuin sync server
-- [ ] catppuccin frappe theme for: atuin, lualine, leadr
+- [ ] catppuccin frappe theme for: atuin
 - [ ] <https://sr.ht/~alexdavid/jail.nix>
 - [ ] <https://github.com/nixpak/nixpak>
 - [ ] <https://github.com/anomalyco/opencode>
 - [ ] <https://github.com/andersonjoseph/jailed-agents>
 - [ ] <https://github.com/sudo-tee/opencode.nvim>
+- [ ] <https://lightpanda.io/docs/open-source/usage>
 - [ ] <https://wiki.nixos.org/wiki/Secure_Boot>
 - [ ] <https://wiki.nixos.org/wiki/VirtualBox>
 - [ ] <https://github.com/coastalwhite/lemurs>
