@@ -45,6 +45,9 @@
         hf-file = "Qwen3.5-35B-A3B-UD-Q8_K_XL.gguf";
         alias = "unsloth/Qwen3.5-35B-A3B";
         c = "65536";
+        cache-type-k = "q8_0";
+        cache-type-v = "q8_0";
+        context-shift = true;
         fit = "on";
         seed = "3407";
         temp = "1.0";
@@ -58,6 +61,9 @@
         hf-file = "DeepSeek-R1-Distill-Llama-70B-UD-Q5_K_XL.gguf";
         alias = "unsloth/DeepSeek-R1-Distill-Llama-70B";
         c = "65536";
+        cache-type-k = "q8_0";
+        cache-type-v = "q8_0";
+        context-shift = true;
         fit = "on";
         seed = "3407";
         temp = "1.0";
@@ -66,11 +72,14 @@
         top-k = "40";
         jinja = "on";
       };
-      "gemma-4-31B-it-GGUF" = {
+      "gemma-4-31B-it" = {
         hf-repo = "unsloth/gemma-4-31B-it-GGUF";
         hf-file = "gemma-4-31B-it-UD-Q8_K_XL.gguf";
         alias = "unsloth/gemma-4-31B-it";
         c = "65536";
+        cache-type-k = "q8_0";
+        cache-type-v = "q8_0";
+        context-shift = true;
         fit = "on";
         seed = "3407";
         temp = "1.0";

@@ -95,6 +95,16 @@ require("gp").setup({
       -- system prompt (use this to specify the persona/role of the AI)
       system_prompt = require("gp.defaults").chat_system_prompt,
     },
+    {
+      provider = "llama_cpp",
+      name = "llama.cpp - gemma-4-31B-it",
+      chat = true,
+      command = false,
+      -- string with model name or table with model name and parameters
+      model = { model = "gemma-4-31B-it", temperature = 1.0, top_p = 1 },
+      -- system prompt (use this to specify the persona/role of the AI)
+      system_prompt = require("gp.defaults").chat_system_prompt,
+    },
   }
 })
 vim.keymap.set('n', '<C-g><C-g>', ':GpChatRespond<CR>', { noremap = true, silent = true })
