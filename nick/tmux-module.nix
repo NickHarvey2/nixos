@@ -24,8 +24,8 @@
             set -g @catppuccin_window_number_position "right"
             set -g @catppuccin_status_connect_separator "no"
 
-            set -g @catppuccin_window_current_text_color "#{@thm_surface_1}"
-            set -g @catppuccin_window_current_number_color "#{@thm_teal}"
+            set -g @catppuccin_window_current_text_color "#{@thm_surface_2}"
+            set -g @catppuccin_window_current_number_color "#{@thm_blue}"
             set -g @catppuccin_window_text_color "#{@thm_surface_0}"
             set -g @catppuccin_window_number_color "#{@thm_surface_2}"
             set -g @catppuccin_window_text "#W"
