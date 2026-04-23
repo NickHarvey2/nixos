@@ -157,7 +157,6 @@
         config = builtins.readFile ./lua/bbye.lua;
       }
 
-      # Lualine
       {
         plugin = lualine-nvim;
         type = "lua";
@@ -165,40 +164,23 @@
       }
 
       {
-        # Useful plugin to show you pending keybinds.
         plugin = which-key-nvim;
         type = "lua";
         config = builtins.readFile ./lua/whichkey.lua;
       }
 
       {
-        # "gc" to comment visual regions/line
-        # "gcc" to comment current line in normal mode
         plugin = comment-nvim;
         type = "lua";
         config = "require('Comment').setup()";
       }
 
       {
-        # theme inspired by the atom
         plugin = catppuccin-nvim;
         type = "lua";
-        config =
-          # lua
-          ''
-            require("catppuccin").setup({
-              flavour = "frappe", -- latte, frappe, macchiato, mocha
-              transparent_background = true,
-              integrations = {
-                lualine = true,
-              }
-            })
-            vim.cmd.colorscheme("catppuccin-frappe")
-            vim.api.nvim_set_hl(0, 'Visual', {bg='#56b6c2', fg='#000000'})
-          '';
+        config = builtins.readFile ./lua/catppuccin.lua;
       }
 
-      # indentation guides on blank lines
       {
         plugin = indent-blankline-nvim;
         type = "lua";
