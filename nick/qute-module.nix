@@ -80,6 +80,7 @@
         "tE" = "set tabs.width 10% ;; set tabs.show always";
         "ta" = "set tabs.show never";
         "tA" = "set tabs.show always";
+        "cm" = "clear-messages";
       };
     };
     extraConfig =
