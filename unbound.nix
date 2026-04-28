@@ -7,7 +7,7 @@
         server = {
           # use-syslog = false;
           # logfile = "/tmp/unbound.log";
-          verbosity = 0;
+          verbosity = 2;
           interface = [
             "100.90.219.187"
             "127.0.0.1"
@@ -18,6 +18,7 @@
             "100.90.237.100 allow"
             "100.90.219.187 allow"
             "100.90.49.176 allow"
+            "100.90.24.122 allow"
           ];
           harden-glue = true;
           harden-dnssec-stripped = true;
