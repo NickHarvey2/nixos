@@ -1,6 +1,7 @@
 {
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox";
     policies = {
       BlockAboutConfig = false;
       DefaultDownloadDirectory = "\${home}/Downloads";

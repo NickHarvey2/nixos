@@ -105,6 +105,7 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
+      withUWSM = true;
     };
 
     steam.enable = true;

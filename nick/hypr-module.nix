@@ -190,6 +190,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland.enable = true;
     settings = {
       # "debug:disable_logs" = false;
       # See https://wiki.hyprland.org/Configuring/Monitors/

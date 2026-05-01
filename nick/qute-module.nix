@@ -36,6 +36,9 @@
       k = "https://kagi.com/search?q={}";
     };
     settings = {
+      # disable GPU acceleration due to bug in qt6-webengine 6.11
+      # see <https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-webengine/-/work_items/11>
+      qt.force_software_rendering = "chromium";
       editor.command = ["kitty" "--title" "kitty-float" "--" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l" "+ZenMode"];
       hints = {
         chars = "asdfghjklqwertyuiopzxcvbnm";

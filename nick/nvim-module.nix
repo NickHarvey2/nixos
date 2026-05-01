@@ -36,6 +36,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withRuby = false;
+    withPython3 = false;
     initLua = builtins.readFile ./lua/init.lua;
     plugins = with pkgs.vimPlugins; [
       # Note when converting from lazy.nvim:
