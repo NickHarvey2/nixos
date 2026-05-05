@@ -277,6 +277,7 @@
               users.nick = {
                 imports = [
                   ./nick/shared-packages-module.nix
+                  ./nick/vu-packages-module.nix
                   ./nick/ssh-module.nix
                   ./nick/tmux-module.nix
                   ./nick/zsh-module.nix

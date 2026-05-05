@@ -3,7 +3,6 @@
     bitwarden-cli
     statix
     libqalculate
-    arduino-cli
     openapi-tui
     unzip
     zip
@@ -30,12 +29,9 @@
     wget
     mapcidr
     unixtools.ifconfig
-    syft
-    grype
     step-cli
     gau
     openssl
-    pass
     yubikey-manager
     sops
     sslscan
@@ -47,10 +43,6 @@
     eza
     bat
     ripgrep
-    grafana-loki
-    kubectl
-    vault
-    rancher
     libgcc
     gcc
     pkg-config
@@ -67,10 +59,7 @@
     entr
     lazygit
     sqlite
-    powershell
     opentofu
-    conftest
-    mongosh
     delta
     clang-tools
     bear
