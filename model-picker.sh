@@ -28,3 +28,5 @@ fi
 
 curl http://127.0.0.1:8080/models/load -d "{\"model\":\"$SELECTED\"}"
 gum spin --title="Loading $SELECTED" -- bash -c "while [[ \$(curl -s http://127.0.0.1:8080/models | jq -r '.data[] | select(.id == \"$SELECTED\") | .status.value') != \"loaded\" ]]; do sleep 1; done"
+
+curl -s http://127.0.0.1:8080/models | jq -c '.data[] | {"name":.id,"status":.status.value}' | jq -r '[.name, .status] | @csv' | gum table --columns model,status --print

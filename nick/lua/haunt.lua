@@ -1,6 +1,6 @@
 local haunt = require("haunt.api")
 local haunt_picker = require("haunt.picker")
-local haunt_sk = require("haunt.sidekick")
+-- local haunt_sk = require("haunt.sidekick")
 
 require('haunt').setup({
   sign = "",

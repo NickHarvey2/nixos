@@ -1,12 +1,3 @@
-vim.keymap.set('n', '<C-g><C-g>',
-  ":lua vim.notify('Plugin not loaded, use :LoadGp to load it', vim.log.levels.ERROR, { title = 'gp.nvim' })<CR>",
-  { noremap = true, silent = true })
-vim.keymap.set('n', '<C-g><C-n>',
-  ":lua vim.notify('Plugin not loaded, use :LoadGp to load it', vim.log.levels.ERROR, { title = 'gp.nvim' })<CR>",
-  { noremap = true, silent = true })
-
-local chat_dir = vim.fn.getcwd() .. "/Chats"
-
 local system_prompt = 
 "You are a general AI assistant.\n\n" ..
 "The user provided the additional info about how they would like you to respond:\n\n" ..
@@ -19,7 +10,7 @@ local system_prompt =
 "- Take a deep breath; You've got this!"
 
 require("gp").setup({
-  chat_dir = chat_dir,
+  chat_dir = vim.fn.getcwd() .. "/Chats",
   providers = {
     openai = {
       disable = false,
@@ -72,7 +63,7 @@ require("gp").setup({
       chat = true,
       command = false,
       -- string with model name or table with model name and parameters
-      model = { model = "Qwen3-Coder-Next", temperature = 1.0, top_p = 1 },
+      model = { model = "unsloth/Qwen3-Coder-Next-GGUF:Q4_K_XL", temperature = 1.0, top_p = 1 },
       -- system prompt (use this to specify the persona/role of the AI)
       system_prompt = system_prompt,
     },
@@ -82,7 +73,7 @@ require("gp").setup({
       chat = true,
       command = false,
       -- string with model name or table with model name and parameters
-      model = { model = "gpt-oss-20b", temperature = 1.0, top_p = 1 },
+      model = { model = "unsloth/gpt-oss-20b-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
       -- system prompt (use this to specify the persona/role of the AI)
       system_prompt = system_prompt,
     },
@@ -92,7 +83,7 @@ require("gp").setup({
       chat = true,
       command = false,
       -- string with model name or table with model name and parameters
-      model = { model = "Qwen3.5-35B-A3B", temperature = 1.0, top_p = 1 },
+      model = { model = "unsloth/Qwen3.5-35B-A3B-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
       -- system prompt (use this to specify the persona/role of the AI)
       system_prompt = system_prompt,
     },
@@ -102,22 +93,39 @@ require("gp").setup({
       chat = true,
       command = false,
       -- string with model name or table with model name and parameters
-      model = { model = "DeepSeek-R1-Distill-Llama-70B", temperature = 1.0, top_p = 1 },
+      model = { model = "unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF:Q5_K_XL", temperature = 1.0, top_p = 1 },
       -- system prompt (use this to specify the persona/role of the AI)
       system_prompt = system_prompt,
     },
     {
       provider = "llama_cpp",
-      name = "llama.cpp - gemma-4-31B-it",
+      name = "llama.cpp - gemma-4-31B-it-Q4_K_M",
       chat = true,
       command = false,
       -- string with model name or table with model name and parameters
-      model = { model = "gemma-4-31B-it", temperature = 1.0, top_p = 1 },
+      model = { model = "unsloth/gemma-4-31B-it-GGUF:Q4_K_M", temperature = 1.0, top_p = 1 },
       -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = require("gp.defaults").chat_system_prompt,
+      system_prompt = system_prompt,
+    },
+    {
+      provider = "llama_cpp",
+      name = "llama.cpp - gemma-4-31B-it-Q4-XL",
+      chat = true,
+      command = false,
+      -- string with model name or table with model name and parameters
+      model = { model = "unsloth/gemma-4-31B-it-GGUF:Q4_K_XL", temperature = 1.0, top_p = 1 },
+      -- system prompt (use this to specify the persona/role of the AI)
+      system_prompt = system_prompt,
+    },
+    {
+      provider = "llama_cpp",
+      name = "llama.cpp - gemma-4-31B-it-Q8-XL",
+      chat = true,
+      command = false,
+      -- string with model name or table with model name and parameters
+      model = { model = "unsloth/gemma-4-31B-it-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
+      -- system prompt (use this to specify the persona/role of the AI)
+      system_prompt = system_prompt,
     },
   }
 })
-vim.keymap.set('n', '<C-g><C-g>', ':GpChatRespond<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-g><C-n>', ':GpChatNew<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-g><C-a>', ':GpNextAgent<CR>', { noremap = true, silent = true })
