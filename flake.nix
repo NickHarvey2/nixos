@@ -24,6 +24,10 @@
     };
     jailed-agents.url = "github:andersonjoseph/jailed-agents/main";
     semdiff.url = "github:Ataraxy-Labs/sem?ref=v0.3.20";
+    anthropic-skills = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -287,6 +291,7 @@
                   ./nick/atuin-module.nix
                   ./nick/semdiff-module.nix
                   ./nick/nix-index-module.nix
+                  ./nick/claude-code-module.nix
                 ];
 
                 home.sessionVariables = {
