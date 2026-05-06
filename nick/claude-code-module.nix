@@ -14,6 +14,11 @@
     marketplaces = {};
     skills = {
       pdf = "${inputs.anthropic-skills}/skills/pdf";
+      docx = "${inputs.anthropic-skills}/skills/docx";
+      pptx = "${inputs.anthropic-skills}/skills/pptx";
+      lxsx = "${inputs.anthropic-skills}/skills/lxsx";
+      skill-creator = "${inputs.anthropic-skills}/skills/skill-creator";
+      theme-factory = "${inputs.anthropic-skills}/skills/theme-factory";
     };
     settings = {};
   };
