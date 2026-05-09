@@ -13,7 +13,7 @@
       delta.dark = true;
       merge.conflictStyle = "zdiff3";
       diff.sopsdiffer.textconv = "sops -d --config /dev/null";
-      push.autoSetupRemove = true;
+      push.autoSetupRemote = true;
       pull.rebase = true;
       diff.algorithm = "histogram";
       branch.sort = "-committerdate";

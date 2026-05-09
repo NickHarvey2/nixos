@@ -43,6 +43,31 @@
       nixos2-hostname = "nixos2";
       nixos3-hostname = "nixos3";
     };
+    desktopModules = [
+      ./nick/udiskie-module.nix
+      ./nick/hypr-module.nix
+      ./nick/waybar-nobattery-module.nix
+      ./nick/pinentry-rofi.nix
+      ./nick/kitty-module.nix
+      ./nick/firefox-module.nix
+      ./nick/qute-module.nix
+    ];
+    terminalModules = [
+      ./nick/nix-index-module.nix
+      ./nick/semdiff-module.nix
+      ./nick/atuin-module.nix
+      ./nick/nvim-module.nix
+      ./nick/btop-module.nix
+      ./nick/rbw-module.nix
+      ./nick/gpg-module.nix
+      ./nick/git-module.nix
+      ./nick/gh-module.nix
+      ./nick/leadr-module.nix
+      ./nick/zsh-module.nix
+      ./nick/tmux-module.nix
+      ./nick/ssh-module.nix
+      ./nick/shared-packages-module.nix
+    ];
   in {
     nixosConfigurations = {
       "${hosts.nixos1-hostname}" = nixpkgs.lib.nixosSystem {
@@ -66,31 +91,10 @@
               };
               useUserPackages = true;
               users.nick = {
-                imports = [
-                  ./nick/shared-packages-module.nix
+                imports = desktopModules ++ terminalModules ++ [
                   ./nick/nixos1-packages-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/tmux-module.nix
-                  ./nick/zsh-module.nix
-                  ./nick/leadr-module.nix
-                  ./nick/gh-module.nix
-                  ./nick/git-module.nix
-                  ./nick/gpg-module.nix
-                  ./nick/rbw-module.nix
-                  ./nick/btop-module.nix
-                  ./nick/nvim-module.nix
-                  ./nick/udiskie-module.nix
-                  ./nick/hypr-module.nix
-                  ./nick/waybar-battery-module.nix
                   ./nick/suspend-module.nix
                   ./nick/touchpad-toggle-module.nix
-                  ./nick/pinentry-rofi.nix
-                  ./nick/kitty-module.nix
-                  ./nick/firefox-module.nix
-                  ./nick/qute-module.nix
-                  ./nick/atuin-module.nix
-                  ./nick/semdiff-module.nix
-                  ./nick/nix-index-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -129,31 +133,10 @@
               };
               useUserPackages = true;
               users.nick = {
-                imports = [
-                  ./nick/shared-packages-module.nix
+                imports = desktopModules ++ terminalModules ++ [
                   ./nick/nixos2-packages-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/tmux-module.nix
-                  ./nick/zsh-module.nix
-                  ./nick/leadr-module.nix
-                  ./nick/gh-module.nix
-                  ./nick/git-module.nix
-                  ./nick/gpg-module.nix
-                  ./nick/rbw-module.nix
-                  ./nick/btop-module.nix
-                  ./nick/nvim-module.nix
-                  ./nick/framework-module.nix
-                  ./nick/udiskie-module.nix
-                  ./nick/hypr-module.nix
-                  ./nick/waybar-nobattery-module.nix
                   ./nick/saver-module.nix
-                  ./nick/pinentry-rofi.nix
-                  ./nick/kitty-module.nix
-                  ./nick/firefox-module.nix
-                  ./nick/qute-module.nix
-                  ./nick/atuin-module.nix
-                  ./nick/semdiff-module.nix
-                  ./nick/nix-index-module.nix
+                  ./nick/framework-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -196,32 +179,11 @@
               };
               useUserPackages = true;
               users.nick = {
-                imports = [
-                  ./nick/shared-packages-module.nix
+                imports = desktopModules ++ terminalModules ++ [
                   ./nick/nixos3-packages-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/tmux-module.nix
-                  ./nick/zsh-module.nix
-                  ./nick/leadr-module.nix
-                  ./nick/gh-module.nix
-                  ./nick/git-module.nix
-                  ./nick/gpg-module.nix
-                  ./nick/rbw-module.nix
-                  ./nick/btop-module.nix
-                  ./nick/nvim-module.nix
-                  ./nick/framework-module.nix
-                  ./nick/udiskie-module.nix
-                  ./nick/hypr-module.nix
-                  ./nick/waybar-battery-module.nix
                   ./nick/suspend-module.nix
                   ./nick/touchpad-toggle-module.nix
-                  ./nick/pinentry-rofi.nix
-                  ./nick/kitty-module.nix
-                  ./nick/firefox-module.nix
-                  ./nick/qute-module.nix
-                  ./nick/atuin-module.nix
-                  ./nick/semdiff-module.nix
-                  ./nick/nix-index-module.nix
+                  ./nick/framework-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -275,23 +237,9 @@
               };
               useUserPackages = true;
               users.nick = {
-                imports = [
-                  ./nick/shared-packages-module.nix
+                imports = terminalModules ++ [
                   ./nick/vu-packages-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/tmux-module.nix
-                  ./nick/zsh-module.nix
-                  ./nick/leadr-module.nix
-                  ./nick/gh-module.nix
-                  ./nick/git-module.nix
-                  ./nick/gpg-module.nix
-                  ./nick/rbw-module.nix
-                  ./nick/btop-module.nix
-                  ./nick/nvim-module.nix
                   ./nick/pinentry-curses.nix
-                  ./nick/atuin-module.nix
-                  ./nick/semdiff-module.nix
-                  ./nick/nix-index-module.nix
                   ./nick/claude-code-module.nix
                 ];
 

@@ -58,7 +58,6 @@
     gum
     entr
     lazygit
-    sqlite
     opentofu
     delta
     clang-tools
