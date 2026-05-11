@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +32,6 @@
   outputs = {
     # self,
     nixpkgs,
-    nixos-wsl,
     home-manager,
     ...
   } @ inputs: let
@@ -189,64 +187,6 @@
                 ];
 
                 home.sessionVariables = {
-                  FLAKE_DIR = "/home/nick/nixos";
-                };
-
-                nixpkgs.config.allowUnfree = true;
-                home.stateVersion = "23.11";
-              };
-            };
-          }
-        ];
-      };
-
-      "${hosts.vu-hostname}" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules = [
-          nixos-wsl.nixosModules.default
-          {
-            wsl = {
-              enable = true;
-              defaultUser = "nick";
-              wslConf = {
-                user.default = "nick";
-                automount.enabled = true;
-              };
-              usbip = {
-                enable = true;
-                autoAttach = [
-                  "2-1"
-                  "2-2"
-                  "2-3"
-                ];
-                snippetIpAddress = "127.0.0.1";
-              };
-            };
-          }
-
-          {
-            networking.hostName = hosts.vu-hostname;
-          }
-
-          ./wsl-configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-              useUserPackages = true;
-              users.nick = {
-                imports = terminalModules ++ [
-                  ./nick/vu-packages-module.nix
-                  ./nick/pinentry-curses.nix
-                  ./nick/claude-code-module.nix
-                ];
-
-                home.sessionVariables = {
-                  ENTR_INOTIFY_WORKAROUND = 1;
                   FLAKE_DIR = "/home/nick/nixos";
                 };
 
