@@ -46,7 +46,6 @@
     desktopModules = [
       ./nick/udiskie-module.nix
       ./nick/hypr-module.nix
-      ./nick/waybar-nobattery-module.nix
       ./nick/pinentry-rofi.nix
       ./nick/kitty-module.nix
       ./nick/firefox-module.nix
@@ -94,6 +93,7 @@
                 imports = desktopModules ++ terminalModules ++ [
                   ./nick/nixos1-packages-module.nix
                   ./nick/suspend-module.nix
+                  ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
                 ];
 
@@ -136,6 +136,7 @@
                 imports = desktopModules ++ terminalModules ++ [
                   ./nick/nixos2-packages-module.nix
                   ./nick/saver-module.nix
+                  ./nick/waybar-nobattery-module.nix
                   ./nick/framework-module.nix
                 ];
 
@@ -182,6 +183,7 @@
                 imports = desktopModules ++ terminalModules ++ [
                   ./nick/nixos3-packages-module.nix
                   ./nick/suspend-module.nix
+                  ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
                   ./nick/framework-module.nix
                 ];
