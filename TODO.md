@@ -1,10 +1,14 @@
 # TODO
+- [ ] split out private flake
+- [ ] update haunt.nvim to 1.0
 - [x] <https://github.com/atuinsh/atuin> 
     - [ ] atuin sync server
+- [ ] flake for leadr
+- [ ] home-manager PR for leadr
 - [ ] <https://sr.ht/~alexdavid/jail.nix>
 - [ ] <https://github.com/nixpak/nixpak>
 - [ ] <https://github.com/anomalyco/opencode>
-- [ ] <https://github.com/andersonjoseph/jailed-agents>
+- [x] <https://github.com/andersonjoseph/jailed-agents>
 - [ ] <https://github.com/sudo-tee/opencode.nvim>
 - [ ] <https://lightpanda.io/docs/open-source/usage>
 - [ ] <https://wiki.nixos.org/wiki/Secure_Boot>
