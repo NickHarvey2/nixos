@@ -258,5 +258,8 @@
         ];
       };
     };
+    lib = {
+      terminalModules = terminalModules;
+    };
   };
 }
