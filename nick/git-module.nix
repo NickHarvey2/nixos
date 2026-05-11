@@ -1,7 +1,6 @@
 {
   programs.git = {
     enable = true;
-    signing.format = "openpgp";
     attributes = [
       "*secrets.yaml diff=sopsdiffer"
       "krb5.conf filter=git-crypt diff=git-crypt"
