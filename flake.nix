@@ -214,7 +214,6 @@
     };
     lib = {
       terminalModules = terminalModules;
-      nickHarvey2-pubkey = builtins.readFile ./nick/NickHarvey2-id_rsa.pub;
     };
   };
 }
