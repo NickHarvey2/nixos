@@ -62,9 +62,17 @@
       ./nick/leadr-module.nix
       ./nick/zsh-module.nix
       ./nick/tmux-module.nix
-      ./nick/ssh-module.nix
       ./nick/shared-packages-module.nix
     ];
+    identities = {
+      NickHarvey2 = {
+        name = "NickHarvey2";
+        email = "NickHarvey2@proton.me";
+        identityFile = "~/.ssh/NickHarvey2-id_rsa.pub";
+        signingkey = "8B675B26E0E27514";
+        keyformat = "openpgp";
+      };
+    };
   in {
     nixosConfigurations = {
       "${hosts.nixos1-hostname}" = nixpkgs.lib.nixosSystem {
@@ -85,6 +93,7 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
+                identities = identities;
               };
               useUserPackages = true;
               users.nick = {
@@ -93,6 +102,7 @@
                   ./nick/suspend-module.nix
                   ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
+                  ./nick/ssh-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -128,6 +138,7 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
+                identities = identities;
               };
               useUserPackages = true;
               users.nick = {
@@ -136,6 +147,7 @@
                   ./nick/saver-module.nix
                   ./nick/waybar-nobattery-module.nix
                   ./nick/framework-module.nix
+                  ./nick/ssh-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -175,6 +187,7 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
+                identities = identities;
               };
               useUserPackages = true;
               users.nick = {
@@ -184,6 +197,7 @@
                   ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
                   ./nick/framework-module.nix
+                  ./nick/ssh-module.nix
                 ];
 
                 home.sessionVariables = {
