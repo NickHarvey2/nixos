@@ -1,7 +1,7 @@
 {identities, ...}: {
   programs.git = {
     signing = {
-      format = "openpgp";
+      format = identities.NickHarvey2.keyformat;
       key = identities.NickHarvey2.signingKey;
       signByDefault = true;
     };
