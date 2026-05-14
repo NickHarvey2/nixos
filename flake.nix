@@ -36,7 +36,6 @@
     ...
   } @ inputs: let
     hosts = {
-      vu-hostname = "VUHL-J9VJKN3";
       nixos1-hostname = "nixos";
       nixos2-hostname = "nixos2";
       nixos3-hostname = "nixos3";
