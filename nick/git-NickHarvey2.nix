@@ -2,7 +2,7 @@
   programs.git = {
     signing = {
       format = identities.NickHarvey2.keyformat;
-      key = identities.NickHarvey2.signingKey;
+      key = identities.NickHarvey2.signingkey;
       signByDefault = true;
     };
     settings = {

@@ -102,6 +102,7 @@
                   ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
                   ./nick/ssh-module.nix
+                  ./nick/git-NickHarvey2.nix
                 ];
 
                 home.sessionVariables = {
@@ -147,6 +148,7 @@
                   ./nick/waybar-nobattery-module.nix
                   ./nick/framework-module.nix
                   ./nick/ssh-module.nix
+                  ./nick/git-NickHarvey2.nix
                 ];
 
                 home.sessionVariables = {
@@ -197,6 +199,7 @@
                   ./nick/touchpad-toggle-module.nix
                   ./nick/framework-module.nix
                   ./nick/ssh-module.nix
+                  ./nick/git-NickHarvey2.nix
                 ];
 
                 home.sessionVariables = {
