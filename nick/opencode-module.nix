@@ -2,13 +2,22 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+let
+  jailed-agents = inputs.jailed-agents.lib.${pkgs.stdenv.hostPlatform.system};
+  combinators = jailed-agents.internals.jail.combinators;
+in {
   programs.opencode = {
     enable = true;
-    package = inputs.jailed-agents.lib.${pkgs.stdenv.hostPlatform.system}.makeJailedOpencode {
+    package = jailed-agents.makeJailedOpencode {
       name = "jailed-opencode";
       extraPkgs = with pkgs; [ nodejs python3 ];
-      extraReadonlyDirs = [ "/nix/store" ];
+      extraReadonlyDirs = [
+        "/nix/store"
+      ];
+      baseJailOptions = jailed-agents.commonJailOptions ++ [
+        (combinators.try-fwd-env "XDG_RUNTIME_DIR")
+      ];
     };
     enableMcpIntegration = true;
     skills = {
