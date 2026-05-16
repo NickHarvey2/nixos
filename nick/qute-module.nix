@@ -2,10 +2,9 @@
   inputs,
   pkgs,
   config,
+  jail,
   ...
-}: let
-  jail = inputs.jail-nix.lib.init pkgs;
-in {
+}: {
   home.packages = with pkgs; [
     python314Packages.adblock
   ];

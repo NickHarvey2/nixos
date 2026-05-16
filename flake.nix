@@ -84,10 +84,13 @@
         keyformat = "openpgp";
       };
     };
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { system = system; };
+    jail = inputs.jail-nix.lib.init pkgs;
   in {
     nixosConfigurations = {
       "${hosts.nixos1-hostname}" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         specialArgs = {inherit inputs;};
         modules = [
           {
@@ -104,7 +107,8 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                identities = identities;
+                inherit identities;
+                inherit jail;
               };
               useUserPackages = true;
               users.nick = {
@@ -130,7 +134,7 @@
       };
 
       "${hosts.nixos2-hostname}" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         specialArgs = {inherit inputs;};
         modules = [
           {
@@ -150,7 +154,8 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                identities = identities;
+                inherit identities;
+                inherit jail;
               };
               useUserPackages = true;
               users.nick = {
@@ -177,7 +182,7 @@
       };
 
       "${hosts.nixos3-hostname}" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         specialArgs = {inherit inputs;};
         modules = [
           {
@@ -201,7 +206,8 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                identities = identities;
+                inherit identities;
+                inherit jail;
               };
               useUserPackages = true;
               users.nick = {
@@ -213,6 +219,7 @@
                   ./nick/framework-module.nix
                   ./nick/ssh-module.nix
                   ./nick/git-NickHarvey2.nix
+                  ./nick/opencode-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -228,7 +235,7 @@
       };
     };
     lib = {
-      terminalModules = terminalModules;
+      inherit terminalModules;
     };
   };
 }

@@ -221,24 +221,19 @@
       execute = true;
     };
   };
+  leadr = pkgs.rustPlatform.buildRustPackage {
+    pname = "leadr";
+    version = "2.6.0";
+    cargoLock.lockFile = inputs.leadr + "/Cargo.lock";
+    src = inputs.leadr;
+    meta = with pkgs.lib; {
+      description = "A customizable CLI command manager inspired by the leader key concept in (Neo)Vim";
+      license = licenses.mit;
+      homepage = "https://github.com/ll-nick/leadr";
+    };
+  };
 in {
-  nixpkgs.overlays = [
-    (final: prev: {
-      leadr = prev.rustPlatform.buildRustPackage {
-        pname = "leadr";
-        version = "2.6.0";
-        cargoLock.lockFile = inputs.leadr + "/Cargo.lock";
-        src = inputs.leadr;
-        meta = with pkgs.lib; {
-          description = "A customizable CLI command manager inspired by the leader key concept in (Neo)Vim";
-          license = licenses.mit;
-          homepage = "https://github.com/ll-nick/leadr";
-        };
-      };
-    })
-  ];
-
-  home.packages = with pkgs; [
+  home.packages = [
     leadr
   ];
 
