@@ -10,19 +10,11 @@ UNLOADED=$(echo $MODELS | jq -r 'select(.status == "unloaded") | .name')
 if [[ -z $LOADED ]]; then
     SELECTED=$(echo $MODELS | jq -r '[.name, .status, "load"] | @csv' | gum table --columns model,status,action -r1)
 else
-    SELECTED=$(echo $MODELS | jq -r --arg loaded $LOADED '[.name, .status, (if .status == "loaded" then "unload" else "load (will unload \($loaded))" end)] | @csv' | gum table --columns model,status,action -r1)
+    SELECTED=$(echo $MODELS | jq -r --arg loaded $LOADED '[.name, .status, (if .status == "loaded" then "unload" else "load" end)] | @csv' | gum table --columns model,status,action -r1)
 fi
 if [[ -z $SELECTED ]]; then
     echo 'Cancelled'
-    exit 0
-fi
-
-if [[ -n $LOADED ]]; then
-    curl http://127.0.0.1:8080/models/unload -d "{\"model\":\"$LOADED\"}"
-    gum spin --title="Unloading $LOADED" -- bash -c "while [[ \$(curl -s http://127.0.0.1:8080/models | jq -r '.data[] | select(.id == \"$LOADED\") | .status.value') != \"unloaded\" ]]; do sleep 1; done"
-fi
-
-if [[ $SELECTED == $LOADED ]]; then
+    curl -s http://127.0.0.1:8080/models | jq -c '.data[] | {"name":.id,"status":.status.value}' | jq -r '[.name, .status] | @csv' | gum table --columns model,status --print
     exit 0
 fi
 

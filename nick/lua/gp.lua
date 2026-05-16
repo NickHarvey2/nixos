@@ -127,5 +127,17 @@ require("gp").setup({
       -- system prompt (use this to specify the persona/role of the AI)
       system_prompt = system_prompt,
     },
+    {
+      provider = "llama_cpp",
+      name = "llama.cpp - gemma-4-26B-it-UD-Q8-K-XL",
+      chat = true,
+      command = false,
+      -- string with model name or table with model name and parameters
+      model = { model = "unsloth/gemma-4-26B-A4B-it-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
+      -- system prompt (use this to specify the persona/role of the AI)
+      system_prompt = system_prompt,
+    },
   }
 })
+
+vim.keymap.set('n', '<C-g>c', ':GpChatNew<CR>', { noremap = true, silent = true })
