@@ -1,8 +1,11 @@
 {
   inputs,
   pkgs,
+  config,
   ...
-}: {
+}: let
+  jail = inputs.jail-nix.lib.init pkgs;
+in {
   home.packages = with pkgs; [
     python314Packages.adblock
   ];
@@ -25,6 +28,19 @@
 
   programs.qutebrowser = {
     enable = true;
+    package = jail "jailed-qute" pkgs.qutebrowser (with jail.combinators; [
+      network
+      gui
+      gpu
+      (readonly "/nix/store")
+      (readonly "${config.home.homeDirectory}/.config/qutebrowser")
+      (readonly "${config.home.homeDirectory}/.cache/qutebrowser")
+      (readwrite "${config.home.homeDirectory}/.local/share/qutebrowser")
+      (readwrite "${config.home.homeDirectory}/Downloads")
+      (add-pkg-deps [
+        pkgs.python314Packages.adblock
+      ])
+    ]);
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";

@@ -21,8 +21,20 @@
       url = "github:catppuccin/qutebrowser";
       flake = false;
     };
-    jailed-agents.url = "github:andersonjoseph/jailed-agents/main";
-    semdiff.url = "github:Ataraxy-Labs/sem?ref=v0.3.20";
+    jail-nix = {
+      url = "sourcehut:~alexdavid/jail.nix";
+    };
+    jailed-agents = {
+      url = "github:andersonjoseph/jailed-agents/main";
+      inputs = {
+        jail-nix.follows = "jail-nix";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    semdiff = {
+      url = "github:Ataraxy-Labs/sem?ref=v0.3.20";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     anthropic-skills = {
       url = "github:anthropics/skills";
       flake = false;
