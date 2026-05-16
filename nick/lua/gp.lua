@@ -140,4 +140,12 @@ require("gp").setup({
   }
 })
 
-vim.keymap.set('n', '<C-g>c', ':GpChatNew<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-g>n', function()
+  vim.cmd('GpChatNew')
+  vim.schedule(function()
+    vim.cmd('normal! G')
+    vim.wo.conceallevel = 0
+  end)
+end, { noremap = true, silent = true })
+
+vim.keymap.set({'n', 'i'}, '<C-g><C-g>', ':GpChatRespond<CR>', { noremap = true, silent = true })

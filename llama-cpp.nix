@@ -5,7 +5,7 @@
     package = pkgs.llama-cpp-rocm;
     port = 8080;
     host = "127.0.0.1";
-    extraFlags = [ "-ngl" "999" ];
+    extraFlags = [ "-ngl" "999" "--flash-attn" "on"];
     modelsPreset = {
       "unsloth/Qwen3-Coder-Next-GGUF:Q4_K_XL" = {
         hf-repo = "unsloth/Qwen3-Coder-Next-GGUF";

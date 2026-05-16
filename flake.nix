@@ -149,6 +149,7 @@
                   ./nick/framework-module.nix
                   ./nick/ssh-module.nix
                   ./nick/git-NickHarvey2.nix
+                  ./nick/opencode-module.nix
                 ];
 
                 home.sessionVariables = {

@@ -1,6 +1,7 @@
 # TODO
-- [ ] split out private flake
-- [ ] update haunt.nvim to 1.0
+- [ ] captive-browser
+- [x] split out private flake
+- [x] update haunt.nvim to 1.0
 - [x] <https://github.com/atuinsh/atuin> 
     - [ ] atuin sync server
 - [ ] flake for leadr
