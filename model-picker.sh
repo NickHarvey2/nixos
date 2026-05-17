@@ -18,6 +18,12 @@ if [[ -z $SELECTED ]]; then
     exit 0
 fi
 
+if [[ $SELECTED == $LOADED ]]; then
+    curl http://127.0.0.1:8080/models/unload -d "{\"model\":\"$SELECTED\"}"
+    gum spin --title="Unloading $SELECTED" -- bash -c "while [[ \$(curl -s http://127.0.0.1:8080/models | jq -r '.data[] | select(.id == \"$SELECTED\") | .status.value') != \"unloaded\" ]]; do sleep 1; done"
+    exit 0
+fi
+
 curl http://127.0.0.1:8080/models/load -d "{\"model\":\"$SELECTED\"}"
 gum spin --title="Loading $SELECTED" -- bash -c "while [[ \$(curl -s http://127.0.0.1:8080/models | jq -r '.data[] | select(.id == \"$SELECTED\") | .status.value') != \"loaded\" ]]; do sleep 1; done"
 

@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    uv
+    poppler-utils
     bitwarden-cli
     statix
     libqalculate

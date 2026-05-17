@@ -36,6 +36,7 @@
       (readonly "${config.home.homeDirectory}/.cache/qutebrowser")
       (readwrite "${config.home.homeDirectory}/.local/share/qutebrowser")
       (readwrite "${config.home.homeDirectory}/Downloads")
+      (readwrite "/run/dbus/system_bus_socket")
       (add-pkg-deps [
         pkgs.python314Packages.adblock
       ])
