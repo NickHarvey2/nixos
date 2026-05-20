@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    android-tools
+    libarchive
     cava
-    yazi
     obsidian
     discord
     cmatrix

@@ -23,8 +23,14 @@
         if (( $? == 0 )); then
           source <(netbird completion zsh)
         fi
+        function y() {
+          local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+          command yazi "$@" --cwd-file="$tmp"
+          IFS= read -r -d "" cwd < "$tmp"
+          [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+          command rm -f -- "$tmp"
+        }
       '';
-    # TODO completions for podman, rancher, gh, rbw, step, dotnet, gum, dig, curl
 
     shellAliases = {
       rebuild = "$FLAKE_DIR/rebuild.sh";

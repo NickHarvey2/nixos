@@ -74,6 +74,7 @@
       ./nick/zsh-module.nix
       ./nick/tmux-module.nix
       ./nick/shared-packages-module.nix
+      ./nick/yazi-module.nix
     ];
     identities = {
       NickHarvey2 = {

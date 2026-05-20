@@ -16,6 +16,7 @@ in {
         poppler-utils
         uv
         dotnet-sdk_10
+        nix
       ];
       extraReadonlyDirs = [
         "/nix/store"
