@@ -19,6 +19,9 @@ vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
+-- enable built in undotree plugin and create a keybind to open/close it
+vim.cmd('packadd nvim.undotree')
+vim.keymap.set('n', '<leader>U', ':Undotree<CR>')
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true

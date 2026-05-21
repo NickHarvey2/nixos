@@ -38,26 +38,6 @@ require("gp").setup({
   },
   agents = {
     {
-      provider = "openai",
-      name = "ChatGPT5.2",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "gpt-5.2", temperature = 1.1, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "openai_vu",
-      name = "ChatGPT5.2 - VU",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "gpt-5.2", temperature = 1.1, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
       provider = "llama_cpp",
       name = "llama.cpp - Qwen3-Coder-Next",
       chat = true,

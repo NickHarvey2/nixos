@@ -23,7 +23,7 @@
     enableSshSupport = true;
     enableZshIntegration = true;
     verbose = true;
-    pinentry.package = pkgs.myPinentryPackage;
+    pinentry.package = pkgs.pinentry-rofi;
     grabKeyboardAndMouse = false;
   };
 }

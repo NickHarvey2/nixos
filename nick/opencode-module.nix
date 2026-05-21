@@ -1,10 +1,28 @@
 {
   inputs,
   pkgs,
+  models,
   ...
 }: let
   jailed-agents = inputs.jailed-agents.lib.${pkgs.stdenv.hostPlatform.system};
   combinators = jailed-agents.internals.jail.combinators;
+  attrsToRemoveForOpencode = [
+    "hf-repo"
+    "hf-file"
+    "alias"
+    "name"
+    "c"
+    "cache-type-k"
+    "cache-type-v"
+    "context-shift"
+    "fit"
+    "seed"
+    "temp"
+    "top-p"
+    "min-p"
+    "top-k"
+    "jinja"
+  ];
 in {
   programs.opencode = {
     enable = true;
@@ -13,6 +31,7 @@ in {
       extraPkgs = with pkgs; [
         nodejs
         python3
+        python315Packages.pytest
         poppler-utils
         uv
         dotnet-sdk_10
@@ -44,17 +63,7 @@ in {
         options = {
           baseURL = "http://127.0.0.1:8080/v1";
         };
-        models = {
-          "unsloth/gemma-4-26B-A4B-it-GGUF:Q8_K_XL" = {
-            name = "Gemma-4 26B A4B";
-          };
-          "unsloth/gemma-4-31B-it-GGUF:Q8_K_XL" = {
-            name = "Gemma-4 31B";
-          };
-          "unsloth/Qwen3-Coder-Next-GGUF:Q4_K_XL" = {
-            name = "Qwen3 Coder Next";
-          };
-        };
+        models = builtins.mapAttrs (k: v: removeAttrs v attrsToRemoveForOpencode) models;
       };
     };
   };

@@ -2,25 +2,16 @@
   inputs,
   pkgs,
   ...
-}: {
-  nixpkgs.overlays = [
-    (final: prev: {
-      # overlay to make otherwise unpackaged neovim plugins available on vimPlugins
-      vimPlugins =
-        prev.vimPlugins
-        // {
-          gp-nvim = prev.vimUtils.buildVimPlugin {
-            name = "gp";
-            src = inputs.plugin-gp-nvim;
-          };
-          haunt-nvim = prev.vimUtils.buildVimPlugin {
-            name = "haunt";
-            src = inputs.plugin-haunt-nvim;
-          };
-        };
-    })
-  ];
-
+}: let
+  gp-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "gp";
+    src = inputs.plugin-gp-nvim;
+  };
+  haunt-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "haunt";
+    src = inputs.plugin-haunt-nvim;
+  };
+in {
   home.packages = with pkgs; [
     luajit
     luajitPackages.luarocks

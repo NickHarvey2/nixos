@@ -67,7 +67,6 @@
       ./nick/nvim-module.nix
       ./nick/btop-module.nix
       ./nick/rbw-module.nix
-      ./nick/gpg-module.nix
       ./nick/git-module.nix
       ./nick/gh-module.nix
       ./nick/leadr-module.nix
@@ -76,15 +75,14 @@
       ./nick/shared-packages-module.nix
       ./nick/yazi-module.nix
     ];
-    identities = {
-      NickHarvey2 = {
-        name = "NickHarvey2";
-        email = "NickHarvey2@proton.me";
-        identityFile = "~/.ssh/NickHarvey2-id_rsa.pub";
-        signingkey = "8B675B26E0E27514";
-        keyformat = "openpgp";
-      };
-    };
+    personalTerminalModules = [
+      ./nick/gpg-module.nix
+      ./nick/ssh-module.nix
+      ./nick/git-NickHarvey2.nix
+      ./nick/opencode-module.nix
+    ];
+    identities = import ./identities.nix;
+    models = import ./models.nix;
     system = "x86_64-linux";
     pkgs = import nixpkgs { system = system; };
     jail = inputs.jail-nix.lib.init pkgs;
@@ -92,7 +90,9 @@
     nixosConfigurations = {
       "${hosts.nixos1-hostname}" = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           {
             networking.hostName = hosts.nixos1-hostname;
@@ -110,16 +110,15 @@
                 inherit inputs;
                 inherit identities;
                 inherit jail;
+                inherit models;
               };
               useUserPackages = true;
               users.nick = {
-                imports = desktopModules ++ terminalModules ++ [
+                imports = desktopModules ++ terminalModules ++ personalTerminalModules ++ [
                   ./nick/nixos1-packages-module.nix
                   ./nick/suspend-module.nix
                   ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/git-NickHarvey2.nix
                 ];
 
                 home.sessionVariables = {
@@ -136,7 +135,10 @@
 
       "${hosts.nixos2-hostname}" = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          inherit models;
+        };
         modules = [
           {
             networking.hostName = hosts.nixos2-hostname;
@@ -157,17 +159,15 @@
                 inherit inputs;
                 inherit identities;
                 inherit jail;
+                inherit models;
               };
               useUserPackages = true;
               users.nick = {
-                imports = desktopModules ++ terminalModules ++ [
+                imports = desktopModules ++ terminalModules ++ personalTerminalModules ++ [
                   ./nick/nixos2-packages-module.nix
                   ./nick/saver-module.nix
                   ./nick/waybar-nobattery-module.nix
                   ./nick/framework-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/git-NickHarvey2.nix
-                  ./nick/opencode-module.nix
                 ];
 
                 home.sessionVariables = {
@@ -184,7 +184,9 @@
 
       "${hosts.nixos3-hostname}" = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           {
             networking.hostName = hosts.nixos3-hostname;
@@ -209,18 +211,16 @@
                 inherit inputs;
                 inherit identities;
                 inherit jail;
+                inherit models;
               };
               useUserPackages = true;
               users.nick = {
-                imports = desktopModules ++ terminalModules ++ [
+                imports = desktopModules ++ terminalModules ++ personalTerminalModules ++ [
                   ./nick/nixos3-packages-module.nix
                   ./nick/suspend-module.nix
                   ./nick/waybar-battery-module.nix
                   ./nick/touchpad-toggle-module.nix
                   ./nick/framework-module.nix
-                  ./nick/ssh-module.nix
-                  ./nick/git-NickHarvey2.nix
-                  ./nick/opencode-module.nix
                 ];
 
                 home.sessionVariables = {
