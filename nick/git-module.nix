@@ -10,6 +10,7 @@
       interactive.diffFilter = "delta --color-only";
       delta.navigate = true;
       delta.dark = true;
+      delta.side-by-side = true;
       merge.conflictStyle = "zdiff3";
       diff.sopsdiffer.textconv = "sops -d --config /dev/null";
       push.autoSetupRemote = true;

@@ -55,7 +55,6 @@
     desktopModules = [
       ./nick/udiskie-module.nix
       ./nick/hypr-module.nix
-      ./nick/pinentry-rofi.nix
       ./nick/kitty-module.nix
       ./nick/firefox-module.nix
       ./nick/qute-module.nix
