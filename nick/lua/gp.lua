@@ -9,18 +9,35 @@ local system_prompt =
 "- Don't elide any code from your output if the answer requires coding.\n" ..
 "- Take a deep breath; You've got this!"
 
+local gp_models_json = '<GP_MODELS_JSON>'
+
+local function load_gp_agents()
+  local ok, models_data = pcall(vim.fn.json_decode, gp_models_json)
+  if not ok then
+    return {}
+  end
+
+  local agents = {}
+  for _, m in ipairs(models_data) do
+    table.insert(agents, {
+      provider = "llama_cpp",
+      name = m.name,
+      chat = true,
+      command = false,
+      model = {
+        model = m.model_id,
+        temperature = m.temperature or 1.0,
+        top_p = m.top_p or 1.0,
+      },
+      system_prompt = system_prompt,
+    })
+  end
+  return agents
+end
+
 require("gp").setup({
   chat_dir = vim.fn.getcwd() .. "/Chats",
   providers = {
-    openai = {
-      disable = false,
-      endpoint = "https://api.openai.com/v1/chat/completions",
-      secret = {
-        "bash",
-        "-c",
-        "sops -d $FLAKE_DIR/secrets/secrets.yaml | yq -r '.OPENAI_APIKEY'"
-      }
-    },
     openai_vu = {
       disable = false,
       endpoint = "https://us.api.openai.com/v1/chat/completions",
@@ -36,88 +53,7 @@ require("gp").setup({
       secret = '', -- gp.nvim doesn't like when this is set to nil, so make it an empty string
     },
   },
-  agents = {
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - Qwen3-Coder-Next",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/Qwen3-Coder-Next-GGUF:Q4_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - gpt-oss-20b",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/gpt-oss-20b-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - Qwen3.5-35B-A3B",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/Qwen3.5-35B-A3B-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - DeepSeek-R1-Distill-Llama-70B",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF:Q5_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - gemma-4-31B-it-Q4_K_M",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/gemma-4-31B-it-GGUF:Q4_K_M", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - gemma-4-31B-it-Q4-XL",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/gemma-4-31B-it-GGUF:Q4_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - gemma-4-31B-it-Q8-XL",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/gemma-4-31B-it-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-    {
-      provider = "llama_cpp",
-      name = "llama.cpp - gemma-4-26B-it-UD-Q8-K-XL",
-      chat = true,
-      command = false,
-      -- string with model name or table with model name and parameters
-      model = { model = "unsloth/gemma-4-26B-A4B-it-GGUF:Q8_K_XL", temperature = 1.0, top_p = 1 },
-      -- system prompt (use this to specify the persona/role of the AI)
-      system_prompt = system_prompt,
-    },
-  }
+  agents = load_gp_agents(),
 })
 
 vim.keymap.set('n', '<C-g>n', function()

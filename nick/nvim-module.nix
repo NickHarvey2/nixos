@@ -1,8 +1,17 @@
 {
   inputs,
   pkgs,
+  models,
   ...
 }: let
+  gp-models-json = builtins.toJSON (
+     builtins.attrValues (builtins.mapAttrs (k: v: {
+       name = "llama.cpp - ${v.alias}";
+       model_id = k;
+       temperature = v.temp or 1.0;
+       top_p = v."top-p" or 1.0;
+     }) models)
+  );
   gp-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gp";
     src = inputs.plugin-gp-nvim;
@@ -202,7 +211,7 @@ in {
       {
         plugin = gp-nvim;
         type = "lua";
-        config = builtins.readFile ./lua/gp.lua;
+        config = builtins.replaceStrings ["<GP_MODELS_JSON>"] [ gp-models-json ] (builtins.readFile ./lua/gp.lua);
       }
 
       {
