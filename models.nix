@@ -38,7 +38,7 @@
     hf-file = "Qwen3.5-35B-A3B-UD-Q8_K_XL.gguf";
     alias = "unsloth/Qwen3.5-35B-A3B";
     name = "unsloth/Qwen3.5-35B-A3B";
-    c = 65536;
+    c = 131072;
     cache-type-k = "q8_0";
     cache-type-v = "q8_0";
     context-shift = true;
@@ -55,7 +55,7 @@
     hf-file = "DeepSeek-R1-Distill-Llama-70B-UD-Q5_K_XL.gguf";
     alias = "unsloth/DeepSeek-R1-Distill-Llama-70B";
     name = "unsloth/DeepSeek-R1-Distill-Llama-70B";
-    c = 65536;
+    c = 131072;
     cache-type-k = "q8_0";
     cache-type-v = "q8_0";
     context-shift = true;
@@ -123,7 +123,7 @@
     hf-file = "embeddinggemma-300M-Q8_0.gguf";
     alias = "unsloth/embeddinggemma-300m-Q8-0";
     name = "unsloth/embeddinggemma-300m-Q8-0";
-    c = 2048;
+    c = 131072;
     fit = "on";
     seed = 3407;
     temp = 1.0;
@@ -137,7 +137,7 @@
     hf-file = "gemma-4-E2B-it-UD-IQ2_M.gguf";
     alias = "unsloth/gemma-4-E2B-it-IQ2-M";
     name = "unsloth/gemma-4-E2B-it-IQ2-M";
-    c = 2048;
+    c = 131072;
     fit = "on";
     seed = 3407;
     temp = 1.0;
