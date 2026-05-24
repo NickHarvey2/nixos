@@ -331,7 +331,7 @@
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod, Space, exec, $menu"
         "$mainMod, B, exec, rofi-rbw --clear-after 15 --keybindings 'Alt+1:copy:username,Alt+2:copy:password'"
-        "$mainMod, W, exec, rofi -show windows"
+        "$mainMod, W, exec, rofi -show window"
         "$mainMod, N, exec, rofi-network-manager"
         "$mainMod, F, fullscreen"
         # Move focus with mainMod + arrow keys

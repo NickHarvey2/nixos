@@ -4,16 +4,17 @@ vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count=1, float=true}) 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+local nmap = function(keys, func, desc)
+  if desc then
+      desc = 'LSP: ' .. desc
+  end
+
+  vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+end
+
 local on_attach = function(client, bufnr)
   -- function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
-    if desc then
-        desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -82,6 +83,15 @@ vim.lsp.config('gopls', {
 vim.lsp.config('zk', {
   on_attach = on_attach,
   capabilities = capabilities,
+})
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  pattern = '*.md',
+  callback = function()
+    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  end,
 })
 
 vim.lsp.config('omnisharp', {
