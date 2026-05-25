@@ -14,11 +14,12 @@
           ];
           port = 7432;
           access-control = [
-            "127.0.0.1 allow"
-            "100.90.237.100 allow"
-            "100.90.219.187 allow"
-            "100.90.49.176 allow"
-            "100.90.24.122 allow"
+            "127.0.0.1 allow"       # loopback
+            "100.90.219.187 allow"  # nixos2
+            "100.90.237.100 allow"  # DESKTOP-O7MIR71
+            "100.90.49.176 allow"   # nixos3
+            "100.90.24.122 allow"   # pixel9
+            "100.90.244.103 allow"
           ];
           harden-glue = true;
           harden-dnssec-stripped = true;
