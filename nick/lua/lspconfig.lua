@@ -80,6 +80,11 @@ vim.lsp.config('gopls', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('pyright', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 vim.lsp.config('zk', {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -105,4 +110,4 @@ vim.lsp.config('clangd', {
   capabilities = capabilities,
 })
 
-vim.lsp.enable({'lua_ls', 'nixd', 'gopls', 'zk', 'omnisharp', 'clangd'})
+vim.lsp.enable({'lua_ls', 'nixd', 'gopls', 'zk', 'omnisharp', 'clangd', 'pyright'})

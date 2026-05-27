@@ -27,6 +27,7 @@ in {
     tree-sitter
     nixd
     gopls
+    pyright
     lua-language-server
     omnisharp-roslyn
     vscode-langservers-extracted
