@@ -36,6 +36,7 @@ in {
         uv
         dotnet-sdk_10
         nix
+        zk
       ];
       extraReadonlyDirs = [
         "/nix/store"

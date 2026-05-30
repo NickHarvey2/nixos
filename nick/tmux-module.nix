@@ -39,6 +39,8 @@
             # set -g @catppuccin_window_right_separator "#[fg=#{@thm_rosewater},reverse] #[none]"
 
             set -g @catppuccin_status_background "#{@thm_surface_0}"
+
+            set mode-style "fg=black,bg=#56b6c2"
           '';
       }
     ];

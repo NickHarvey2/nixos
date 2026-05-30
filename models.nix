@@ -163,4 +163,21 @@
     top-k = 40;
     jinja = "on";
   };
+  "unsloth/Qwen3.6-35B-A3B-GGUF:Q8_K_XL" = {
+    hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF";
+    hf-file = "Qwen3.6-35B-A3B-UD-Q8_K_XL.gguf";
+    alias = "unsloth/Qwen3.6-35B-A3B";
+    name = "unsloth/Qwen3.6-35B-A3B";
+    c = 131072;
+    cache-type-k = "q8_0";
+    cache-type-v = "q8_0";
+    context-shift = true;
+    fit = "on";
+    seed = 3407;
+    temp = 1.0;
+    top-p = 0.95;
+    min-p = 0.01;
+    top-k = 40;
+    jinja = "on";
+  };
 }
