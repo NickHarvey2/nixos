@@ -35,3 +35,27 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- Tab to select entries in a telescope view
 -- C-q to send all items in telescope to qflist
 -- M-q to send selected entries to qf list
+
+local pickers = require "telescope.pickers"
+local finders = require "telescope.finders"
+local conf = require("telescope.config").values
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
+
+function Pick_From(selection_opts, picker_opts)
+  pickers.new(picker_opts or {}, {
+    prompt_title = selection_opts.prompt,
+    finder = finders.new_table {
+      results = selection_opts.entries
+    },
+    sorter = conf.generic_sorter(picker_opts),
+    attach_mappings = function(prompt_bufnr, map)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        selection_opts.callback(selection)
+      end)
+      return true
+    end,
+  }):find()
+end

@@ -200,13 +200,7 @@ in {
       {
         plugin = zk-nvim;
         type = "lua";
-        config =
-          # lua
-          ''
-            require("zk").setup({
-              picker = "telescope"
-            })
-          '';
+        config =builtins.readFile ./lua/zk.lua;
       }
 
       {
@@ -219,17 +213,6 @@ in {
         plugin = haunt-nvim;
         type = "lua";
         config = builtins.readFile ./lua/haunt.lua;
-      }
-
-      {
-        plugin = zen-mode-nvim;
-        type = "lua";
-        config =
-          # lua
-          ''
-            require("zen-mode").setup()
-            vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true, desc = "Toggle [Z]en [M]ode" })
-          '';
       }
     ];
   };
