@@ -91,7 +91,7 @@
         bind l select-pane -R
         bind Tab last-window
         bind | split-window -h
-        bind - split-window -v
+        bind _ split-window -v
         bind Space send-keys C-g
       '';
   };

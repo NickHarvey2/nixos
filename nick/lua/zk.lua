@@ -1,4 +1,7 @@
-require("zk").setup({
+local zk = require("zk")
+local commands = require("zk.commands")
+
+zk.setup({
   picker = "telescope"
 })
 
@@ -74,9 +77,25 @@ local generate_zk_new = function(args)
   end
 end
 
-vim.keymap.set('n', '<leader>zn', ':ZkNewFromTitle ', { desc = '[Z]k [N]ew' })
-vim.keymap.set('v', '<leader>zn', generate_zk_new({cmd="'<,'>ZkNewFromTitleSelection {"}), { desc = '[Z]k [N]ew with selection as title' })
-
 vim.api.nvim_create_user_command('ZkNewFromTitle', function(opts)
   generate_zk_new({cmd='ZkNew {title="' .. opts.args .. '", '})
 end, { desc = "Supply title, path, and template for a new zk note", nargs = 1 })
+
+local function make_edit_fn(defaults, picker_options)
+  return function(options)
+    options = vim.tbl_extend("force", defaults, options or {})
+    zk.edit(options, picker_options)
+  end
+end
+
+commands.add("ZkOrphans", make_edit_fn({ orphan = true }, { title = "Zk Orphans" }))
+commands.add("ZkRecents", make_edit_fn({ createdAfter = "2 weeks ago" }, { title = "Zk Recents" }))
+
+vim.keymap.set('n', '<leader>zb', ":ZkBacklinks<CR>", { desc = '[Z]k [B]acklinks' })
+vim.keymap.set('n', '<leader>zl', ":ZkLinks<CR>", { desc = '[Z]k [L]inks' })
+vim.keymap.set('n', '<leader>zo', ":ZkOrphans<CR>", { desc = '[Z]k List [O]rphaned Notes' })
+vim.keymap.set('n', '<leader>zn', ":ZkNotes<CR>", { desc = '[Z]k List [N]otes' })
+vim.keymap.set('v', '<leader>zn', ":'<,'>ZkMatch<CR>", { desc = '[Z]k List [N]otes matching selection' })
+vim.keymap.set('n', '<leader>zc', ":ZkNewFromTitle ", { desc = '[Z]k [C]reate' })
+vim.keymap.set('v', '<leader>zc', generate_zk_new({cmd="'<,'>ZkNewFromTitleSelection {"}), { desc = '[Z]k [C]reate with selection as title' })
+

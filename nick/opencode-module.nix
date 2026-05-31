@@ -37,6 +37,7 @@ in {
         dotnet-sdk_10
         nix
         zk
+        busybox
       ];
       extraReadonlyDirs = [
         "/nix/store"
