@@ -258,6 +258,22 @@
         "type": "github"
       }
     },
+    "nickharvey-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780252831,
+        "narHash": "sha256-Mg7l+R/mfpYOSDDUxMFu24OcwxUFZWblG1xsDIZ2BtE=",
+        "owner": "NickHarvey2",
+        "repo": "zk-assistant",
+        "rev": "7b75869f3fe0945db7c376fbdc6054d557455b4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NickHarvey2",
+        "repo": "zk-assistant",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1776949667,
@@ -378,6 +394,7 @@
         "jail-nix": "jail-nix",
         "jailed-agents": "jailed-agents",
         "leadr": "leadr",
+        "nickharvey-skills": "nickharvey-skills",
         "nixpkgs": "nixpkgs_2",
         "plugin-gp-nvim": "plugin-gp-nvim",
         "plugin-haunt-nvim": "plugin-haunt-nvim",

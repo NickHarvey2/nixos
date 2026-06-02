@@ -54,6 +54,7 @@ in {
       docx = "${inputs.anthropic-skills}/skills/docx";
       mcp-builder = "${inputs.anthropic-skills}/skills/mcp-builder";
       skill-creator = "${inputs.anthropic-skills}/skills/skill-creator";
+      zk-assistant = "${inputs.nickharvey-skills}/zk-assistant";
     };
     settings = {
       autoupdate = false;

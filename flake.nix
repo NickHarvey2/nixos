@@ -39,6 +39,10 @@
       url = "github:anthropics/skills";
       flake = false;
     };
+    nickharvey-skills = {
+      url = "github:NickHarvey2/zk-assistant";
+      flake = false;
+    };
   };
 
   outputs = {
