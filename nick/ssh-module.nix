@@ -29,25 +29,6 @@
           IdentityFile = identities.NickHarvey2.identityFile;
         };
       };
-      # matchBlocks = {
-      #   "nixos2" = {
-      #     match = "User nick Host nixos2";
-      #     hostname = "nixos2.home.arpa";
-      #     inherit (identities.NickHarvey2) identityFile;
-      #     port = 5931;
-      #     localForwards = [
-      #       {
-      #         bind.port = 8080;
-      #         host.address = "127.0.0.1";
-      #         host.port = 8080;
-      #       }
-      #     ];
-      #   };
-      #   "NickHarvey2" = {
-      #     match = "User git Host github.com";
-      #     inherit (identities.NickHarvey2) identityFile;
-      #   };
-      # };
     };
   };
 }
