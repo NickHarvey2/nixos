@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    rura
+    lnav
     uv
     poppler-utils
     bitwarden-cli
@@ -53,7 +55,7 @@
     go-tools
     zig
     python3
-    nodejs_20
+    nodejs_24
     just
     sqlite
     alejandra

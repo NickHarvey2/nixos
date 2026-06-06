@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    wl-kbptr
     rofi-power-menu
     rofi-network-manager
     rofi-rbw-wayland
@@ -279,7 +280,6 @@
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle = {
-        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = true; # You probably want this
       };
 
@@ -321,7 +321,7 @@
         "$mainMod, Q, exec, $terminal"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, P, pseudo, # dwindle"
+        "$mainMod, P, exec, wl-kbptr -o modes=split"
         "$mainMod, J, layoutmsg, togglesplit # dwindle"
         "$mainMod, U, exec, hyprctl keyword layout:single_window_aspect_ratio 32 9; hyprctl dispatch forcerendererreload"
         "$mainMod, Y, exec, hyprctl keyword layout:single_window_aspect_ratio 16 9; hyprctl dispatch forcerendererreload"

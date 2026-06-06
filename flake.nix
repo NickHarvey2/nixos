@@ -21,19 +21,48 @@
       url = "github:catppuccin/qutebrowser";
       flake = false;
     };
+    systems = {
+      url = "github:nix-systems/default";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
     jail-nix = {
       url = "sourcehut:~alexdavid/jail.nix";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs = {
+        systems.follows = "systems";
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     jailed-agents = {
       url = "github:andersonjoseph/jailed-agents/main";
       inputs = {
         jail-nix.follows = "jail-nix";
         nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        llm-agents.follows = "llm-agents";
       };
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     semdiff = {
       url = "github:Ataraxy-Labs/sem?ref=v0.3.20";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        flake-parts.follows = "flake-parts";
+        rust-overlay.follows = "rust-overlay";
+      };
     };
     anthropic-skills = {
       url = "github:anthropics/skills";

@@ -8,12 +8,6 @@
     initContent =
       # sh
       ''
-        function jwt() {
-          echo -n $1 | cut -d. -f2 | base64 -d - 2>/dev/null | jq
-        }
-        function akamai() {
-          podman run -it -v $HOME/.edgerc:/root/.edgerc:ro -v .:/workdir:rw akamai/shell:v2.26.0 akamai $@ | tail -n+12
-        }
         unalias gau
         which leadr > /dev/null
         if (( $? == 0 )); then
@@ -33,7 +27,7 @@
       '';
 
     shellAliases = {
-      rebuild = "$FLAKE_DIR/rebuild.sh";
+      jwt = "cut -d. -f2 | base64 -d - 2>/dev/null | jq";
       ls = "exa";
       ll = "exa -alh";
       tree = "exa --tree";

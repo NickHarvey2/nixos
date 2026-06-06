@@ -10,7 +10,7 @@ local picker_opts = require('telescope.themes').get_dropdown {
   previewer = false,
 }
 
-local format_dirs_to_entries = function(str)
+local function format_dirs_to_entries(str)
   local lines = {}
   for line in str:gmatch("[^\n]+") do
     line = line:gsub('^.*' .. vim.fn.getcwd(), '.')
@@ -19,7 +19,7 @@ local format_dirs_to_entries = function(str)
   return lines
 end
 
-local format_templates_to_entries = function(str)
+local function format_templates_to_entries(str)
   local lines = {}
   for line in str:gmatch("[^\n]+") do
     table.insert(lines, line)
@@ -27,13 +27,13 @@ local format_templates_to_entries = function(str)
   return lines
 end
 
-local generate_template_selection_handler = function(args)
+local function generate_template_selection_handler(args)
   return function(template)
     vim.cmd(args.cmd .. 'template="' .. template[1] .. '", dir="' .. args.selected_dir .. '"}')
   end
 end
 
-local generate_template_list_handler = function(args)
+local function generate_template_list_handler(args)
   return function(obj)
     vim.defer_fn(function()
       Pick_From({
@@ -45,7 +45,7 @@ local generate_template_list_handler = function(args)
   end
 end
 
-local generate_dir_selection_handler = function(args)
+local function generate_dir_selection_handler(args)
   return function(dir)
     vim.system(
       { 'exa', './.zk/templates', '-1f', '--no-quotes' },
@@ -54,7 +54,7 @@ local generate_dir_selection_handler = function(args)
   end
 end
 
-local generate_dir_list_handler = function(args)
+local function generate_dir_list_handler(args)
   return function(obj)
     vim.defer_fn(function()
       local dirs = format_dirs_to_entries(obj.stdout)
@@ -67,7 +67,7 @@ local generate_dir_list_handler = function(args)
   end
 end
 
-local generate_zk_new = function(args)
+local function generate_zk_new(args)
   return function()
     vim.system(
       { 'exa', '.', '-DT', '--absolute', '--no-quotes' },
@@ -78,7 +78,7 @@ local generate_zk_new = function(args)
 end
 
 vim.api.nvim_create_user_command('ZkNewFromTitle', function(opts)
-  generate_zk_new({cmd='ZkNew {title="' .. opts.args .. '", '})
+  generate_zk_new({cmd='ZkNew {title="' .. opts.args .. '", '})()
 end, { desc = "Supply title, path, and template for a new zk note", nargs = 1 })
 
 local function make_edit_fn(defaults, picker_options)

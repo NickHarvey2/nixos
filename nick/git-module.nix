@@ -1,6 +1,7 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
     attributes = [
       "*secrets.yaml diff=sopsdiffer"
       "krb5.conf filter=git-crypt diff=git-crypt"
