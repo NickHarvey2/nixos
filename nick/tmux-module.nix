@@ -40,7 +40,7 @@
 
             set -g @catppuccin_status_background "#{@thm_surface_0}"
 
-            set mode-style "fg=black,bg=#56b6c2"
+            set -g mode-style "fg=black,bg=#56b6c2"
           '';
       }
     ];
