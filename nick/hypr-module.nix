@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  mainMod = "SUPER";
+  terminal = "kitty";
+in {
   home.packages = with pkgs; [
     wl-kbptr
     rofi-power-menu
@@ -192,220 +199,171 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    configType = "lua";
     settings = {
-      # "debug:disable_logs" = false;
-      # See https://wiki.hyprland.org/Configuring/Monitors/
-      # monitor = name, resolution, position, scale
       monitor = [
-        "HDMI-A-1,5120x1440,auto,1"
-        ",preferred,auto,1"
+        {
+          output = "HDMI-A-1";
+          mode = "5120x1440";
+          position = "auto";
+          scale = "1";
+        }
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto";
+          scale = "1";
+        }
       ];
 
-      # See https://wiki.hyprland.org/Configuring/Keywords/
+      on._args = ["hyprland.start" (lib.generators.mkLuaInline "function() hl.exec_cmd('waybar') end")];
 
-      # Set programs that you use
-      "$terminal" = "kitty";
-      # $fileManager = yazi
-      "$menu" = "rofi -show drun -show-icons";
-
-      # Autostart necessary processes (like notifications daemons, status bars, etc.)
-      exec-once = [
-        "waybar &"
-      ];
-
-      # See https://wiki.hyprland.org/Configuring/Environment-variables/
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-      ];
-
-      # https://wiki.hyprland.org/Configuring/Variables/#general
-      general = {
-        gaps_in = 3;
-        gaps_out = 3;
-        border_size = 3;
-        # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        # Set to true enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false;
-        # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-        allow_tearing = false;
-        layout = "dwindle";
-      };
-
-      layout = {
-        single_window_aspect_ratio = "16 9"; # limit max width of a window to make dwindle on an ultrawide not terrible
-      };
-
-      # https://wiki.hyprland.org/Configuring/Variables/#ecosystem
-      ecosystem = {
-        no_update_news = true;
-        no_donation_nag = true;
-      };
-
-      # https://wiki.hyprland.org/Configuring/Variables/#decoration
-      decoration = {
-        rounding = 3;
-        # Change transparency of focused and unfocused windows
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-        # drop_shadow = true;
-        # shadow_range = 4;
-        # shadow_render_power = 3;
-        # col.shadow = rgba(1a1a1aee);
-        # https://wiki.hyprland.org/Configuring/Variables/#blur
-        blur = {
+      config = {
+        cursor = {
+          hide_on_key_press = true;
+          inactive_timeout = 10;
+        };
+        input = {
+          kb_layout = "us";
+          kb_options = "caps:swapescape";
+          numlock_by_default = true;
+          follow_mouse = 1;
+          repeat_delay = 200;
+          repeat_rate = 40;
+          touchpad = {
+            natural_scroll = true;
+            clickfinger_behavior = true;
+          };
+        };
+        decoration = {
+          rounding = 3;
+          active_opacity = 1.0;
+          inactive_opacity = 1.0;
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
+            vibrancy = 0.1696;
+          };
+        };
+        general = {
+          gaps_in = 3;
+          gaps_out = 3;
+          border_size = 3;
+          "col.active_border" = lib.generators.mkLuaInline "{colors={'rgba(33ccffee)','rgba(00ff99ee)'},angle=45}";
+          "col.inactive_border" = "0x595959aa";
+          resize_on_border = false;
+          # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+          allow_tearing = false;
+          layout = "dwindle";
+        };
+        layout = {
+          single_window_aspect_ratio = "16 9"; # limit max width of a window to make dwindle on an ultrawide not terrible
+        };
+        ecosystem = {
+          no_update_news = true;
+          no_donation_nag = true;
+        };
+        animations = {
           enabled = true;
-          size = 3;
-          passes = 1;
-          vibrancy = 0.1696;
+          # bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+          # animation = [
+          #   "windows, 1, 7, myBezier"
+          #   "windowsOut, 1, 7, default, popin 80%"
+          #   "border, 1, 10, default"
+          #   "borderangle, 1, 8, default"
+          #   "fade, 1, 7, default"
+          #   "workspaces, 1, 6, default"
+          # ];
+        };
+        dwindle = {
+          preserve_split = true; # You probably want this
+        };
+        master = {
+          new_status = "master";
+          orientation = "center";
+        };
+        misc = {
+          force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
+          disable_hyprland_logo = true; # If true disables the random hyprland logo
         };
       };
 
-      # https://wiki.hyprland.org/Configuring/Variables/#animations
-      animations = {
-        enabled = true;
-        # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
-
-      # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-      dwindle = {
-        preserve_split = true; # You probably want this
-      };
-
-      # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-      master = {
-        new_status = "master";
-        orientation = "center";
-      };
-
-      # https://wiki.hyprland.org/Configuring/Variables/#misc
-      misc = {
-        force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
-      };
-
-      cursor = {
-        hide_on_key_press = true;
-        inactive_timeout = 10;
-      };
-
-      # https://wiki.hyprland.org/Configuring/Variables/#input
-      input = {
-        kb_layout = "us";
-        kb_options = "caps:swapescape";
-        numlock_by_default = true;
-        follow_mouse = 1;
-        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
-        touchpad = {
-          natural_scroll = true;
-          clickfinger_behavior = 1;
-        };
-      };
-
-      # See https://wiki.hyprland.org/Configuring/Keywords/
-      "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
-
-      # See https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = [
-        "$mainMod, Q, exec, $terminal"
-        "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
-        "$mainMod, P, exec, wl-kbptr -o modes=split"
-        "$mainMod, J, layoutmsg, togglesplit # dwindle"
-        "$mainMod, U, exec, hyprctl keyword layout:single_window_aspect_ratio 32 9; hyprctl dispatch forcerendererreload"
-        "$mainMod, Y, exec, hyprctl keyword layout:single_window_aspect_ratio 16 9; hyprctl dispatch forcerendererreload"
-        "$mainMod SHIFT, L, movewindow, r"
-        "$mainMod SHIFT, H, movewindow, l"
-        "$mainMod SHIFT, J, movewindow, d"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod, Space, exec, $menu"
-        "$mainMod, B, exec, rofi-rbw --clear-after 15 --keybindings 'Alt+1:copy:username,Alt+2:copy:password'"
-        "$mainMod, W, exec, rofi -show window"
-        "$mainMod, N, exec, rofi-network-manager"
-        "$mainMod, F, fullscreen"
-        # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
-        # Example special workspace (scratchpad)
-        "$mainMod, grave, togglespecialworkspace, magic"
-        "$mainMod SHIFT, grave, movetoworkspace, special:magic"
+        {_args = ["${mainMod} + Q" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('${terminal}')")];}
+        {_args = ["${mainMod} + Space" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('rofi -show drun -show-icons')")];}
+        {_args = ["${mainMod} + B" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('rofi-rbw --clear-after 15 --keybindings Alt+1:copy:username,Alt+2:copy:password')")];}
+        {_args = ["${mainMod} + W" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('rofi -show window')")];}
+        {_args = ["${mainMod} + N" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('rofi-network-manager')")];}
+        {_args = ["${mainMod} + D" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('makoctl dismiss')")];} # Dismiss mako notifications
+        {_args = ["${mainMod} + C" (lib.generators.mkLuaInline "hl.dsp.window.kill()")];}
+        {_args = ["${mainMod} + M" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm stop')")];}
+        {_args = ["${mainMod} + P" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wl-kbptr -o modes=split')")];}
+        # # Switch workspaces with mainMod + [0-9]
+        {_args = ["${mainMod} + 1" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=1})")];}
+        {_args = ["${mainMod} + 2" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=2})")];}
+        {_args = ["${mainMod} + 3" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=3})")];}
+        {_args = ["${mainMod} + 4" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=4})")];}
+        {_args = ["${mainMod} + 5" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=5})")];}
+        {_args = ["${mainMod} + 6" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=6})")];}
+        {_args = ["${mainMod} + 7" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=7})")];}
+        {_args = ["${mainMod} + 8" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=8})")];}
+        {_args = ["${mainMod} + 9" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=9})")];}
+        {_args = ["${mainMod} + 0" (lib.generators.mkLuaInline "hl.dsp.focus({workspace=10})")];}
+        # # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        {_args = ["${mainMod} + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=1,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 2" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=2,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 3" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=3,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 4" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=4,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 5" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=5,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 6" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=6,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 7" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=7,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 8" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=8,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 9" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=9,follow=true})")];}
+        {_args = ["${mainMod} + SHIFT + 0" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace=10,follow=true})")];}
+        {_args = ["${mainMod} + G" (lib.generators.mkLuaInline "hl.dsp.layout('togglesplit')")];}
         # Move/resize window with mainMod + keys
-        "$mainMod CTRL, right, resizeactive, 50 0"
-        "$mainMod CTRL, left, resizeactive, -50 0"
-        "$mainMod CTRL, up, resizeactive, 0 -50"
-        "$mainMod CTRL, down, resizeactive, 0 50"
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod SHIFT, down, movewindow, d"
-        # Dismiss mako notifications
-        "$mainMod, D, exec, makoctl dismiss"
-      ];
-
-      bindel = [
-        # Volume keys
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
-        # Backlight
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-      ];
-
-      bindl = [
-        # Mute key
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        # Lock with super-L because I've got Windows brain rot
-        "$mainMod, L, exec, hyprlock"
+        {_args = ["${mainMod} + SHIFT + L" (lib.generators.mkLuaInline "hl.dsp.window.swap({direction='r'})")];}
+        {_args = ["${mainMod} + SHIFT + H" (lib.generators.mkLuaInline "hl.dsp.window.swap({direction='l'})")];}
+        {_args = ["${mainMod} + SHIFT + J" (lib.generators.mkLuaInline "hl.dsp.window.swap({direction='d'})")];}
+        {_args = ["${mainMod} + SHIFT + K" (lib.generators.mkLuaInline "hl.dsp.window.swap({direction='u'})")];}
+        {_args = ["${mainMod} + CTRL + L" (lib.generators.mkLuaInline "hl.dsp.window.resize({x=50,y=0,relative=true})") (lib.generators.mkLuaInline "{repeating=true}")];}
+        {_args = ["${mainMod} + CTRL + H" (lib.generators.mkLuaInline "hl.dsp.window.resize({x=-50,y=0,relative=true})") (lib.generators.mkLuaInline "{repeating=true}")];}
+        {_args = ["${mainMod} + CTRL + J" (lib.generators.mkLuaInline "hl.dsp.window.resize({x=0,y=50,relative=true})") (lib.generators.mkLuaInline "{repeating=true}")];}
+        {_args = ["${mainMod} + CTRL + K" (lib.generators.mkLuaInline "hl.dsp.window.resize({x=0,y=-50,relative=true})") (lib.generators.mkLuaInline "{repeating=true}")];}
+        {_args = ["${mainMod} + F" (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({mode='fullscreen',action='toggle'})")];}
+        {_args = ["${mainMod} + SHIFT + F" (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({mode='maximized',action='toggle'})")];}
+        # Move focus with mainMod + arrow keys
+        {_args = ["${mainMod} + L" (lib.generators.mkLuaInline "hl.dsp.focus({direction='r'})")];}
+        {_args = ["${mainMod} + H" (lib.generators.mkLuaInline "hl.dsp.focus({direction='l'})")];}
+        {_args = ["${mainMod} + J" (lib.generators.mkLuaInline "hl.dsp.focus({direction='d'})")];}
+        {_args = ["${mainMod} + K" (lib.generators.mkLuaInline "hl.dsp.focus({direction='u'})")];}
+        # Example special workspace (scratchpad)
+        {_args = ["${mainMod} + grave" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('scratchpad')")];}
+        {_args = ["${mainMod} + SHIFT + grave" (lib.generators.mkLuaInline "hl.dsp.window.move({workspace='special:scratchpad',follow=true})")];}
+        # Lock with super-L
+        {_args = ["${mainMod} + L" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprlock')") (lib.generators.mkLuaInline "{locked=true}")];}
         # Lock on lid close
-        ", switch:Lid Switch, exec, hyprlock"
+        {_args = ["switch:Lid Switch" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprlock')") (lib.generators.mkLuaInline "{locked=true}")];}
+        # Volume keys
+        {_args = ["XF86AudioRaiseVolume" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+')") (lib.generators.mkLuaInline "{repeating=true,locked=true}")];}
+        {_args = ["XF86AudioLowerVolume" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-')") (lib.generators.mkLuaInline "{repeating=true,locked=true}")];}
+        # Backlight
+        {_args = ["XF86MonBrightnessUp" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('brightnessctl set 5%+')") (lib.generators.mkLuaInline "{repeating=true,locked=true}")];}
+        {_args = ["XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('brightnessctl set 5%-')") (lib.generators.mkLuaInline "{repeating=true,locked=true}")];}
+        # Mute key
+        {_args = ["XF86AudioMute" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')") (lib.generators.mkLuaInline "{locked=true}")];}
       ];
 
-      windowrule = [
+      window_rule = [
         {
           name = "screensaver kitty window";
-          "match:title" = "^(kitty-full)$";
+          match.title = "^(kitty-full)$";
           fullscreen = true;
-          no_anim = true;
         }
         {
           name = "floating kitty window";
-          "match:title" = "^(kitty-float)$";
-          no_anim = true;
+          match.title = "^(kitty-float)$";
           float = true;
           center = true;
           size = "1024 768";

@@ -39,6 +39,7 @@
       (readwrite "/run/dbus/system_bus_socket")
       (add-pkg-deps [
         pkgs.python314Packages.adblock
+        pkgs.kitty
       ])
     ]);
     searchEngines = {
@@ -55,6 +56,8 @@
       # disable GPU acceleration due to bug in qt6-webengine 6.11
       # see <https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-webengine/-/work_items/11>
       qt.force_software_rendering = "chromium";
+      auto_save.interval = 0;
+      auto_save.session = true;
       editor.command = ["kitty" "--title" "kitty-float" "--" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l" "+ZenMode"];
       hints = {
         chars = "asdfghjklqwertyuiopzxcvbnm";
@@ -74,7 +77,6 @@
         width = "10%";
         title.format = "{index}: {audio}{current_title}";
       };
-      auto_save.session = true;
       colors = {
         webpage = {
           darkmode.enabled = false;

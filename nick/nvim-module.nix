@@ -214,6 +214,17 @@ in {
         type = "lua";
         config = builtins.readFile ./lua/haunt.lua;
       }
+
+      {
+        plugin = zen-mode-nvim;
+        type = "lua";
+        config =
+          # lua
+          ''
+            require("zen-mode").setup()
+            vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { noremap = true, silent = true, desc = "Toggle [Z]en [M]ode" })
+          '';
+      }
     ];
   };
 }
