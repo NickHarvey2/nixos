@@ -1,8 +1,8 @@
 {
   inputs,
   pkgs,
-  config,
-  jail,
+  # config,
+  # jail,
   ...
 }: {
   home.packages = with pkgs; [
@@ -27,21 +27,23 @@
 
   programs.qutebrowser = {
     enable = true;
-    package = jail "jailed-qute" pkgs.qutebrowser (with jail.combinators; [
-      network
-      gui
-      gpu
-      (readonly "/nix/store")
-      (readonly "${config.home.homeDirectory}/.config/qutebrowser")
-      (readonly "${config.home.homeDirectory}/.cache/qutebrowser")
-      (readwrite "${config.home.homeDirectory}/.local/share/qutebrowser")
-      (readwrite "${config.home.homeDirectory}/Downloads")
-      (readwrite "/run/dbus/system_bus_socket")
-      (add-pkg-deps [
-        pkgs.python314Packages.adblock
-        pkgs.kitty
-      ])
-    ]);
+    # package = jail "jailed-qute" pkgs.qutebrowser (with jail.combinators; [
+    #   network
+    #   gui
+    #   gpu
+    #   (readonly "/nix/store")
+    #   (readonly "${config.home.homeDirectory}/.config/qutebrowser")
+    #   (readonly "${config.home.homeDirectory}/.cache/qutebrowser")
+    #   (readwrite "${config.home.homeDirectory}/.local/share/qutebrowser")
+    #   (readwrite "${config.home.homeDirectory}/Downloads")
+    #   (readwrite "/run/dbus/system_bus_socket")
+    #   (readwrite "/tmp")
+    #   (add-pkg-deps [
+    #     pkgs.python314Packages.adblock
+    #     pkgs.kitty
+    #     pkgs.neovim
+    #   ])
+    # ]);
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";
